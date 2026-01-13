@@ -1,0 +1,37 @@
+{
+  "items": [
+    { "key": "Tactical_Support_Calliope_Call-In_4xp", "filename": "Tactical_Support_Calliope_Call-In_4xp.png", "xp": 4 , "tier":3},
+    { "key": "Devil's_Brigade_Sherman_76s_4xp", "filename": "Devil's_Brigade_Sherman_76s_4xp.png", "xp": 4 , "tier":3, "call-in":"m4a3_sherman",
+		"preferences":{
+			"fromUnits":{
+				"m4a3_sherman":5.0
+			}
+		}
+	},
+    { "key": "Engineer_Assault_Company_M36_Jackson_5xp", "filename": "Engineer_Assault_Company_M36_Jackson_5xp.png", "xp": 5 , "tier":3},
+    { "key": "Urban_Assault_Company_Sherman_105mm_Dozer_5xp", "filename": "Urban_Assault_Company_Sherman_105mm_Dozer_5xp.png", "xp": 5 , "tier":3},
+    { "key": "Ranger_Company_West_Point_Reserves_4xp", "filename": "Ranger_Company_West_Point_Reserves_4xp.png", "xp": 4 , "tier":3, "call-in":"major",
+		"preferences":{
+			"fromUnits":{
+				"major":3.0
+			}
+		}
+	},
+    { "key": "Heavy_Cavalry_Company_Pershing_Call-In_5xp", "filename": "Heavy_Cavalry_Company_Pershing_Call-In_5xp.png", "xp": 5 , "tier":3},
+    { "key": "Recon_Support_Company_Airdropped_Group_5xp", "filename": "Recon_Support_Company_Airdropped_Group_5xp.png", "xp": 5 , "tier":2,
+		"preferences":{
+			"fromUnits":{
+				"m2_50cal_mg_team":3.0,
+				"m1_57mm_at_gun":3.0,
+				"us_mortar_team":3.0,
+				"mg42_team":3.0,
+				"mortar_team":3.0
+			}
+		}},
+    { "key": "Festung_Armor_Doctrine_Tiger_Call-In", "filename": "Festung_Armor_Doctrine_Tiger_Call-In.png", "xp": 5, "tier":3 },
+    { "key": "churchill_avre_call-in_free", "filename": "churchill_avre_call-in_free.png", "xp": 5, "tier":3 },
+    { "key": "Motor_Pool_Outmaneuver_5xp", "filename": "Motor_Pool_Outmaneuver_5xp.png", "xp": 5 , "tier":3},
+	{ "key": "emergency_war_speed", "filename": "emergency_war_speed.png", "xp": 5, "tier":3, "requiresAnyUpgrades":["churchill_avre_call-in_free"]},
+    { "key": "operation_crocodile", "filename": "operation_crocodile.png", "xp": 5, "tier":3, "call-in":"uk_churchill" }
+  ]
+}
