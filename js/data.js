@@ -26,7 +26,7 @@
   };
 
   App.loadUpgradesOnce = async function(){
-    const rarities = ['Common', 'Veteran', 'Elite', 'Legendary'];
+    const rarities = ['common', 'veteran', 'elite', 'legendary'];
     for(const r of rarities){
       if(App.upgradePools[r].length) continue;
 
@@ -62,4 +62,5 @@
     }
   };
 })();
+
 
