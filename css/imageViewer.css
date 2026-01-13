@@ -1,0 +1,36 @@
+
+
+
+
+
+.image-viewer-body{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.image-viewer-wrap{
+  position:relative;
+  max-width:100%;
+  max-height:70vh;
+}
+
+#imageViewerImg{
+  display:block;
+  max-width:100%;
+  max-height:70vh;
+  object-fit:contain;
+}
+
+#imageViewerCallInBadge{
+  position:absolute;
+  top:10px;
+  right:10px;
+  left:auto;
+  transform:scale(1.5);
+  transform-origin:top right;
+  z-index:3;
+}
+
+
+

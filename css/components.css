@@ -1,0 +1,426 @@
+
+/* Buildable Units */
+.buildable{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  min-height:0;
+  transition:opacity 180ms ease;
+}
+.buildable.buildable-dim{ opacity:0.25; }
+
+.build-slots{
+  flex:1 1 90%;
+  min-height:0;
+  display:flex;
+  gap:12px;
+}
+.build-slot{
+  flex:1;
+  height:100%;
+  border:3px solid var(--khaki);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  background:rgba(0,0,0,0.35);
+  font-size:14px;
+  text-transform:uppercase;
+  padding:10px;
+  box-sizing:border-box;
+  overflow:hidden;
+  user-select:none;
+  cursor:default;
+}
+.build-slot-placeholder{
+  color:rgba(230,226,211,0.55);
+  font-style:italic;
+}
+
+
+.xp-panel{
+  width:260px;
+  padding:12px;
+  border:2px solid var(--khaki);
+  background:linear-gradient(145deg,#2b2b2b,#1a1a1a);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  box-sizing:border-box;
+}
+.xp-value{
+  font-size:26px;
+  text-align:center;
+  margin-bottom:8px;
+}
+.xp-buttons{
+  display:flex;
+  gap:10px;
+  justify-content:center;
+}
+
+
+/* CONTROLS */
+.controls{
+  display:flex;
+  gap:24px;
+  align-items:stretch;
+  background:linear-gradient(145deg,#3a3f2b,#262a1d);
+  border:2px solid var(--olive);
+  padding:15px;
+  margin-bottom:18px;
+  box-sizing:border-box;
+}
+.left-controls{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+
+.carousel{
+  display:flex;
+  gap:12px;
+  overflow-x:auto;
+  padding:10px;
+  align-items:center;
+  border:2px solid rgba(182,168,117,0.25);
+  background:rgba(0,0,0,0.18);
+  box-sizing:border-box;
+}
+
+
+.upgrade-tile{
+  width:150px;
+  height:320px;
+  border:4px solid var(--khaki);
+  background:rgba(0,0,0,0.4);
+  padding:6px;
+  box-sizing:border-box;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex:0 0 auto;
+  overflow:hidden;
+}
+.upgrade-tile img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  display:block;
+  background:#111;
+}
+
+
+
+.locked{
+  opacity:0.35;
+  filter:grayscale(1);
+  cursor:not-allowed;
+}
+.locked::after{
+  content:'INSUFFICIENT XP';
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:18px;
+  font-weight:bold;
+  background:rgba(139,43,43,0.6);
+  border:2px solid var(--danger);
+  color:#fff;
+  text-align:center;
+}
+
+.xp-denied{ animation:shake .35s; }
+@keyframes shake{
+  0%{transform:translateX(0)}
+  25%{transform:translateX(-6px)}
+  50%{transform:translateX(6px)}
+  75%{transform:translateX(-6px)}
+  100%{transform:translateX(0)}
+}
+
+.reroll-danger{ animation:pulse 0.6s infinite alternate; }
+@keyframes pulse{ from{ box-shadow:none; } to{ box-shadow:0 0 12px var(--danger); } }
+
+.sheet{
+  position:fixed;
+  inset:0;
+  display:none;
+  background:rgba(0,0,0,0.75);
+  z-index:3000;
+}
+
+.sheet[aria-hidden="false"]{ display:block; }
+
+.sheet-inner{
+  position:absolute;
+  left:0; right:0; bottom:0;
+  background:#141414;
+  border-top:3px solid var(--olive);
+  border-radius:18px 18px 0 0;
+  max-height:85vh;
+  display:flex;
+  flex-direction:column;
+}
+
+.sheet-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:12px 14px;
+  border-bottom:1px solid rgba(182,168,117,0.25);
+}
+
+.sheet-title{
+  font-size:16px;
+  letter-spacing:1px;
+  text-transform:uppercase;
+}
+
+.sheet-close {
+  all: unset;
+}
+
+.sheet-close {
+  composes: close-btn;
+}
+
+
+.sheet-body{
+  padding:12px 14px 18px;
+  overflow:auto;
+}
+
+.sheet-body img{
+  width:100%;
+  height:auto;
+  max-height:70vh;
+  object-fit:contain;
+  display:block;
+  background:#0f0f0f;
+  border:2px solid var(--olive);
+  padding:10px;
+  box-sizing:border-box;
+}
+
+	
+	.callin-badge{
+	  position:absolute;
+	  top:8px;
+	  right:8px;
+	  font-size:11px;
+	  padding:2px 6px;
+	  border:1px solid var(--khaki);
+	  background:rgba(0,0,0,0.65);
+	  text-transform:uppercase;
+	  letter-spacing:1px;
+	}
+	
+	/* Only show on touch devices */
+	@media (pointer: fine){
+	  .tap-hint{ display:none; }
+	}
+	
+	
+	@media (pointer: coarse){
+	  .tap-hint{
+		animation:hintPulse 1.2s ease-out 1;
+		background:rgba(0,0,0,0.75);
+		cursor:pointer;
+		border:1px solid var(--khaki);
+		color:var(--paper);
+		z-index:2;
+		pointer-events:auto; /* allow tapping badge */
+		position:absolute;
+		  top:10px;
+		  right:10px;
+		  left:auto;            /* ensure it’s NOT top-left */
+		  z-index:5;
+
+		  /* 50% bigger */
+		  font-size:18px;       /* was ~12px */
+		  padding:6px 12px;     /* was ~4px 8px */
+		  border-width:2px;     /* if you had a 1px border */
+		  border-radius:6px;
+
+		  /* keep existing look if you already styled it */
+		  text-transform:uppercase;
+		  font-weight:700;
+		  letter-spacing:0.5px;
+	  }
+	}
+	
+		/* Ensure parent is positioned so absolute works */
+	.upgrade-card,
+	.upgrade-tile,
+	.picker-card{
+	  position:relative;
+	}
+	
+	@keyframes hintPulse{
+	  0%{ transform:scale(0.9); opacity:0; }
+	  40%{ transform:scale(1.1); opacity:1; }
+	  100%{ transform:scale(1); }
+	}
+	
+	
+.carousel-shell{
+  position:relative;
+}
+
+.carousel-arrow{
+  position:absolute;
+  top:47%;
+  transform:translateY(-50%);
+  font-size:42px;
+  line-height:1;
+  padding:10px;
+  color:rgba(230,226,211,0.85);
+  cursor:pointer;
+  user-select:none;
+  pointer-events:auto;
+  z-index:5;
+  transition:opacity 200ms ease, transform 200ms ease;
+}
+
+.carousel-arrow.left{
+  left: 0px;
+  padding: 10px 0px 10px 0px;
+}
+
+.carousel-arrow.right{
+  right: 0px;
+  padding: 10px 0px 0px 10px
+}
+
+.carousel-arrow.disabled{
+  opacity:0;
+  pointer-events:none;
+  transform:translateY(-50%) scale(0.85);
+}
+
+/* Mobile: slightly larger tap targets */
+@media (pointer: coarse){
+  .carousel-arrow{
+    font-size:82px;
+    padding:10px;
+  }
+}
+
+.ai-card-thumb{
+  width: 72px;
+  height: auto;
+
+  cursor: pointer;
+  user-select: none;
+
+  border: 2px solid var(--khaki);
+  background: rgba(0,0,0,0.4);
+
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.ai-card-thumb:hover{
+  transform: scale(1.05);
+  box-shadow: 0 0 12px rgba(0,0,0,0.6);
+}
+
+.ai-card-thumb:active{
+  transform: scale(0.98);
+}
+
+@media (max-width: 768px){
+  .ai-card-thumb{
+    width: 64px;
+  }
+}
+
+.icon-btn{
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 22px;
+  font-weight: 700;
+
+  color: var(--khaki);
+  background: transparent;
+  border: none;
+
+  cursor: pointer;
+  user-select: none;
+
+  transition: transform 0.15s ease, color 0.15s ease;
+}
+
+.icon-btn:hover{
+  color: #ffd966;
+  transform: rotate(90deg);
+}
+
+.icon-btn:active{
+  transform: rotate(180deg) scale(0.95);
+}
+
+.icon-btn:focus{
+  outline: none;
+}
+.refresh-btn:active{
+  animation: refresh-spin 0.35s ease;
+}
+
+@keyframes refresh-spin{
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.ai-launchers{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  align-items:flex-start; /* or center, if you prefer */
+}
+
+.ai-card-stage{
+  position:relative;
+  display:inline-block; /* shrink-wrap to image width */
+  max-width:100%;
+}
+
+.ai-card-stage > img{
+  display:block;
+  max-width:100%;
+  height:auto;
+}
+
+/* Transparent clickable overlays */
+.ai-hotspot{
+  position:absolute;
+  border:0;
+  background:transparent;
+  padding:0;
+  margin:0;
+  cursor:pointer;
+  /* helpful on mobile */
+  touch-action:manipulation;
+}
+
+/* Example layout: 4 zones across the top portion of the card.
+   Tweak these to match your card art. */
+.ai-hotspot[data-ref="1"]{ left:  13%; top:  19%; width: 24%; height: 17%; }
+.ai-hotspot[data-ref="2"]{ left: 29%; top:  37%; width: 24%; height: 17%; }
+.ai-hotspot[data-ref="3"]{ left: 46%; top:  55%; width: 24%; height: 17%; }
+.ai-hotspot[data-ref="4"]{ left: 63%; top:  73%; width: 24%; height: 17%; }
+
+/* Optional: debug hotspots (temporarily enable) */
+/*
+.ai-hotspot{ outline:2px dashed rgba(255,255,255,0.35); }
+*/
+
+

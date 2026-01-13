@@ -1,0 +1,123 @@
+
+	/* Upgrades */
+	.upgrades-hidden{ display:none; }
+
+	
+	/* ================== RARITY BORDER THICKNESS ================== */
+/* Modal cards: border is on the IMG */
+.upgrade-card.elite img{ border-width:6px; }
+.upgrade-card.legendary img{ border-width:8px; }
+
+/* Carousel tiles: border is on the TILE container */
+.upgrade-tile.elite{
+  border-width:6px;
+  border-color:var(--elite);
+}
+.upgrade-tile.legendary{
+  border-width:8px;
+  border-color:var(--legendary);
+  box-shadow:0 0 16px rgba(196,154,44,0.25);
+}
+
+/* Optional: make common/veteran match your existing khaki framing */
+.upgrade-tile.common,
+.upgrade-tile.veteran{
+  border-color:var(--khaki);
+}
+
+/* ================== LEGENDARY REVEAL EFFECT ================== */
+/* Apply class .legendary-reveal to a legendary card to animate a veil lifting */
+.upgrade-card.legendary.legendary-reveal{
+  overflow:hidden; /* ensure overlay clips */
+}
+
+.upgrade-card.legendary.legendary-reveal::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+	180deg,
+	rgba(0,0,0,0.92) 0%,
+	rgba(0,0,0,0.75) 55%,
+	rgba(0,0,0,0.0) 100%
+  );
+  transform:translateY(0);
+  animation:legendaryReveal 1.8s ease-out forwards;
+  pointer-events:none;
+}
+
+.upgrade-card.legendary.legendary-reveal::after{
+  content:'';
+  position:absolute;
+  inset:-20%;
+  background:radial-gradient(circle, rgba(196,154,44,0.22) 0%, rgba(196,154,44,0.0) 60%);
+  opacity:0;
+  animation:legendaryGlimmer 1.8s ease-out forwards;
+  pointer-events:none;
+}
+
+@keyframes legendaryReveal{
+  0%{ transform:translateY(0); }
+  100%{ transform:translateY(-110%); }
+}
+
+@keyframes legendaryGlimmer{
+  0%{ opacity:0; transform:scale(0.95); }
+  35%{ opacity:1; }
+  100%{ opacity:0; transform:scale(1.05); }
+}
+
+
+.add-upgrade{
+  width:150px;
+  height:320px;
+  border:4px solid var(--khaki);
+  background:rgba(0,0,0,0.4);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:64px;
+  cursor:pointer;
+  box-sizing:border-box;
+  flex:0 0 auto;
+  user-select:none;
+}
+
+.upgrade-card{
+  cursor:pointer;
+  padding:10px;
+  border:2px solid transparent;
+  background:rgba(0,0,0,0.25);
+  position:relative;
+  box-sizing:border-box;
+}
+
+
+
+.upgrade-card img{
+  max-width:100%;
+  height:auto;
+  max-height:440px;
+  object-fit:contain;
+  border:4px solid;
+  background:rgba(0,0,0,0.4);
+  box-sizing:border-box;
+  padding:8px;
+  display:block;
+  margin:0 auto;
+}
+.upgrade-card.common img{ border-color:var(--common); }
+.upgrade-card.veteran img{ border-color:var(--veteran); }
+.upgrade-card.elite img{ border-color:var(--elite); }
+.upgrade-card.legendary img{ border-color:var(--legendary); }
+
+.rarity-label{
+  position:absolute;
+  bottom:8px;
+  right:8px;
+  padding:2px 6px;
+  font-size:12px;
+  background:rgba(0,0,0,0.7);
+  border:1px solid var(--khaki);
+  text-transform:uppercase;
+}

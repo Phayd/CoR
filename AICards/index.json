@@ -1,0 +1,116 @@
+{
+  "items": {
+	  "Advance_The_Line": {
+		"filename": "Advance_The_Line.jpg",
+		"phase": 2,
+		"ref1": "AICards/Rules/p_d.jpg",
+		"ref2": "AICards/Rules/y_cp.jpg",
+		"ref3": "AICards/Rules/g_cp.jpg",
+		"ref4": "AICards/Rules/r_a.jpg"
+	  },
+	  "Armor_Assault": {
+		"filename": "Armor_Assault.jpg",
+		"phase": 2,
+		"ref1": "AICards/Rules/g_d.jpg",
+		"ref2": "AICards/Rules/p_d.jpg",
+		"ref3": "AICards/Rules/r_a.jpg",
+		"ref4": "AICards/Rules/y_a.jpg"
+	  },
+	  "Cavalry_Advance": {
+		"filename": "Cavalry_Advance.jpg",
+		"phase": 2,
+		"ref1": "AICards/Rules/y_cp.jpg",
+		"ref2": "AICards/Rules/r_vcp.jpg",
+		"ref3": "AICards/Rules/g_a.jpg",
+		"ref4": "AICards/Rules/b_b.jpg"
+	  },
+	  "Coordinated_Assault": {
+		"filename": "Coordinated_Assault.jpg",
+		"phase": 2,
+		"ref1": "AICards/Rules/b_b.jpg",
+		"ref2": "AICards/Rules/p_d.jpg",
+		"ref3": "AICards/Rules/r_a.jpg",
+		"ref4": "AICards/Rules/g_cp.jpg"
+	  },
+	  "Infantry_Support": {
+		"filename": "Infantry_Support.jpg",
+		"phase": 2,
+		"ref1": "AICards/Rules/p_d.jpg",
+		"ref2": "AICards/Rules/y_a.jpg",
+		"ref3": "AICards/Rules/b_b.jpg",
+		"ref4": "AICards/Rules/g_a.jpg"
+	  },
+	  "Pincer_Move": {
+		"filename": "Pincer_Move.jpg",
+		"phase": 2,
+		"ref1": "AICards/Rules/r_vcp.jpg",
+		"ref2": "AICards/Rules/b_b.jpg",
+		"ref3": "AICards/Rules/y_a.jpg",
+		"ref4": "AICards/Rules/p_d.jpg"
+	  },
+	  "Strategic_Priority": {
+		"filename": "Strategic_Priority.jpg",
+		"phase": 2,
+		"ref1": "AICards/Rules/g_a.jpg",
+		"ref2": "AICards/Rules/r_vcp.jpg",
+		"ref3": "AICards/Rules/y_cp.jpg",
+		"ref4": "AICards/Rules/b_b.jpg"
+	  },
+	  "Cavalry_Assault": {
+		"filename": "Cavalry_Assault.jpg",
+		"phase": 1,
+		"ref1": "AICards/Rules/y_a.jpg",
+		"ref2": "AICards/Rules/g_a.jpg",
+		"ref3": "AICards/Rules/b_b.jpg",
+		"ref4": "AICards/Rules/p_d.jpg"
+	  },
+	  "General_Advance": {
+		"filename": "General_Advance.jpg",
+		"phase": 1,
+		"ref1": "AICards/Rules/y_a.jpg",
+		"ref2": "AICards/Rules/p_d.jpg",
+		"ref3": "AICards/Rules/b_b.jpg",
+		"ref4": "AICards/Rules/g_d.jpg"
+	  },
+	  "Recon_In_Force": {
+		"filename": "Recon_In_Force.jpg",
+		"phase": 1,
+		"ref1": "AICards/Rules/y_cp.jpg",
+		"ref2": "AICards/Rules/g_cp.jpg",
+		"ref3": "AICards/Rules/p_d.jpg",
+		"ref4": "AICards/Rules/b_b.jpg"
+	  },
+	  "Tactical_Advance": {
+		"filename": "Tactical_Advance.jpg",
+		"phase": 1,
+		"ref1": "AICards/Rules/p_d.jpg",
+		"ref2": "AICards/Rules/g_d.jpg",
+		"ref3": "AICards/Rules/b_b.jpg",
+		"ref4": "AICards/Rules/y_a.jpg"
+	  },
+	  "Covering_Fire": {
+		"filename": "Covering_Fire.jpg",
+		"phase": 1,
+		"ref1": "AICards/Rules/p_d.jpg",
+		"ref2": "AICards/Rules/b_b.jpg",
+		"ref3": "AICards/Rules/y_cp.jpg",
+		"ref4": "AICards/Rules/g_cp.jpg"
+	  },
+	  "Danger_Close": {
+		"filename": "Danger_Close.jpg",
+		"phase": 1,
+		"ref1": "AICards/Rules/b_b.jpg",
+		"ref2": "AICards/Rules/p_d.jpg",
+		"ref3": "AICards/Rules/y_a.jpg",
+		"ref4": "AICards/Rules/g_a.jpg"
+	  },
+	  "Defensive_Maneuvers": {
+		"filename": "Defensive_Maneuvers.jpg",
+		"phase": 1,
+		"ref1": "AICards/Rules/g_d.jpg",
+		"ref2": "AICards/Rules/b_b.jpg",
+		"ref3": "AICards/Rules/p_d.jpg",
+		"ref4": "AICards/Rules/y_cp.jpg"
+	  }
+	}
+}

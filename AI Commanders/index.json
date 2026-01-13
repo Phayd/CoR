@@ -1,0 +1,14 @@
+{
+	"items": {
+	  "feeble_commander"		:{"filename": "feeble_commander.jpg",      "phaseTwoOnBattle": 5},
+	  "rookie_commander"		:{"filename": "rookie_commander.jpg",   "phaseTwoOnBattle": 5},
+	  "tank_ace_commander"		:{"filename": "tank_ace_commander.jpg",  "phaseTwoOnBattle": 1},
+	  "ground_commander"		:{"filename": "ground_commander.jpg",   "phaseTwoOnBattle": 5},
+	  "airborne_commander"   	:{"filename": "airborne_commander.jpg",         "phaseTwoOnBattle": 6},
+	  "mobile_commander" 	    :{"filename": "mobile_commander.jpg","phaseTwoOnBattle": 5},
+	  "tactician_commander"		:{"filename": "tactician_commander.jpg", "phaseTwoOnBattle": 5},
+	  "maybach's_menace"        :{"filename": "maybach's_menace.jpg",              "phaseTwoOnBattle": 3},
+	  "artillery_commander"    	:{"filename": "artillery_commander.jpg",          "phaseTwoOnBattle": 4},
+	  "supreme_commander"		:{"filename": "supreme_commander.jpg",   "phaseTwoOnBattle": 4},
+	  "field_marshal_commander"	:{"filename": "field_marshal_commander.jpg",   "phaseTwoOnBattle": 5}
+}
