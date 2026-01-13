@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+
+  <title>Company of Rogues Companion</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&family=Special+Elite&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/commander.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/hoverPopup.css">
+  <link rel="stylesheet" href="css/modal.css">
+  <link rel="stylesheet" href="css/pickermodal.css">
+  <link rel="stylesheet" href="css/unitSwap.css">
+  <link rel="stylesheet" href="css/upgrades.css">
+  <link rel="stylesheet" href="css/mobile.css">
+
+</head>
+<body>
+<script src="js/app.js" defer></script>
+<script src="js/state.js" defer></script>
+<script src="js/dom.js" defer></script>
+<script src="js/pickerModal.js" defer></script>
+<script src="js/imageViewer.js" defer></script>
+<script src="js/utils.js" defer></script>
+<script src="js/data.js" defer></script>
+<script src="js/aiCards.js" defer></script>
+<script src="js/hover.js" defer></script>
+<script src="js/buildSlots.js" defer></script>
+<script src="js/commanders.js" defer></script>
+<script src="js/upgrades.js" defer></script>
+<script src="js/unitSwap.js" defer></script>
+<script src="js/boot.js" defer></script>
+  <div class="header">
+    <h1>Company of Rogues Companion</h1>
+    <div class="xp-panel">
+      <div class="xp-value" id="xpValue">XP: 0</div>
+      <div class="xp-buttons">
+        <button id="xpMinus" class="danger">- XP</button>
+        <button id="xpPlus">+ XP</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="controls">
+	<div style="display:flex">
+		<div style="width:75vw">
+			<h2>YOUR COMMANDER</h2>
+			<div class="left-controls">
+			  <div class="commander-tile commander-emphasis" id="commanderTile">
+				<div class="plus">+</div>
+				<div class="label">Select New Commander</div>
+			  </div>
+			</div>
+		</div>
+		<div class="ai-launchers">
+		  <img
+			id="aiCardBtn"
+			class="ai-card-thumb"
+			src="AICards/ai_action_phase_1.jpg"
+			alt="AI Card Phase 1"
+			title="View Phase 1 AI Card"
+		  />
+
+		  <img
+			id="aiCardBtnP2"
+			class="ai-card-thumb"
+			src="AICards/ai_action_phase_2.jpg"
+			alt="AI Card Phase 2"
+			title="View Phase 2 AI Card"
+		  />
+		</div>
+	</div>
+    <div class="buildable buildable-dim" id="buildablePanel">
+      <h2>CORE UNITS</h2>
+      <div class="build-slots">
+        <div class="build-slot build-slot-placeholder" id="buildSlot1">Select a Commander to Load Units</div>
+        <div class="build-slot build-slot-placeholder" id="buildSlot2">Select a Commander to Load Units</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="upgradesSection" class="upgrades-hidden">
+    <h2>UPGRADES</h2>
+	
+	<div class="carousel-shell">
+  <div class="carousel-arrow left" data-dir="-1">‹</div>
+  <div class="carousel-viewport">
+    <div class="carousel" id="baseCarousel">
+      <div id="addUpgradeBtn" class="add-upgrade">+</div>
+    </div>
+  </div>
+  <div class="carousel-arrow right" data-dir="1">›</div>
+</div>
+
+    
+  </div>
+
+ <div id="hoverPopup" class="hover-popup">
+  <div id="hoverPopupTitle" class="hover-title"></div>
+  <img id="hoverPopupImg" alt="" />
+</div>
+
+<div class="sheet" id="unitSheet" aria-hidden="true">
+  <div class="sheet-inner">
+    <div class="sheet-header">
+      <div class="sheet-title" id="unitSheetTitle"></div>
+      <button class="sheet-close" id="unitSheetClose">×</button>
+    </div>
+    <div class="sheet-body">
+      <img id="unitSheetImg" alt="" />
+    </div>
+  </div>
+</div>
+
+
+<!-- PICKER MODAL (reusable for Commanders / Upgrades / UnitSwap) -->
+<div class="modal" id="pickerModal">
+  <div class="modal-content" id="pickerModalContent">
+    <div class="modal-header">
+      <div style="display:flex; flex-direction:column; gap:4px;">
+        <h3 id="pickerTitle" style="margin:0;">Pick</h3>
+        <div id="pickerSubTitle" style="opacity:.85; font-size:14px;"></div>
+      </div>
+      <span class="modal-close" id="pickerClose">×</span>
+    </div>
+
+    <div class="modal-body">
+      <!-- Desktop grid -->
+      <div class="modal-grid" id="pickerGrid"></div>
+
+      <!-- Mobile swipe carousel -->
+		<div class="carousel-shell">
+			<div id="pickerArrowLeft" class="carousel-arrow left" data-dir="-1">‹</div>
+				<div class="carousel-viewport">
+				 <div id="pickerCarousel" class="picker-carousel" style="display:none;">
+					<div id="pickerTrack" class="picker-track"></div>
+				  </div>
+				</div>
+			<div id="pickerArrowRight" class="carousel-arrow right" data-dir="1">›</div>
+		</div>
+
+     
+
+      <!-- Footer -->
+      <div id="pickerFooter" style="margin-top:12px; display:flex; gap:10px; justify-content:flex-end; align-items:center;">
+        <button id="pickerBackBtn" class="danger" style="display:none;">Back</button>
+        <button id="pickerRerollBtn" style="display:none;">Re-roll</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- IMAGE VIEWER MODAL -->
+<div class="modal" id="imageViewerModal">
+  <div class="modal-content" id="="imageViewerModalContent" style="width:900px; max-width:92vw;">
+    <div class="modal-header">
+      <h3 id="imageViewerTitle" style="margin:0;">Card</h3>
+      <span class="modal-close" id="closeImageViewerModal">×</span>
+    </div>
+    <div class="modal-body" style="display:flex; justify-content:center; align-items:center;">
+		<div class="image-viewer-wrap">
+		  <img id="imageViewerImg" alt="" style="max-width:100%; max-height:70vh; object-fit:contain; display:block;">
+		  <div id="imageViewerCallInBadge" class="tap-hint" style="display:none;">CALL-IN</div>
+		</div>
+    </div>
+  </div>
+</div>
+
+<!-- AI CARD MODAL-->
+<div class="modal" id="aiCardModal">
+  <div class="modal-content" id="aiCardModalContent">
+    <div class="modal-header">
+      <h3 style="margin:0;"></h3>
+      <button class="close-btn" id="closeAICardModal" aria-label="Close">✕</button>
+    </div>
+
+    <div class="modal-body" style="display:flex; flex-direction:column; gap:12px;">
+
+	  <div id="aiCardStage" class="ai-card-stage">
+		<img id="aiCardModalImg" alt="AI Card">
+		<button class="ai-hotspot" data-ref="1" aria-label="AI Ref 1" type="button"></button>
+		<button class="ai-hotspot" data-ref="2" aria-label="AI Ref 2" type="button"></button>
+		<button class="ai-hotspot" data-ref="3" aria-label="AI Ref 3" type="button"></button>
+		<button class="ai-hotspot" data-ref="4" aria-label="AI Ref 4" type="button"></button>
+	  </div>
+
+	  <div style="display:flex; justify-content:flex-end; gap:10px;">
+		<button
+		  id="aiCardRefreshBtn"
+		  class="icon-btn refresh-btn"
+		  type="button"
+		  aria-label="Refresh AI Card"
+		  title="Refresh AI Card"
+		>↻</button>
+	  </div>
+
+	</div>
+
+  </div>
+</div>
+
+<div class="modal" id="aiRefModal" style="display:none;">
+  <div class="modal-content" id="aiRefModalContent">
+    <div class="modal-header">
+      <h3 style="margin:0;">AI Rules Reference</h3>
+      <span class="modal-close" id="closeAIRefModal">×</span>
+    </div>
+    <div class="modal-body" style="display:flex; justify-content:center;">
+      <img id="aiRefImg" alt="AI Reference" style="max-width:100%; height:auto;" />
+    </div>
+  </div>
+</div>
+
+
+</body>
+</html>
