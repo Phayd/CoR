@@ -115,5 +115,27 @@
 		units: new Set(App.activeBuildSlots.filter(Boolean)) // active slot unit IDs
 	  };
 	};
+	
+	App.getUnitSynergyMultiplier = function(unitId){
+	  const u = App.unitCatalog?.units?.[unitId];
+	  if(!u) return 1;
+
+	  const prefs = u.preferences || {};
+	  const owned = App.getOwnedState();
+
+	  let mult = 1;
+
+	  const fromUp = prefs.fromUpgrades || {};
+	  for(const upKey of owned.upgrades){
+		if(fromUp[upKey]) mult *= Number(fromUp[upKey]) || 1;
+	  }
+
+	  const fromUnits = prefs.fromUnits || {};
+	  for(const unitKey of owned.units){
+		if(fromUnits[unitKey]) mult *= Number(fromUnits[unitKey]) || 1;
+	  }
+
+	  return mult;
+	};
 
 })();

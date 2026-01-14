@@ -85,7 +85,7 @@
 			}
 		}
 	},
-    { "key": "Festung_Support_Doctrine_Sdkfz_251_Half-Track", "filename": "Festung_Support_Doctrine_Sdkfz_251_Half-Track.png", "xp": 1 , "tier":2,
+    { "key": "Festung_Support_Doctrine_Sdkfz_251_Half-Track", "filename": "Festung_Support_Doctrine_SdKfz_251_Half-Track.png", "xp": 1 , "tier":2,
 		"preferences": {
 			"fromUpgrades":{
 				"Lightning_War_SdKfz_251_Half_Track":0.1
