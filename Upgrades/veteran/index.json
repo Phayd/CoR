@@ -129,6 +129,6 @@
 		}
 	},
     { "key": "Staghound_Call-In_Free", "filename": "Staghound_Call-In_Free.png", "xp": 4, "tier":2},
-    { "key": "Lightning_War_Sdkfz_251_Half_Track", "filename": "Lightning_War_Sdkfz_251_Half_Track.png", "xp": 4, "tier": 2 }
+    { "key": "Lightning_War_SdKfz_251_Half_Track", "filename": "Lightning_War_SdKfz_251_Half_Track.png", "xp": 4, "tier": 2 }
   ]
 }
