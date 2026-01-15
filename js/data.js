@@ -19,7 +19,8 @@
           key,
           filename: it.filename,
           xp: Number(it.xp) || 0,
-          startingUnits: Array.isArray(it.startingUnits) ? it.startingUnits : []
+          startingUnits: Array.isArray(it.startingUnits) ? it.startingUnits : [],
+		  faction: (typeof it.faction === 'string' ? it.faction.trim() : 'unknown')
         });
       }
     }

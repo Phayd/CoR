@@ -144,7 +144,7 @@
 
   badge = document.createElement('div');
   badge.className = 'tap-hint';
-  badge.textContent = 'CALL-IN';
+  badge.textContent = 'STATS';
   el.appendChild(badge);
 };
 

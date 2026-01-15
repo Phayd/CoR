@@ -1,3 +1,5 @@
+/* merged base.css */
+
 :root{
   --olive:#4b5320;
   --khaki:#b6a875;
@@ -64,7 +66,6 @@ button{
   text-transform:uppercase;
   cursor:pointer;
 }
-
 
 /* ================== ASPECT-AWARE IMAGES (SAFE) ================== */
 .aspect-aware{
