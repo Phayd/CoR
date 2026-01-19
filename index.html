@@ -8,14 +8,8 @@
 
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&family=Special+Elite&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/commander.css">
   <link rel="stylesheet" href="css/components.css">
-  <link rel="stylesheet" href="css/hoverPopup.css">
-  <link rel="stylesheet" href="css/modal.css">
-  <link rel="stylesheet" href="css/pickermodal.css">
-  <link rel="stylesheet" href="css/unitSwap.css">
-  <link rel="stylesheet" href="css/upgrades.css">
-  <link rel="stylesheet" href="css/mobile.css">
+  <link rel="stylesheet" href="css/responsive.css">
 
 </head>
 <body>
@@ -45,32 +39,31 @@
   </div>
 
   <div class="controls">
-	<div style="display:flex">
-		<div style="width:75vw">
-			<h2>YOUR COMMANDER</h2>
-			<div class="left-controls">
-			  <div class="commander-tile commander-emphasis" id="commanderTile">
-				<div class="plus">+</div>
-				<div class="label">Select New Commander</div>
-			  </div>
-				<div class="ai-launchers">
-				  <img
-					id="aiCardBtn"
-					class="ai-card-thumb"
-					src="AICards/ai_action_phase_1.jpg"
-					alt="AI Card Phase 1"
-					title="View Phase 1 AI Card"
-				  />
+	<div class="left-controls" >
+		<div class="commander-controls">
+		  <h2>YOUR COMMANDER</h2>
+		  <div class="commander-tile commander-emphasis" id="commanderTile">
+			<div class="plus">+</div>
+			<div class="label">Select New Commander</div>
+		  
+		  </div>
+		</div>
+		<div class="ai-launchers">
+		  <img
+			id="aiCardBtn"
+			class="ai-card-thumb"
+			src="AICards/ai_action_phase_1.jpg"
+			alt="AI Card Phase 1"
+			title="View Phase 1 AI Card"
+		  />
 
-				  <img
-					id="aiCardBtnP2"
-					class="ai-card-thumb"
-					src="AICards/ai_action_phase_2.jpg"
-					alt="AI Card Phase 2"
-					title="View Phase 2 AI Card"
-				  />
-				</div>
-			</div>
+		  <img
+			id="aiCardBtnP2"
+			class="ai-card-thumb"
+			src="AICards/ai_action_phase_2.jpg"
+			alt="AI Card Phase 2"
+			title="View Phase 2 AI Card"
+		  />
 		</div>
 	</div>
     <div class="buildable buildable-dim" id="buildablePanel">

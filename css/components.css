@@ -12,6 +12,7 @@
 .buildable.buildable-dim{ opacity:0.25; }
 
 .build-slots{
+	flex-direction:column;
   flex:1 1 90%;
   min-height:0;
   display:flex;
@@ -79,7 +80,13 @@
 .left-controls{
   display:flex;
   flex-direction:column;
+}
+
+.commander-controls{
+  display:flex;
+  flex-direction:column;
   gap:12px;
+  align-items:center;
 }
 
 .carousel{
@@ -224,29 +231,22 @@
 }
 
 .callin-badge{
-	  position:absolute;
-	  top:8px;
-	  right:8px;
-	  font-size:11px;
-	  padding:2px 6px;
-	  border:1px solid var(--khaki);
-	  background:rgba(0,0,0,0.65);
-	  text-transform:uppercase;
-	  letter-spacing:1px;
-	}
+  position:absolute;
+  top:8px;
+  right:8px;
+  font-size:11px;
+  padding:2px 6px;
+  border:1px solid var(--khaki);
+  background:rgba(0,0,0,0.65);
+  text-transform:uppercase;
+  letter-spacing:1px;
+}
 
-/* Only show on touch devices */
-	
-	
-	
-	
-	
-		/* Ensure parent is positioned so absolute works */
-	.upgrade-card,
-	.upgrade-tile,
-	.picker-card{
-	  position:relative;
-	}
+.upgrade-card,
+.upgrade-tile,
+.picker-card{
+  position:relative;
+}
 
 @keyframes hintPulse{
 	  0%{ transform:scale(0.9); opacity:0; }
@@ -288,9 +288,6 @@
   pointer-events:none;
   transform:translateY(-50%) scale(0.85);
 }
-
-/* Mobile: slightly larger tap targets */
-
 
 .ai-card-thumb{
   width: 72px;
@@ -359,9 +356,10 @@
 
 .ai-launchers{
   display:flex;
-  flex-direction:column;
+  flex-direction:row;
   gap:10px;
-  align-items:flex-start; /* or center, if you prefer */
+  align-items:flex-start;
+  justify-content: center;
 }
 
 .ai-card-stage{
@@ -388,8 +386,7 @@
   touch-action:manipulation;
 }
 
-/* Example layout: 4 zones across the top portion of the card.
-   Tweak these to match your card art. */
+
 .ai-hotspot[data-ref="1"]{ left:  13%; top:  19%; width: 24%; height: 17%; }
 
 .ai-hotspot[data-ref="2"]{ left: 29%; top:  37%; width: 24%; height: 17%; }
@@ -397,15 +394,6 @@
 .ai-hotspot[data-ref="3"]{ left: 46%; top:  55%; width: 24%; height: 17%; }
 
 .ai-hotspot[data-ref="4"]{ left: 63%; top:  73%; width: 24%; height: 17%; }
-
-/* Optional: debug hotspots (temporarily enable) */
-/*
-.ai-hotspot{ outline:2px dashed rgba(255,255,255,0.35); }
-
-*/
-
-
-
 
 
 /* Commander tile */
@@ -672,13 +660,6 @@
 
 .picker-card.legendary{ border-color:var(--legendary); border-width:8px; }
 
-/* mobile-only: show carousel, hide grid */
-
-
-
-
-
-
 /* ================== HOVER POPUP ================== */
 
 .hover-popup{
@@ -831,12 +812,8 @@
 }
 
 /* Upgrades */
-	.upgrades-hidden{ display:none; }
-
-/* ================== RARITY BORDER THICKNESS ================== */
-/* Modal cards: border is on the IMG */
+.upgrades-hidden{ display:none; }
 .upgrade-card.elite img{ border-width:6px; }
-
 .upgrade-card.legendary img{ border-width:8px; }
 
 /* Carousel tiles: border is on the TILE container */

@@ -4,64 +4,19 @@
 	  .tap-hint{ display:none; }
 	}
 
-@media (pointer: coarse){
-	  .tap-hint{
-		animation:hintPulse 1.2s ease-out 1;
-		background:rgba(0,0,0,0.75);
-		cursor:pointer;
-		border:1px solid var(--khaki);
-		color:var(--paper);
-		z-index:2;
-		pointer-events:auto; /* allow tapping badge */
-		position:absolute;
-		  top:10px;
-		  right:10px;
-		  left:auto;            /* ensure it’s NOT top-left */
-		  z-index:5;
-
-		  /* 50% bigger */
-		  font-size:18px;       /* was ~12px */
-		  padding:6px 12px;     /* was ~4px 8px */
-		  border-width:2px;     /* if you had a 1px border */
-		  border-radius:6px;
-
-		  /* keep existing look if you already styled it */
-		  text-transform:uppercase;
-		  font-weight:700;
-		  letter-spacing:0.5px;
-	  }
-	}
-
-@media (pointer: coarse){
-  .carousel-arrow{
-    font-size:82px;
-    padding:10px;
-  }
-}
-
-@media (max-width: 768px){
-  .ai-card-thumb{
-    width: 64px;
-  }
-}
 
 @media (pointer: coarse){
   .cmd-carousel{ display:block; }
   #commanderGrid{ display:none; } /* hide grid on touch devices */
-}
-
-@media (pointer: coarse){
+  .carousel-arrow{
+    font-size:82px;
+    padding:10px;
+  }
+  
   #pickerCarousel{ display:block; }
   #pickerGrid{ display:none; }
   #pickerBody{ overflow:hidden; min-height:0; }
-}
-
-@media (max-width: 720px){
-  #pickerGrid{ display:none; }
-  #pickerCarousel{ display:block !important; }
-}
-
-@media (pointer: coarse){
+	
   #unitSwapModal .modal-grid{
 	grid-template-columns:repeat(2, 1fr);
   }
@@ -72,103 +27,8 @@
 	overflow:hidden;
 	min-height:0;
   }
-
-}
-
-@media (max-width: 820px){
-  body{ padding:6px; }
-
-  .header{
-	flex-direction:column;
-	gap:10px;
-  }
-
-  h1{
-	padding:12px 14px;
-	font-size:18px;
-  }
-
-
-  .controls{
-	flex-direction:column;
-	gap:14px;
-	padding:6px;
-  }
-
-  .left-controls{
-	flex-direction:row;
-	gap:12px;
-  }
-
-
-  .buildable h3{
-	margin-top:6px;
-  }
-
-
-  .add-upgrade,
-  .upgrade-tile{
-	width:150px;
-	height:320px;
-	position:relative;
-  }
-
-  .modal-content{
-	width:96vw;
-	max-height:86vh;
-  }
-
-  .modal-grid{
-	grid-template-columns:repeat(2, 1fr);
-	gap:12px;
-  }
-
-  button{
-	padding:18px 24px; /* bigger touch target */
-	font-size:16px;
-  }
-	  
-  .build-slots{
-	flex-direction:column;
-	gap:10px;
-  }
   
-  .xp-buttons{
-	gap:14px;              /* give buttons breathing room */
-  }
-
-  /* Give each slot enough height so the card is readable */
-  .build-slot{
-	min-height:280px;
-  }
-  
-  .xp-panel{
-	width:100%;
-	padding: 5px;
-  }
-  
-  .left-controls{
-	align-items:center;
-  }
-
-  .commander-tile{
-	margin:0 auto;
-	box-shadow:0 0 20px rgba(196,154,44,0.35);
-  }
-  
-   /* Shrink commander modal to fit screen */
-  #commanderModal .modal-content{
-	width:94vw;
-	max-height:82vh;   /* was ~86–90vh */
-  }
-
-  #commanderModal .modal-body{
-	padding:8px 8px 12px;
-  }
-}
-
-@media (pointer: coarse){
-  .carousel{
+   .carousel{
 	scroll-snap-type:x mandatory;
   }
   .carousel > *{
@@ -259,9 +119,140 @@
 .upg-card.elite{ border-color:var(--elite); border-width:8px; }
 .upg-card.legendary{ border-color:var(--legendary); border-width:8px; }
   
+  .tap-hint{
+	animation:hintPulse 1.2s ease-out 1;
+	background:rgba(0,0,0,0.75);
+	cursor:pointer;
+	border:1px solid var(--khaki);
+	color:var(--paper);
+	z-index:2;
+	pointer-events:auto; /* allow tapping badge */
+	position:absolute;
+	  top:10px;
+	  right:10px;
+	  left:auto;            /* ensure it’s NOT top-left */
+	  z-index:5;
+
+	  /* 50% bigger */
+	  font-size:18px;       /* was ~12px */
+	  padding:6px 12px;     /* was ~4px 8px */
+	  border-width:2px;     /* if you had a 1px border */
+	  border-radius:6px;
+
+	  /* keep existing look if you already styled it */
+	  text-transform:uppercase;
+	  font-weight:700;
+	  letter-spacing:0.5px;
+  }
 }
+
 
 @media (max-width: 720px){
   #upgradeGrid{ display:none; }
   #upgradeCarousel{ display:block !important; }
+  #pickerGrid{ display:none; }
+  #pickerCarousel{ display:block !important; }
+  
+
+	.ai-launchers{
+	  flex-direction:column;
+	  flex: 1;
+	  justify-content: center;
+	}
+	
+		
+	.left-controls{
+	  flex-direction:row;
+	}
+	
+  body{ padding:6px; }
+
+  .header{
+	flex-direction:column;
+	gap:10px;
+  }
+
+  h1{
+	padding:12px 14px;
+	font-size:18px;
+  }
+  
+  .controls{
+	flex-direction:column;
+	gap:14px;
+	padding:6px;
+  }
+
+  .commander-controls{
+	flex-direction:column;
+	gap:12px;
+	align-items:center;
+	flex:2;
+  }
+
+  .buildable h3{
+	margin-top:6px;
+  }
+
+  .add-upgrade,
+  .upgrade-tile{
+	width:150px;
+	height:320px;
+	position:relative;
+  }
+
+  .modal-content{
+	width:96vw;
+	max-height:86vh;
+  }
+
+  .modal-grid{
+	grid-template-columns:repeat(2, 1fr);
+	gap:12px;
+  }
+
+  button{
+	padding:18px 24px; /* bigger touch target */
+	font-size:16px;
+  }
+	  
+  .build-slots{
+	gap:10px;
+  }
+  
+  .xp-buttons{
+	gap:14px;              /* give buttons breathing room */
+  }
+
+  /* Give each slot enough height so the card is readable */
+  .build-slot{
+	min-height:280px;
+  }
+  
+  .xp-panel{
+	width:100%;
+	padding: 5px;
+  }
+  
+  .commander-tile{
+	margin:0 auto;
+	box-shadow:0 0 20px rgba(196,154,44,0.35);
+  }
+  
+   /* Shrink commander modal to fit screen */
+  #commanderModal .modal-content{
+	width:94vw;
+	max-height:82vh;   /* was ~86–90vh */
+  }
+
+  #commanderModal .modal-body{
+	padding:8px 8px 12px;
+  }
+}
+
+@media (orientation: landscape)  {
+	
+  .controls{
+	flex-direction:row;
+	}
 }
