@@ -25,7 +25,7 @@
     { "key": "Pathfinder_Company_81mm_Mortars_3xp", "filename": "Pathfinder_Company_81mm_Mortars_3xp.png", "xp": 3 , "tier":1, "call-in":"us_mortar_team",
 		"preferences": {
 			"fromUnits":{
-				"us-mortar_team":3.0
+				"us_mortar_team":3.0
 			}
 		}
 	},
@@ -51,17 +51,17 @@
 			}
 		}
 	},
-    { "key": "Elite_Troops_Doctrine_Veteran_Panzer_Grenadiers", "filename": "Elite_Troops_Doctrine_Veteran_Panzer_Grenadiers.png", "xp": 4 , "tier":2, "call-in":"panzer_grenadiers",
+    { "key": "Elite_Troops_Doctrine_Veteran_Panzer_Grenadiers", "filename": "Elite_Troops_Doctrine_Veteran_Panzer_Grenadiers.png", "xp": 4 , "tier":2, "call-in":"wm_panzer_grenadiers",
 		"preferences": {
 			"fromUnits":{
-				"panzer_grenadiers":3.0
+				"wm_panzer_grenadiers":3.0
 			}
 		}
 	},
     { "key": "Elite_Troops_Doctrine_G43_Rifles", "filename": "Elite_Troops_Doctrine_G43_Rifles.png", "xp": 3 , "tier":2, "call-in":"grenadiers",
 		"preferences": {
 			"fromUnits":{
-				"panzer_grenadiers":5.0,
+				"wm_panzer_grenadiers":5.0,
 				"grenadiers":3.0
 			},
 			"fromUpgrades":{
@@ -129,6 +129,25 @@
 			}
 		}
 	},
-    { "key": "Forward_Emplacement", "filename": "Forward_Emplacement.png", "xp": 2, "tier":1 }
+    { "key": "Forward_Emplacement", "filename": "Forward_Emplacement.png", "xp": 2, "tier":1 },
+    { "key": "puma_call-in", "filename": "puma_call-in.png", "xp": 4, "tier": 2 ,
+		"preferences":{
+			"fromUpgrades":{
+				"puma_call-in_free":0.1
+			}
+		}
+	},
+    { "key": "kettenrad_call-in", "filename": "kettenrad_call-in.png", "xp": 1, "tier":1 },
+    { "key": "lefh_18_artillery", "filename": "lefh_18_artillery.png", "xp": 1,  "requiresAnyUnits": ["ok_sturmpioneers"] ,"tier":1 },
+    { "key": "panther_reinforcements", "filename": "panther_reinforcements.png", "xp": 1, "tier":3 ,
+		"preferences": {
+			"fromUnits":{
+				"panther":3.0
+			}
+		}
+	},
+    { "key": "panzerfusilier", "filename": "panzerfusilier.png", "xp": 1, "tier":1 },
+    { "key": "recon_plane", "filename": "recon_plane.png", "xp": 1, "tier":1 },
+    { "key": "breakthrough_tactics", "filename": "breakthrough_tactics.png", "xp": 1, "tier":1 }
   ]
 }

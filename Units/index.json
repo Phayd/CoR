@@ -6,7 +6,7 @@
       "tier": 2,
 	  "preferences":{
 		  "fromUpgrades": {
-			  "Mechanized_Company_Veteran_Greyhounds_4xp":1.2
+			  "Mechanized_Company_Veteran_Greyhounds_4xp":5.0
 		  }
 	  }
     },
@@ -16,7 +16,7 @@
       "tier": 2,
 		"preferences":{
 			"fromUpgrades":{
-				"Mobile_Support_Company_Elite_M1_57mm_Crew_4xp":1.2
+				"Mobile_Support_Company_Elite_M1_57mm_Crew_4xp":5.0
 			}
 		}
     },
@@ -31,7 +31,7 @@
       "tier": 3,
 	  "preferences":{
 		  "fromUpgrades": {
-			  "Heavy_Cavalry_Requisition_Officer_3xp":1.2
+			  "Heavy_Cavalry_Requisition_Officer_3xp":5.0
 		  }
 	  }
 	  
@@ -42,7 +42,7 @@
       "tier": 3,
 	  "preferences":{
 		  "fromUpgrades": {
-			  "Heavy_Cavalry_Requisition_Officer_3xp":1.2
+			  "Heavy_Cavalry_Requisition_Officer_3xp":5.0
 		  }
 	  }
     },
@@ -57,7 +57,7 @@
       "tier": 2,
 	  "preferences":{
 		"fromUpgrades":{
-			"Engineer_Assault_Company_Support_Jeeps_3xp":1.2
+			"Engineer_Assault_Company_Support_Jeeps_3xp":5.0
 		}
 	  }
     },
@@ -67,7 +67,7 @@
       "tier": 2,
 	  "preferences":{
 		  "fromUpgades":{
-			  "Pathfinder_Company_81mm_Mortars_3xp":1.2
+			  "Pathfinder_Company_81mm_Mortars_3xp":5.0
 		  }
 	  }
     },
@@ -76,53 +76,53 @@
       "card": "US_Riflemen.png",
       "tier": 2
     },
-    "sdkfz_222": {
+    "wm_sdkfz_222": {
       "name": "SdKfz 222",
       "card": "WM_Sdkfz_222.png",
       "tier": 2,
 	  "preferences":{
 		  "fromUpgrades":{
-			  "Mechanized_Doctrine_MG42_Armored_Cars":1.1
+			  "Mechanized_Doctrine_MG42_Armored_Cars":3.0
 		  }
 	  }
     },
-    "mortar_team": {
+    "wm_mortar_team": {
       "name": "Wehrmacht Mortar Team",
       "card": "WM_Mortar_Team.png",
       "tier": 2
     },
-    "panzer_grenadiers": {
+    "wm_panzer_grenadiers": {
       "name": "Panzer Grenadiers",
       "card": "WM_Panzer_Grenadiers.png",
       "tier": 2,
 	  "preferences": {
 		  "fromUpgrades": {
-			"Elite_Troops_Doctrine_Veteran_Panzer_Grenadiers":1.2,
-			"Elite_Troops_Doctrine_G43_Rifles":1.2
+			"Elite_Troops_Doctrine_Veteran_Panzer_Grenadiers":5.0,
+			"Elite_Troops_Doctrine_G43_Rifles":5.0
 		  }
 	  }
     },
-    "brummbar": {
+    "wm_brummbar": {
       "name": "Brummbar",
       "card": "WM_Brummbar.png",
       "tier": 3
     },
-    "panzer_iv": {
+    "wm_panzer_iv": {
       "name": "Panzer IV",
       "card": "WM_Panzer_IV.png",
       "tier": 3
     },
-    "ostwind": {
+    "wm_ostwind": {
       "name": "Ostwind",
       "card": "WM_Ostwind.png",
       "tier": 3
     },
-    "kubelwagen": {
+    "wm_kubelwagen": {
       "name": "Kübelwagen",
       "card": "WM_Kubelwagen.png",
       "tier": 2
     },
-    "mg42_team": {
+    "wm_mg42_team": {
       "name": "MG42 Team",
       "card": "WM_MG42_Team.png",
       "tier": 2
@@ -162,7 +162,7 @@
       "card": "Pak_43_Emplacement.png",
       "tier": 2
     },
-    "sdkfz_251": {
+    "wm_sdkfz_251": {
       "name": "SdKfz 251 Half-track",
       "card": "SdKfz_251_Half-track.png",
       "tier": 2
@@ -208,7 +208,7 @@
       "tier": 2,
 	  "preferences": {
 		  "fromUpgrades": {
-			"Light_Cavalry_Company_Browning_M2_50cal_4xp":1.2
+			"Light_Cavalry_Company_Browning_M2_50cal_4xp":5.0
 		  }
 	  }
     },
@@ -374,6 +374,51 @@
       "card": "SU_T-34-85_Medium_Tank.png",
       "tier": 3
     },
+    "su_su-85_tank_destroyer": {
+      "name": "SU-85 Tank Destroyer",
+      "card": "su_su-85_tank_destroyer.png",
+      "tier": 3
+    },
+    "su_su-76_assault_gun": {
+      "name": "SU-76 Assault Gun",
+      "card": "su_su-76_assault_gun.png",
+      "tier": 3
+    },
+    "su_t-34_tank": {
+      "name": "T-34 Tank",
+      "card": "su_t-34_tank.png",
+      "tier": 3
+    },
+    "su_t-70_light_tank": {
+      "name": "T-70 Light Tank",
+      "card": "su_t-70_light_tank.png",
+      "tier": 2
+    },
+    "su_sniper_squad": {
+      "name": "Sniper Squad",
+      "card": "su_sniper_squad.png",
+      "tier": 2
+    },
+    "su_76mm_at_gun": {
+      "name": "76mm AT Gun",
+      "card": "su_76mm_at_gun.png",
+      "tier": 2
+    },
+    "su_m3a1_scout_car": {
+      "name": "M3A1 Scout Car",
+      "card": "su_m3a1_scout_car.png",
+      "tier": 1
+    },
+    "su_mortar_team": {
+      "name": "Soviet Mortar Team",
+      "card": "su_mortar_team.png",
+      "tier": 1
+    },
+    "su_conscripts": {
+      "name": "Conscripts",
+      "card": "su_conscripts.png",
+      "tier": 1
+    },
 
     "uk_17_pounder_emplacement": {
       "name": "17 Pounder Emplacement",
@@ -479,6 +524,56 @@
       "name": "Churchill Tank",
       "card": "uk_churchill.png",
 	  "tier": 3
+    },
+    "ok_sturmpioneers": {
+      "name": "Sturmpioneers",
+      "card": "sturmpioneers.png",
+	  "tier": 1
+    },
+    "ok_volksgrenadiers": {
+      "name": "Volksgrenadiers",
+      "card": "volksgrenadiers.png",
+	  "tier": 1
+    },
+    "ok_sws_supply_truck": {
+      "name": "SWS Supply Truck",
+      "card": "sws_supply_truck.png",
+	  "tier": 1
+    },
+    "ok_raketenwerfer": {
+      "name": "Raketenwerfer",
+      "card": "raketenwerfer.png",
+	  "tier": 2
+    },
+    "ok_stuka_halftrack": {
+      "name": "Stuka Halftrack",
+      "card": "stuka_halftrack.png",
+	  "tier": 2
+    },
+    "ok_luchs_light_tank": {
+      "name": "Luchs Light Tank",
+      "card": "luchs_light_tank.png",
+	  "tier": 2
+    },
+    "ok_panther": {
+      "name": "Panther",
+      "card": "panther.png",
+	  "tier": 3
+    },
+    "ok_sturmtiger": {
+      "name": "Sturmtiger",
+      "card": "sturmtiger.png",
+	  "tier": 3
+    },
+    "ok_obersoldaten": {
+      "name": "Obersoldaten",
+      "card": "obersoldaten.png",
+	  "tier": 3
+    },
+    "ok_obersoldaten_t2": {
+      "name": "Obersoldaten",
+      "card": "obersoldaten.png",
+	  "tier": 2
     }
   }
 }

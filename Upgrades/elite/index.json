@@ -49,7 +49,24 @@
 	},
     { "key": "Armor_Company_Sherman_Easy_Eight_4xp", "filename": "Armor_Company_Sherman_Easy_Eight_4xp.png", "xp": 4 , "tier":3},
     { "key": "Pathfinder_Company_Airdropped_Combat_Group_3xp", "filename": "Pathfinder_Company_Airdropped_Combat_Group_3xp.png", "xp": 3 , "tier":3},
-    { "key": "Jaeger_Infantry_Doctrine_Veteran_Ostwinds", "filename": "Jaeger_Infantry_Doctrine_Veteran_Ostwinds.png", "xp": 4, "tier":3, "call-in":"ostwind" },
-    { "key": "hold_the_line", "filename": "hold_the_line.png", "xp": 1, "tier":1 }
+    { "key": "Jaeger_Infantry_Doctrine_Veteran_Ostwinds", "filename": "Jaeger_Infantry_Doctrine_Veteran_Ostwinds.png", "xp": 4, "tier":3, "call-in":"wm_ostwind" },
+    { "key": "hold_the_line", "filename": "hold_the_line.png", "xp": 1, "tier":1 },
+    { "key": "veteran_pak_43_free", "filename": "veteran_pak_43_free.png", "xp": 4, "tier":1, "requiresAnyUnits":["ok_sturmpioneers"]	},
+    { "key": "flammpanzer_38_hetzer_free", "filename": "flammpanzer_38_hetzer_free.png", "xp": 4, "tier":3 },
+    { "key": "target_weak_point", "filename": "target_weak_point.png", "xp": 4, "tier":2, "call-in":"ok_stug_iii_g_assault_gun",
+		"preferences":{
+			"fromUnits":{
+				"ok_stug_iii_g_assault_gun":3.0,
+				"stug_iii_g":3.0
+			}
+		}
+	},
+    { "key": "flame_projectors_free_sdkfz_251", "filename": "flame_projectors_free_sdkfz_251.png", "xp": 4, "tier":2, "call-in":"wm_sdkfz_251",
+		"preferences":{
+			"fromUnits":{
+				"wm_sdkfz_251":3.0
+			}
+		}
+	}
   ]
 }

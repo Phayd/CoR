@@ -22,8 +22,11 @@
 				"m2_50cal_mg_team":5.0,
 				"m1_57mm_at_gun":5.0,
 				"us_mortar_team":5.0,
-				"mg42_team":5.0,
-				"mortar_team":5.0
+				"wm_mg42_team":5.0,
+				"wm_mortar_team":3.0,
+				"ok_raketenwerfer":3.0,
+				"su_76mm_at_gun":3.0,
+				"su_mortar_team":3.0
 			}
 		}
 	},
@@ -39,13 +42,13 @@
 		}
 	},
     { "key": "Ranger_Company_Priest_Call-In_4xp", "filename": "Ranger_Company_Priest_Call-In_4xp.png", "xp": 4 , "tier":3},
-    { "key": "Mechanized_Doctrine_MG42_Armored_Cars", "filename": "Mechanized_Doctrine_MG42_Armored_Cars.png", "xp": 4 , "tier":2, "call-in":"sdkfz_222"},
+    { "key": "Mechanized_Doctrine_MG42_Armored_Cars", "filename": "Mechanized_Doctrine_MG42_Armored_Cars.png", "xp": 4 , "tier":2, "call-in":"wm_sdkfz_222"},
     { "key": "Light_Cavalry_Company_Browning_M2_50cal_4xp", "filename": "Light_Cavalry_Company_Browning_M2_50cal_4xp.png", "xp": 4 , "tier":2, "call-in":"us_m5a1_stuart"},
     { "key": "StuG_Tactics_StuG_III_G_Call-In", "filename": "StuG_Tactics_StuG_III_G_Call-In.png", "xp": 4 , "tier":2},
     { "key": "Festung_Support_Doctrine_Pak_251_Half-track", "filename": "Festung_Support_Doctrine_Pak_251_Half-track.png", "xp": 4 , "tier":2, "call-in":"sdkfz_251",
 		"preferences":{
 			"fromUnits":{
-				"sdkfz_251":5.0
+				"wm_sdkfz_251":5.0
 			},
 			"fromUpgrades":{
 				"Lightning_War_SdKfz_251_Half_Track":5.0
@@ -56,15 +59,15 @@
       "key": "Festung_Armor_Doctrine_Pak_43_Emplacement",
       "filename": "Festung_Armor_Doctrine_Pak_43_Emplacement.png",
       "xp": 1,
-      "requiresAnyUnits": ["grenadiers", "osttruppen", "panzer_grenadiers"], "tier":1},
+      "requiresAnyUnits": ["grenadiers", "osttruppen", "wm_panzer_grenadiers"], "tier":1},
     {
       "key": "Festung_Support_Doctrine_Hull_Down",
       "filename": "Festung_Support_Doctrine_Hull_Down.png",
       "xp": 1,
-      "requiresAnyUnits": ["grenadiers", "osttruppen", "panzer_grenadiers"], "tier":1,
+      "requiresAnyUnits": ["grenadiers", "osttruppen", "wm_panzer_grenadiers"], "tier":1,
 	  "preferences":{
 		"fromUnits":{
-			"panzer_grenadiers":5.0,
+			"wm_panzer_grenadiers":5.0,
 			"grenadiers":5.0,
 			"osttruppen":5.0
 		},
@@ -129,6 +132,58 @@
 		}
 	},
     { "key": "Staghound_Call-In_Free", "filename": "Staghound_Call-In_Free.png", "xp": 4, "tier":2},
-    { "key": "Lightning_War_SdKfz_251_Half_Track", "filename": "Lightning_War_SdKfz_251_Half_Track.png", "xp": 4, "tier": 2 }
+    { "key": "Lightning_War_SdKfz_251_Half_Track", "filename": "Lightning_War_SdKfz_251_Half_Track.png", "xp": 4, "tier": 2 },
+    { "key": "rocket_support_free_stuka", "filename": "rocket_support_free_stuka.png", "xp": 4, "tier": 2, "call-in":"ok_stuka_halftrack" ,
+		"preferences":{
+			"fromUnits":{
+				"ok_stuka_halftrack":3.0
+			}
+		}
+	},
+    { "key": "veteran_lefh_18_artillery", "filename": "veteran_lefh_18_artillery.png", "xp": 2, "tier": 1, "requiresAnyUnits": ["ok_sturmpioneers"] },
+    { "key": "puma_call-in_free", "filename": "puma_call-in_free.png", "xp": 4, "tier": 2 },
+    { "key": "jaeger_recon_squad_free", "filename": "jaeger_recon_squad_free.png", "xp": 3, "tier": 1 },
+    { "key": "ober_defense_free", "filename": "ober_defense_free.png", "xp": 4, "tier": 3, "call-in":"ok_obersoldaten",
+		"preferences":{
+			"fromUnits":{
+				"ok_obersoldaten":3.0
+			}
+		}
+	},
+    { "key": "recoup_losses", "filename": "recoup_losses.png", "xp": 2, "tier": 1 },
+    { "key": "scout_luchs_free", "filename": "scout_luchs_free.png", "xp": 4, "tier": 2, "call-in":"ok_luchs_light_tank" ,
+		"preferences":{
+			"fromUnits":{
+				"ok_luchs_light_tank":3.0
+			}
+		}
+	},
+    { "key": "kettenrad_engineers_free", "filename": "kettenrad_engineers_free.png", "xp": 3, "tier": 1 },
+    { "key": "sturmtiger_reinforcements", "filename": "sturmtiger_reinforcements.png", "xp": 2, "tier": 3  ,
+		"preferences":{
+			"fromUnits":{
+				"ok_sturmtiger":5.0
+			}
+		}
+	},
+    { "key": "grand_assault_kettenrad_free", "filename": "grand_assault_kettenrad_free.png", "xp": 4, "tier": 1, "call-in":"ok_kettenkrad" },
+    { "key": "heavy_luchs_free", "filename": "heavy_luchs_free.png", "xp": 4, "tier": 2, "call-in":"ok_luchs_light_tank" ,
+		"preferences":{
+			"fromUnits":{
+				"ok_luchs_light_tank":3.0
+			}
+		}
+	},
+    { "key": "smoke_canisters_stuka_free", "filename": "smoke_canisters_stuka_free.png", "xp": 4, "tier": 2, "call-in":"ok_stuka_halftrack"  },
+    { "key": "pak_43_emplacement_sturmpioneers", "filename": "pak_43_emplacement_sturmpioneers.png", "xp": 1, "tier": 1, "requiresAnyUnits": ["ok_sturmpioneers"] },
+    { "key": "stuka_ju-87_anti-tank_strafe", "filename": "stuka_ju-87_anti-tank_strafe.png", "xp": 1, "tier": 1 },
+    { "key": "breakthrough_tactics", "filename": "breakthrough_tactics.png", "xp": 3, "tier": 1, "call-in":"ok_volksgrenadiers"  },
+    { "key": "tank_desant_tactics", "filename": "tank_desant_tactics.png", "xp": 3, "tier": 1 },
+    { "key": "flammpanzer_38_hetzer", "filename": "flammpanzer_38_hetzer.png", "xp": 1, "tier": 3 },
+    { "key": "armor_blitzkrieg", "filename": "armor_blitzkrieg.png", "xp": 1, "tier": 1 },
+    { "key": "supply_convoy", "filename": "supply_convoy.png", "xp": 3, "tier": 1, "call-in":"wm_kubelwagen"   },
+    { "key": "incendiary_mortars", "filename": "incendiary_mortars.png", "xp": 3, "tier": 1, "call-in":"wm_mortar_team"   },
+    { "key": "pak_43_emplacement", "filename": "pak_43_emplacement.png", "xp": 1, "tier": 1},
+    { "key": "jaeger_sniper_free", "filename": "jaeger_sniper_free.png", "xp": 3, "tier": 1}
   ]
 }

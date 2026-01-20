@@ -24,14 +24,35 @@
 				"m2_50cal_mg_team":3.0,
 				"m1_57mm_at_gun":3.0,
 				"us_mortar_team":3.0,
-				"mg42_team":3.0,
-				"mortar_team":3.0
+				"wm_mg42_team":3.0,
+				"wm_mortar_team":3.0,
+				"ok_raketenwerfer":3.0,
+				"su_76mm_at_gun":3.0,
+				"su_mortar_team":3.0
 			}
-		}},
+		}
+	},
     { "key": "Festung_Armor_Doctrine_Tiger_Call-In", "filename": "Festung_Armor_Doctrine_Tiger_Call-In.png", "xp": 5, "tier":3 },
     { "key": "churchill_avre_call-in_free", "filename": "churchill_avre_call-in_free.png", "xp": 5, "tier":3 },
     { "key": "Motor_Pool_Outmaneuver_5xp", "filename": "Motor_Pool_Outmaneuver_5xp.png", "xp": 5 , "tier":3},
 	{ "key": "emergency_war_speed", "filename": "emergency_war_speed.png", "xp": 5, "tier":3, "requiresAnyUpgrades":["churchill_avre_call-in_free"]},
-    { "key": "operation_crocodile", "filename": "operation_crocodile.png", "xp": 5, "tier":3, "call-in":"uk_churchill" }
+    { "key": "operation_crocodile", "filename": "operation_crocodile.png", "xp": 5, "tier":3, "call-in":"uk_churchill" },
+    { "key": "king_tiger_call-in_free", "filename": "king_tiger_call-in_free.png", "xp": 5, "tier":3},
+    { "key": "heat_shells_panther_free", "filename": "heat_shells_panther_free.png", "xp": 5, "tier":3, "call-in":"ok_panther" ,
+		"preferences":{
+			"fromUnits":{
+				"ok_panther":3.0,
+				"ok_puma":3.0
+			},
+			"fromUpgrades":{
+				"puma_call-in":3.0,
+				"puma_call-in_free":3.0
+			}
+		}
+	},
+    { "key": "jagdpanter_call-in_free", "filename": "jagdpanter_call-in_free.png", "xp": 4, "tier":3},
+    { "key": "breakthrough_tactics", "filename": "breakthrough_tactics.png", "xp": 5, "tier":3, "call-in":"ok_volksgrenadiers" },
+    { "key": "elefant_call-in_free", "filename": "elefant_call-in_free.png", "xp": 5, "tier":3},
+    { "key": "elite_sturmpanzer", "filename": "elite_sturmpanzer.png", "xp": 5, "tier":3, "call-in":"wm_brummbar" }
   ]
 }
