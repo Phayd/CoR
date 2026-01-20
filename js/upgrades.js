@@ -477,6 +477,7 @@ App.getUpgradePickMultiplier = function getUpgradePickMultiplier(upgrade){
 		  title: 'UPGRADE UNLOCKED',
 		  subTitle: 'Swipe to View Upgrades, Tap to Select.',
 		  items,
+		  gridCols: 3,
 		  showReroll: true,
 		  rerollText: `Re-roll (-${App.rerollCost} XP)`,
 		  onReroll: () => {

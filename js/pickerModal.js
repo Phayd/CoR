@@ -226,6 +226,12 @@
    */
   App.picker.open = function openPicker(cfg){
     const items = Array.isArray(cfg.items) ? cfg.items : [];
+	
+	// grid column control (desktop only)
+	d.pickerGrid.classList.remove('grid-2','grid-3','grid-4','grid-5');
+	if(cfg.gridCols){
+	  d.pickerGrid.classList.add(`grid-${cfg.gridCols}`);
+	}
 
     st.items = items;
     st.onPick = typeof cfg.onPick === 'function' ? cfg.onPick : null;

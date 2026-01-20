@@ -361,6 +361,7 @@
     title: `TIER ${App.pendingSwapTier} REINFORCEMENTS UNLOCKED`,
     subTitle: 'CHOOSE NEW CORE UNIT',
     items,
+	gridCols: 2,
     onPick: (it) => {
       App.pendingNewUnit = it.id;
       App.openUnitSwapReplaceStep(); // go step2
@@ -386,6 +387,7 @@ App.openUnitSwapReplaceStep = function openUnitSwapReplaceStep(){
     title: `Add: ${newU?.name || newId}`,
     subTitle: 'REPLACE OLD CORE UNIT',
     items,
+	gridCols: 2,
     showBack: true,
     onBack: () => App.openUnitSwapFlow(), // go back to step1
     onPick: async (it) => {

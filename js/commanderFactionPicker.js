@@ -32,6 +32,9 @@
 
     // gating state
     App.activeCommanderKey = cmd.key;
+
+	if(App.dom.aiLaunchers) App.dom.aiLaunchers.classList.remove('is-hidden');
+
     const su = Array.isArray(cmd.startingUnits) ? cmd.startingUnits : [];
     App.activeBuildSlots = [su[0] || null, su[1] || null];
     App.activeBuildableUnits = new Set(su);
@@ -56,6 +59,7 @@
       title: 'Choose Faction',
       subtitle: 'Swipe to browse. Tap to select.',
       mode: 'carousel', // your generic picker can ignore this if it auto-decides
+	  gridCols: 5,
       items,
       // Render: big icon + name
       renderItem: (it) => ({
@@ -101,6 +105,7 @@
       title: 'Choose Commander',
       subtitle: 'Swipe to browse. Tap the focused commander to select.',
       items,
+	  gridCols: 5,
       renderItem: (it) => ({
         imgSrc: it.img,
         label: `${it.xp}xp`

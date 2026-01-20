@@ -10,7 +10,8 @@
 
 
   App.dom = {
-	  
+	 
+	aiLaunchers: $('aiLaunchers'),
 	aiCardBtn: $('aiCardBtn'),
 	aiCardBtnP2: $('aiCardBtnP2'),
 	aiCardStage: $('aiCardStage'),
