@@ -14,7 +14,7 @@
 	  "Armor_Company"    			:{"filename": "Armor_Company.png",           "xp": 3, "startingUnits": ["us_riflemen","willys_jeep"], "faction":"us"},
 	  "Recon_Support_Company" 		:{"filename": "Recon_Support_Company.png",   "xp": 1, "startingUnits": ["us_riflemen","us_mortar_team"], "faction":"us"},
 	  "Pathfinder_Company"			:{"filename": "Pathfinder_Company.png",      "xp": 1, "startingUnits": ["us_mortar_team","None"], "faction":"us"},
-	  "Airborne_Company"  			:{"filename": "Airborne_Company.png" ,       "xp": 2, "startingUnits": ["us_riflemen","us_mortar_team"], "faction":"wm"},
+	  "Airborne_Company"  			:{"filename": "Airborne_Company.png" ,       "xp": 2, "startingUnits": ["us_riflemen","us_mortar_team"], "faction":"us"},
 	  "Mechanized_Doctrine" 		:{"filename": "Mechanized_Doctrine.png", 	 "xp": 1, "startingUnits": ["grenadiers","wm_mg42_team"], "faction":"wm"},
       "Jaeger_Infantry_Doctrine" 	:{"filename": "Jaeger_Infantry_Doctrine.png","xp": 3, "startingUnits": ["grenadiers","wm_mg42_team"], "faction":"wm"},
       "StuG_Tactics" 				:{"filename": "StuG_Tactics.png", 			 "xp": 2, "startingUnits": ["grenadiers","wm_mg42_team"], "faction":"wm"},
