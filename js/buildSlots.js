@@ -28,7 +28,6 @@
     wrap.style.flexDirection = 'column';
     wrap.style.alignItems = 'center';
     wrap.style.justifyContent = 'center';
-    wrap.style.gap = '8px';
     wrap.style.width = '100%';
     wrap.style.height = '100%';
     wrap.style.boxSizing = 'border-box';

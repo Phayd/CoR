@@ -158,8 +158,8 @@
 	  flex-direction:column;
 	  flex: 1;
 	  justify-content: center;
+	  align-items: center;
 	}
-	
 		
 	.left-controls{
 	  flex-direction:row;
@@ -181,6 +181,7 @@
 	flex-direction:column;
 	gap:14px;
 	padding:6px;
+	min-height:75vh;
   }
 
   .commander-controls{
@@ -254,5 +255,6 @@
 	
   .controls{
 	flex-direction:row;
+	height:75vh;
 	}
 }

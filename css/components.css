@@ -68,7 +68,6 @@
 /* CONTROLS */
 .controls{
   display:flex;
-  height:75vh;
   gap:24px;
   align-items:stretch;
   background:linear-gradient(145deg,#3a3f2b,#262a1d);
