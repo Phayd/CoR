@@ -71,5 +71,7 @@
 	imageViewerCallInBadge: $('imageViewerCallInBadge'),
 	closeImageViewerModal: $('closeImageViewerModal'),
 
+	xpIgnoreCosts: $('xpIgnoreCosts'),
+
   };
 })();

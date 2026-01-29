@@ -25,6 +25,10 @@
 
   App.TIER_2_UNLOCK_COUNT = 3;
   App.TIER_3_UNLOCK_COUNT = 6;
+  
+  App._xpBeforeIgnore = null;
+  App._xpIgnoreEnabled = false;
+
 
   App.getUnlockedTier = function(){
     const n = App.selectedUpgradeKeys.size;

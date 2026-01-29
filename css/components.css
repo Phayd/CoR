@@ -983,3 +983,20 @@
   border:1px solid var(--khaki);
   text-transform:uppercase;
 }
+
+.xp-cheat{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:13px;
+  opacity:.9;
+  user-select:none;
+}
+.xp-cheat input{ transform: scale(1.1); }
+
+/* When cheat is enabled, collapse XP readout/buttons but keep checkbox visible */
+.xp-panel.xp-minimized .xp-value,
+.xp-panel.xp-minimized .xp-buttons{
+  display: none !important;
+}
+
