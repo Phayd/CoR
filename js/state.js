@@ -2,7 +2,7 @@
 (() => {
   const App = window.App;
 
-  App.xp = 30;
+  App.xp = 3;
   App.rerollCost = 1;
 
   App.activeBuildSlots = [null, null];
