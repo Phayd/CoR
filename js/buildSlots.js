@@ -31,10 +31,11 @@
     wrap.style.width = '100%';
     wrap.style.height = '100%';
     wrap.style.boxSizing = 'border-box';
-    wrap.style.padding = '6px';
+    wrap.style.padding = '2px';
 
     const name = document.createElement('div');
     name.textContent = (unitDef && unitDef.name) ? unitDef.name : 'Unknown Unit';
+    name.classList.add('build-slot-title');
     name.style.fontSize = '16px';
     name.style.fontWeight = '700';
     name.style.letterSpacing = '1px';

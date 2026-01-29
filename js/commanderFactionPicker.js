@@ -57,7 +57,7 @@
 
     App.picker.open({
       title: 'Choose Faction',
-      subtitle: 'Swipe to browse. Tap to select.',
+      subtitle: 'Swipe to browse Factions. Tap the focused Faction select.',
       mode: 'carousel', // your generic picker can ignore this if it auto-decides
 	  gridCols: 5,
       items,
@@ -103,7 +103,7 @@
 
     App.picker.open({
       title: 'Choose Commander',
-      subtitle: 'Swipe to browse. Tap the focused commander to select.',
+      subtitle: 'Swipe to browse. Tap the focused Commander to select.',
       items,
 	  gridCols: 5,
       renderItem: (it) => ({

@@ -13,7 +13,6 @@
     padding:10px;
   }
   
-  #pickerCarousel{ display:block; }
   #pickerGrid{ display:none; }
   #pickerBody{ overflow:hidden; min-height:0; }
 	
@@ -177,6 +176,7 @@
 	font-size:18px;
   }
   
+  
   .controls{
 	flex-direction:column;
 	gap:14px;
@@ -204,7 +204,7 @@
 
   .modal-content{
 	width:96vw;
-	max-height:86vh;
+	max-height:90vh;
   }
 
   .modal-grid{
@@ -251,10 +251,73 @@
   }
 }
 
-@media (orientation: landscape)  {
+/* Mobile landscape: keep picker carousel readable and never taller than the modal */
+@media (pointer: coarse) and (orientation: landscape){
+	
+	h1{
+		padding:10px 10px;
+	}
+	
+  h2{
+	  font-size:small;
+	  margin:8px 0 6px;
+  }
 	
   .controls{
 	flex-direction:row;
-	height:75vh;
+	height:100vh;
 	}
+	
+	.commander-tile{
+		padding:4px;
+	}
+	
+	.commander-controls{
+		gap:0px;
+	}
+	
+	.build-slot{
+		padding:2px;
+	}
+	
+	.build-slot-title{
+		display:none;
+	}
+  /* Give the modal a definite height so children can size correctly */
+  #pickerModal .modal-content{
+    height: 92vh;
+    max-height: 92vh;
+  }
+
+  /* Make modal-body a bounded flex column area */
+  #pickerModal .modal-body{
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow: hidden; /* IMPORTANT: prevent content from spilling outside */
+  }
+
+  /* Let the carousel shell be the scroll-free flexible region */
+  #pickerModal .carousel-shell{
+    flex: 1 1 auto;
+    min-height: 0;
+  }
+
+  /* Ensure carousel/track are height-bounded */
+  #pickerCarousel{
+    flex: 1 1 auto;
+    min-height: 0;
+    padding: 4px 0 6px;
+  }
+
+  /* Hard clamp the “card window” height so images can’t exceed it */
+  #pickerModal .picker-card{
+    max-height: 62vh;   /* tweak: 55–65vh usually feels right in landscape */
+  }
+
+  #pickerModal .picker-card img{
+    height: auto;       /* don’t force height:100% */
+    max-height: 62vh;   /* match the card clamp */
+    width: auto;
+    max-width: 100%;
+  }
 }
