@@ -329,7 +329,7 @@
  App.maybeTriggerUnitSwap = async function(){
   if(!App.activeCommanderKey) return;
   const count = App.selectedUpgradeKeys.size;
-  if(count === 0 || (count % 3) !== 0) return;
+  if(count === 0 || (count !== 8 && ((count % 3) !== 0))) return;
   await App.openUnitSwapFlow();
 };
 
