@@ -49,6 +49,7 @@
   flex-direction:column;
   justify-content:center;
   box-sizing:border-box;
+  align-items:center;
 }
 
 .xp-value{
@@ -989,10 +990,11 @@
   align-items:center;
   gap:8px;
   font-size:13px;
-  opacity:.9;
+  opacity:.4;
   user-select:none;
 }
-.xp-cheat input{ transform: scale(1.1); }
+.xp-cheat input{ transform: scale(1.1); 
+}
 
 /* When cheat is enabled, collapse XP readout/buttons but keep checkbox visible */
 .xp-panel.xp-minimized .xp-value,
