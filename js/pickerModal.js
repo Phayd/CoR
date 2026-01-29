@@ -82,12 +82,12 @@
     card.appendChild(img);
 
     // label (optional)
-    if(item.label){
+   /*  if(item.label){
       const label = document.createElement('div');
       label.className = 'rarity-label';
       label.textContent = item.label;
       card.appendChild(label);
-    }
+    } */
 
     // locked (optional)
     if(item.locked) card.classList.add('locked');
@@ -116,21 +116,42 @@
   }
 
   // --- Carousel render (mobile) ---
-  function setIndex(next){
-    const max = st.items.length - 1;
-    st.activeIndex = App.clamp(next, 0, Math.max(0, max));
-    if(d.pickerTrack._setDragIndex) d.pickerTrack._setDragIndex(st.activeIndex);
+let animTimer = null;
 
-    const step = App.getTrackStepPx(d.pickerTrack, '.picker-slide') || d.pickerCarousel.clientWidth;
+function setIndex(next){
+  const max = st.items.length - 1;
+  st.activeIndex = App.clamp(next, 0, Math.max(0, max));
 
-    d.pickerTrack.classList.add('is-animating');
-    d.pickerTrack.style.transform = `translateX(${-st.activeIndex * step}px)`;
+  if(d.pickerTrack._setDragIndex) d.pickerTrack._setDragIndex(st.activeIndex);
 
-    App.setActiveCard(d.pickerTrack, '.picker-card', st.activeIndex);
-    setTimeout(() => d.pickerTrack.classList.remove('is-animating'), 300);
-	updateArrows();
+  const step = App.getTrackStepPx(d.pickerTrack, '.picker-slide') || d.pickerCarousel.clientWidth;
+  const x = -st.activeIndex * step;
 
-  }
+  // Cancel any pending "remove animating" from earlier swipes
+  if(animTimer) clearTimeout(animTimer);
+
+  // Reset transition state cleanly
+  d.pickerTrack.classList.remove('is-animating');
+  // force reflow so the next class-add definitely re-enables transition
+  void d.pickerTrack.offsetWidth;
+
+  d.pickerTrack.classList.add('is-animating');
+
+  // Use rAF to avoid batching issues (prevents skipped transitions)
+  requestAnimationFrame(() => {
+    d.pickerTrack.style.transform = `translateX(${x}px)`;
+  });
+
+  App.setActiveCard(d.pickerTrack, '.picker-card', st.activeIndex);
+
+  animTimer = setTimeout(() => {
+    d.pickerTrack.classList.remove('is-animating');
+    animTimer = null;
+  }, 300);
+
+  updateArrows();
+}
+
   
   function updateArrows(){
 	  const left = d.pickerArrowLeft;

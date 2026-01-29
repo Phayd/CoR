@@ -35,62 +35,93 @@
     cards.forEach((c, i) => c.classList.toggle('is-active', i === activeIndex));
   };
 
-  App.bindSwipeTrackOnce = function(trackEl, getCount, getStep, onSetIndex){
-    if(trackEl.dataset.swipeBound === '1') return;
-    trackEl.dataset.swipeBound = '1';
+App.bindSwipeTrackOnce = function(trackEl, getCount, getStep, onSetIndex){
+  // Always update the live callbacks (important!)
+  trackEl._swipeCfg = { getCount, getStep, onSetIndex };
 
-    const drag = { active:false, startX:0, lastX:0, baseX:0, step:0, idx:0 };
+  // If already bound, we're done. The listeners will use _swipeCfg.
+  if(trackEl.dataset.swipeBound === '1') return;
+  trackEl.dataset.swipeBound = '1';
 
-    trackEl.addEventListener('pointerdown', (e) => {
-      drag.active = true;
-      drag.startX = e.clientX;
-      drag.lastX = e.clientX;
-      drag.step = getStep();
-      drag.baseX = -drag.idx * drag.step;
-      trackEl.classList.remove('is-animating');
-      trackEl.setPointerCapture(e.pointerId);
-    });
+  const drag = { active:false, startX:0, lastX:0, baseX:0, step:0, idx:0 };
 
-    trackEl.addEventListener('pointermove', (e) => {
-      if(!drag.active) return;
-      drag.lastX = e.clientX;
-      const dx = e.clientX - drag.startX;
+  function readCurrentX(){
+    const inlineX = App.parseTranslateX(trackEl.style.transform);
+    if(Number.isFinite(inlineX)) return inlineX;
 
-      let x = drag.baseX + dx;
+    const computedX = App.parseTranslateX(getComputedStyle(trackEl).transform);
+    if(Number.isFinite(computedX)) return computedX;
 
-      const count = getCount();
-      const minX = -(count - 1) * drag.step;
-      const maxX = 0;
+    return 0;
+  }
 
-      if(x > maxX) x = maxX + (x - maxX) * 0.25;
-      if(x < minX) x = minX + (x - minX) * 0.25;
+  trackEl.addEventListener('pointerdown', (e) => {
+    const cfg = trackEl._swipeCfg;
 
-      trackEl.style.transform = `translateX(${x}px)`;
-    });
+    drag.active = true;
+    drag.startX = e.clientX;
+    drag.lastX  = e.clientX;
+    drag.step   = cfg.getStep();
 
-    trackEl.addEventListener('pointerup', () => {
-      if(!drag.active) return;
-      drag.active = false;
+    drag.baseX = readCurrentX();
 
-      const dx = drag.lastX - drag.startX;
-      const step = drag.step || getStep();
-      const threshold = Math.min(90, step * 0.22);
+    const count = cfg.getCount();
+    drag.idx = drag.step
+      ? App.clamp(Math.round(-drag.baseX / drag.step), 0, Math.max(0, count - 1))
+      : 0;
 
-      let next = drag.idx;
-      if(dx < -threshold) next = drag.idx + 1;
-      if(dx >  threshold) next = drag.idx - 1;
+    trackEl.classList.remove('is-animating');
+    trackEl.setPointerCapture(e.pointerId);
+  });
 
-      onSetIndex(next);
-    });
+  trackEl.addEventListener('pointermove', (e) => {
+    if(!drag.active) return;
+    const cfg = trackEl._swipeCfg;
 
-    trackEl.addEventListener('pointercancel', () => {
-      if(!drag.active) return;
-      drag.active = false;
-      onSetIndex(drag.idx);
-    });
+    drag.lastX = e.clientX;
+    const dx = e.clientX - drag.startX;
 
-    trackEl._setDragIndex = (i) => { drag.idx = i; };
-  };
+    let x = drag.baseX + dx;
+
+    const count = cfg.getCount();
+    const step = drag.step || cfg.getStep();
+    const minX = -(count - 1) * step;
+    const maxX = 0;
+
+    if(x > maxX) x = maxX + (x - maxX) * 0.25;
+    if(x < minX) x = minX + (x - minX) * 0.25;
+
+    trackEl.style.transform = `translateX(${x}px)`;
+  });
+
+  trackEl.addEventListener('pointerup', () => {
+    if(!drag.active) return;
+    drag.active = false;
+
+    const cfg = trackEl._swipeCfg;
+
+    const step = drag.step || cfg.getStep();
+    if(!step) return;
+
+    const dx = drag.lastX - drag.startX;
+    const x  = drag.baseX + dx;
+
+    const count = cfg.getCount();
+    const next = App.clamp(Math.round(-x / step), 0, Math.max(0, count - 1));
+
+    drag.idx = next;
+    cfg.onSetIndex(next);
+  });
+
+  trackEl.addEventListener('pointercancel', () => {
+    if(!drag.active) return;
+    drag.active = false;
+    trackEl._swipeCfg.onSetIndex(drag.idx);
+  });
+
+  trackEl._setDragIndex = (i) => { drag.idx = i; };
+};
+
   
   App.weightedPickOne = function(items, getWeight){
 	  let total = 0;
@@ -137,5 +168,38 @@
 
 	  return mult;
 	};
+App.parseTranslateX = function parseTranslateX(t){
+  if(!t || t === 'none') return null;
+
+  // translateX(-123px)
+  let m = t.match(/translateX\(\s*([-0-9.]+)px\s*\)/i);
+  if(m){
+    const x = Number(m[1]);
+    return Number.isFinite(x) ? x : null;
+  }
+
+  // translate3d(-123px, 0px, 0px)
+  m = t.match(/translate3d\(\s*([-0-9.]+)px\s*,/i);
+  if(m){
+    const x = Number(m[1]);
+    return Number.isFinite(x) ? x : null;
+  }
+
+  // matrix(a,b,c,d,tx,ty)
+  m = t.match(/matrix\(\s*[^,]+,\s*[^,]+,\s*[^,]+,\s*[^,]+,\s*([-0-9.]+),/i);
+  if(m){
+    const x = Number(m[1]);
+    return Number.isFinite(x) ? x : null;
+  }
+
+  // matrix3d(..., tx, ty, tz)
+  m = t.match(/matrix3d\((.+)\)/i);
+  if(m){
+    const parts = m[1].split(',').map(s => Number(s.trim()));
+    if(parts.length === 16 && Number.isFinite(parts[12])) return parts[12]; // m41
+  }
+
+  return null;
+};
 
 })();
