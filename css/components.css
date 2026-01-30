@@ -551,6 +551,7 @@
   min-height: 0;
   display: flex;
   flex-direction: column;
+  -webkit-overflow-scrolling: touch;
 }
 
 #pickerModal {
@@ -562,16 +563,16 @@
 #pickerModal .modal-body{
   flex:1 1 auto;
   min-height:0;          /* critical: allows children to shrink */
-  overflow:hidden;       /* prevents bottom clipping/scroll fights */
+  /* overflow:hidden; */
   padding: 10px 12px;    /* keep your padding */
 }
 
 .modal-close{
   cursor:pointer;
-  font-size:34px;
+  font-size:72px;
   color:var(--danger);
   user-select:none;
-  line-height:1;
+  line-height:0;
 }
 
 .modal-grid{
@@ -661,7 +662,7 @@
 #pickerArrowRight { display:none;}
 
 .picker-card{
-  width:90%;
+  /* width:90%; */
   max-height:100%;
   border:4px solid var(--khaki);
   background:rgba(0,0,0,0.35);
@@ -882,9 +883,11 @@
 }
 
 /* Optional: make common/veteran match your existing khaki framing */
-.upgrade-tile.common,
+.upgrade-tile.common{
+  border-color:var(--common);
+}
 .upgrade-tile.veteran{
-  border-color:var(--khaki);
+  border-color:var(--veteran);
 }
 
 /* ================== LEGENDARY REVEAL EFFECT ================== */
@@ -958,7 +961,7 @@
   height:auto;
   max-height:440px;
   object-fit:contain;
-  border:4px solid;
+  border:4px solid var(--khaki);
   background:rgba(0,0,0,0.4);
   box-sizing:border-box;
   padding:8px;
