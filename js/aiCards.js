@@ -203,10 +203,19 @@ App.closeAIRef= function(){
 
   if(refreshBtn && !refreshBtn.dataset.bound){
     refreshBtn.dataset.bound = '1';
-    refreshBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      refreshCurrentPhase();
-    });
+    refreshBtn.addEventListener('click', () => {
+	  refreshBtn.classList.remove('is-spinning'); // reset if already spinning
+	  void refreshBtn.offsetWidth;               // force reflow
+	  refreshBtn.classList.add('is-spinning');
+
+	  refreshCurrentPhase(); // your existing logic
+	});
+
+	refreshBtn.addEventListener('animationend', () => {
+	  refreshBtn.classList.remove('is-spinning');
+	});
+
+
   }
 
   if(modalClose && !modalClose.dataset.bound){

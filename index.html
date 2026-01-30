@@ -177,17 +177,17 @@
       <span class="modal-close" id="closeAICardModal" aria-label="Close">×</span>
     </div>
 
-    <div class="modal-body" style="display:flex; flex-direction:column; gap:12px;">
-
-	  <div id="aiCardStage" class="ai-card-stage">
-		<img id="aiCardModalImg" alt="AI Card">
-		<button class="ai-hotspot" data-ref="1" aria-label="AI Ref 1" type="button"></button>
-		<button class="ai-hotspot" data-ref="2" aria-label="AI Ref 2" type="button"></button>
-		<button class="ai-hotspot" data-ref="3" aria-label="AI Ref 3" type="button"></button>
-		<button class="ai-hotspot" data-ref="4" aria-label="AI Ref 4" type="button"></button>
-	  </div>
-
-	  <div style="display:flex; justify-content:flex-end; gap:10px;">
+    <div class="modal-body" style="display:flex; gap:12px;">
+	<div id="aiCardStageCenterer" style="justify-content:center">
+		  <div id="aiCardStage" class="ai-card-stage">
+			<img id="aiCardModalImg" alt="AI Card">
+			<button class="ai-hotspot" data-ref="1" aria-label="AI Ref 1" type="button"></button>
+			<button class="ai-hotspot" data-ref="2" aria-label="AI Ref 2" type="button"></button>
+			<button class="ai-hotspot" data-ref="3" aria-label="AI Ref 3" type="button"></button>
+			<button class="ai-hotspot" data-ref="4" aria-label="AI Ref 4" type="button"></button>
+		  </div>
+	</div>
+	  <div style="display:flex; justify-content:center; gap:10px; align-items:center;">
 		<button
 		  id="aiCardRefreshBtn"
 		  class="icon-btn refresh-btn"

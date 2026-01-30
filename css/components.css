@@ -312,17 +312,17 @@
 }
 
 .icon-btn{
-  width: 40px;
-  height: 40px;
+  width: 60px;
+  height: 60px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  font-size: 22px;
+  font-size: 60px;
   font-weight: 700;
 
-  color: var(--khaki);
+  color: var(--danger);
   background: transparent;
   border: none;
 
@@ -331,28 +331,38 @@
 
   transition: transform 0.15s ease, color 0.15s ease;
 }
-
+/* 
 .icon-btn:hover{
   color: #ffd966;
   transform: rotate(90deg);
-}
+} */
 
 .icon-btn:active{
-  transform: rotate(180deg) scale(0.95);
+  transform: scale(0.95);
 }
 
 .icon-btn:focus{
   outline: none;
 }
-
+/* 
 .refresh-btn:active{
-  animation: refresh-spin 0.35s ease;
+  animation: refresh-spin 0.5s ease;
+}
+ */
+@keyframes refresh-spin{
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(540deg); }
 }
 
-@keyframes refresh-spin{
+@keyframes spinOnce {
   from { transform: rotate(0deg); }
   to   { transform: rotate(360deg); }
 }
+
+.refresh-btn.is-spinning{
+  animation: spinOnce 0.6s ease-in-out;
+}
+
 
 .ai-launchers{
   display:flex;
@@ -376,7 +386,12 @@
 .ai-card-stage > img{
   display:block;
   max-width:100%;
-  height:70vh;
+  height:59vh;
+}
+
+#aiCardStageCenterer{
+	display:flex;
+	justify-content:center;
 }
 
 /* Transparent clickable overlays */
@@ -389,17 +404,22 @@
   cursor:pointer;
   /* helpful on mobile */
   touch-action:manipulation;
+  /* optional: show debug outline temporarily */
+  /* outline: 2px solid rgba(255,0,0,.35); */
 }
 
 
-.ai-hotspot[data-ref="1"]{ left:  20.5vw; top:  14vh; width: 5vw; height: 11vh; }
+.ai-hotspot[data-ref="1"]{ left:  15%; top:  20%; width: 21%; height: 15%; }
 
-.ai-hotspot[data-ref="2"]{ left:  24.25vw; top:  26vh; width: 5vw; height: 11vh; }
+.ai-hotspot[data-ref="2"]{ left:  31%; top:  38%; width: 21%; height: 15%; }
 
-.ai-hotspot[data-ref="3"]{ left:  28vw; top:  39vh; width: 5vw; height: 11vh; }
+.ai-hotspot[data-ref="3"]{ left:  48%; top:  56%; width: 21%; height: 15%; }
 
-.ai-hotspot[data-ref="4"]{ left:  31.75vw; top:  51vh; width: 5vw; height: 12vh; }
+.ai-hotspot[data-ref="4"]{ left:  64%; top:  74%; width: 21%; height: 15%; }
 
+#aiRefImg{
+	max-height:70vh;
+}
 
 /* Commander tile */
 .commander-tile{

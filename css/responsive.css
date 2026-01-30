@@ -253,7 +253,7 @@
 
 /* Mobile landscape: keep picker carousel readable and never taller than the modal */
 @media (pointer: coarse) and (orientation: landscape){
-	
+
 	h1{
 		padding:10px 10px;
 	}
@@ -262,6 +262,16 @@
 	  font-size:small;
 	  margin:8px 0 6px;
   }
+  
+  #aiCardModalContent > .modal-body{
+	  flex-direction:row;
+	  justify-content: center;
+  }
+  
+	  
+	.ai-card-stage > img{
+	  height:70vh;
+	}
 	
   .controls{
 	flex-direction:row;
