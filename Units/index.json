@@ -6,7 +6,7 @@
       "tier": 2,
 	  "preferences":{
 		  "fromUpgrades": {
-			  "Mechanized_Company_Veteran_Greyhounds_4xp":5.0
+			  "Mechanized_Company_Veteran_Greyhounds_4xp":10.0
 		  }
 	  }
     },
@@ -16,7 +16,7 @@
       "tier": 2,
 		"preferences":{
 			"fromUpgrades":{
-				"Mobile_Support_Company_Elite_M1_57mm_Crew_4xp":5.0
+				"Mobile_Support_Company_Elite_M1_57mm_Crew_4xp":10.0
 			}
 		}
     },
@@ -31,7 +31,7 @@
       "tier": 3,
 	  "preferences":{
 		  "fromUpgrades": {
-			  "Heavy_Cavalry_Requisition_Officer_3xp":5.0
+			  "Heavy_Cavalry_Requisition_Officer_3xp":10.0
 		  }
 	  }
 	  
@@ -42,7 +42,7 @@
       "tier": 3,
 	  "preferences":{
 		  "fromUpgrades": {
-			  "Heavy_Cavalry_Requisition_Officer_3xp":5.0
+			  "Heavy_Cavalry_Requisition_Officer_3xp":10.0
 		  }
 	  }
     },
@@ -57,7 +57,7 @@
       "tier": 2,
 	  "preferences":{
 		"fromUpgrades":{
-			"Engineer_Assault_Company_Support_Jeeps_3xp":5.0
+			"Engineer_Assault_Company_Support_Jeeps_3xp":10.0
 		}
 	  }
     },
@@ -67,7 +67,7 @@
       "tier": 2,
 	  "preferences":{
 		  "fromUpgades":{
-			  "Pathfinder_Company_81mm_Mortars_3xp":5.0
+			  "Pathfinder_Company_81mm_Mortars_3xp":10.0
 		  }
 	  }
     },
@@ -82,7 +82,7 @@
       "tier": 2,
 	  "preferences":{
 		  "fromUpgrades":{
-			  "Mechanized_Doctrine_MG42_Armored_Cars":3.0
+			  "Mechanized_Doctrine_MG42_Armored_Cars":5.0
 		  }
 	  }
     },
@@ -97,8 +97,8 @@
       "tier": 2,
 	  "preferences": {
 		  "fromUpgrades": {
-			"Elite_Troops_Doctrine_Veteran_Panzer_Grenadiers":5.0,
-			"Elite_Troops_Doctrine_G43_Rifles":5.0
+			"Elite_Troops_Doctrine_Veteran_Panzer_Grenadiers":10.0,
+			"Elite_Troops_Doctrine_G43_Rifles":10.0
 		  }
 	  }
     },
@@ -208,7 +208,7 @@
       "tier": 2,
 	  "preferences": {
 		  "fromUpgrades": {
-			"Light_Cavalry_Company_Browning_M2_50cal_4xp":5.0
+			"Light_Cavalry_Company_Browning_M2_50cal_4xp":10.0
 		  }
 	  }
     },
