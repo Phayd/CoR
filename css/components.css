@@ -329,29 +329,11 @@
   cursor: pointer;
   user-select: none;
 
-  transition: transform 0.15s ease, color 0.15s ease;
+  /* transition: transform 0.15s ease, color 0.15s ease; */
 }
-/* 
-.icon-btn:hover{
-  color: #ffd966;
-  transform: rotate(90deg);
-} */
 
 .icon-btn:active{
   transform: scale(0.95);
-}
-
-.icon-btn:focus{
-  outline: none;
-}
-/* 
-.refresh-btn:active{
-  animation: refresh-spin 0.5s ease;
-}
- */
-@keyframes refresh-spin{
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(540deg); }
 }
 
 @keyframes spinOnce {
