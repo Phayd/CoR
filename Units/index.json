@@ -57,7 +57,7 @@
       "tier": 2,
 	  "preferences":{
 		"fromUpgrades":{
-			"Engineer_Assault_Company_Support_Jeeps_3xp":10.0
+			"support_jeeps":10.0
 		}
 	  }
     },
@@ -67,7 +67,7 @@
       "tier": 2,
 	  "preferences":{
 		  "fromUpgades":{
-			  "Pathfinder_Company_81mm_Mortars_3xp":10.0
+			  "81mm_mortars":10.0
 		  }
 	  }
     },
@@ -97,8 +97,8 @@
       "tier": 2,
 	  "preferences": {
 		  "fromUpgrades": {
-			"Elite_Troops_Doctrine_Veteran_Panzer_Grenadiers":10.0,
-			"Elite_Troops_Doctrine_G43_Rifles":10.0
+			"veteran_panzer_grenadiers_free":10.0,
+			"Elite_Troops_Doctrine_g43_rifles_free":10.0
 		  }
 	  }
     },
@@ -167,9 +167,9 @@
       "card": "SdKfz_251_Half-track.png",
       "tier": 2
     },
-    "veteran_g43_stormtroopers": {
-      "name": "Veteran G43 Stormtroopers",
-      "card": "Veteran_G43_Stormtroopers.png",
+    "veteran_g43_stormtroopers_call_in": {
+      "name": "Veteran G43 stormtroopers_call_in",
+      "card": "Veteran_G43_stormtroopers_call_in.png",
       "tier": 3
     },
     "mg42_heavy_machine_gun_bunker": {
@@ -308,9 +308,9 @@
       "card": "ok_stug_iii_g_assault_gun.png",
       "tier": 2
     },
-    "ok_veteran_g43_stormtroopers": {
-      "name": "Veteran G43 Stormtroopers",
-      "card": "ok_veteran_g43_stormtroopers.png",
+    "ok_veteran_g43_stormtroopers_call_in": {
+      "name": "Veteran G43 stormtroopers_call_in",
+      "card": "ok_veteran_g43_stormtroopers_call_in.png",
       "tier": 3
     },
 
@@ -384,9 +384,9 @@
       "card": "su_su-76_assault_gun.png",
       "tier": 3
     },
-    "su_t-34_tank": {
+    "su_t_34_tank": {
       "name": "T-34 Tank",
-      "card": "su_t-34_tank.png",
+      "card": "su_t_34_tank.png",
       "tier": 3
     },
     "su_t-70_light_tank": {
@@ -558,7 +558,12 @@
     "ok_panther": {
       "name": "Panther",
       "card": "panther.png",
-	  "tier": 3
+	  "tier": 3,
+	  "preferences":{
+		  "fromUpgrades":{
+			  "panther_reinforcements":10.0
+		  }
+	  }
     },
     "ok_sturmtiger": {
       "name": "Sturmtiger",

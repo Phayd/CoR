@@ -1,153 +1,264 @@
 {
   "items": [
-    { "key": "Mobile_Support_Company_Priest_Call-In_1xp", "filename": "Mobile_Support_Company_Priest_Call-In_1xp.png", "xp": 1 , "tier":3,
+    { "key": "priest_call_in", "filename": "priest_call_in.png", "xp": 1 , "tier":3,
 		"preferences": {
 			"fromUpgrades":{
-				"Ranger_Company_Priest_Call-In_4xp":0.1
+				"priest_call_in_free":0.1
 			}
 		}
 	},
-    { "key": "Devil's_Brigade_Demolition_1xp", "filename": "Devil's_Brigade_Demolition_1xp.png", "xp": 1, "requiresAnyCommanders": ["Devil's_Brigade"] , "tier":1},
-    { "key": "Devil's_Brigade_Ambush_1xp", "filename": "Devil's_Brigade_Ambush_1xp.png", "xp": 1, "requiresAnyCommanders": ["Devil's_Brigade"] , "tier":1},
-    { "key": "Mechanized_Company_Defensive_Smoke_2xp", "filename": "Mechanized_Company_Defensive_Smoke_2xp.png", "xp": 2 , "tier":1},
-    { "key": "Urban_Assault_Company_Howitzer_Barrage_1xp", "filename": "Urban_Assault_Company_Howitzer_Barrage_1xp.png", "xp": 1 , "tier":1,
+    { "key": "demolition", "filename": "demolition.png", "xp": 1, "requiresAnyCommanders": ["Devil's_Brigade"] , "tier":1},
+    { "key": "ambush", "filename": "ambush.png", "xp": 1, "requiresAnyCommanders": ["Devil's_Brigade"] , "tier":1},
+    { "key": "defensive_smoke", "filename": "defensive_smoke.png", "xp": 2 , "tier":1,
 		"preferences": {
 			"fromUpgrades":{
-				"Urban_Assault_Company_Howitzer_Barrage_1xp":0.1,
-				"concentration_barrage":0.1
+				"Mechanized_Doctrine_Smoke_Canisters":0.1,
+				"smoke_ambush":0.1,
+				"smoke_canisters_stuka_free":0.1
 			}
 		}
 	},
-    { "key": "Ranger_Company_Defensive_Stance_1xp", "filename": "Ranger_Company_Defensive_Stance_1xp.png", "xp": 1, "requiresAnyUnits": ["us_riflemen"] , "tier":1},
-    { "key": "Heavy_Cavalry_Company_Combined_Arms_2xp", "filename": "Heavy_Cavalry_Company_Combined_Arms_2xp.png", "xp": 2 , "tier":1},
-    { "key": "Armor_Company_Armor_Tactician_1xp", "filename": "Armor_Company_Armor_Tactician_1xp.png", "xp": 1 , "tier":1},
-    { "key": "Recon_Support_Company_Recon_Sweep_1xp", "filename": "Recon_Support_Company_Recon_Sweep_1xp.png", "xp": 1 , "tier":1},
-    { "key": "Pathfinder_Company_81mm_Mortars_3xp", "filename": "Pathfinder_Company_81mm_Mortars_3xp.png", "xp": 3 , "tier":1, "call-in":"us_mortar_team",
+	{ "key": "Mechanized_Doctrine_Smoke_Canisters", "filename": "Mechanized_Doctrine_Smoke_Canisters.png", "xp": 2 , "tier":1,
+		"preferences": {
+			"fromUpgrades":{
+				"defensive_smoke":0.1,
+				"smoke_ambush":0.1,
+				"smoke_canisters_stuka_free":0.1
+			}
+		}
+	},
+    { "key": "howitzer_barrage", "filename": "howitzer_barrage.png", "xp": 1 , "tier":1,
+		"preferences": {
+			"fromUpgrades":{
+				"panzerwerfer_light_barrage":0.1,
+				"concentration_barrage":0.1,
+				"ml_20_152mm_light_barrage":0.1
+			}
+		}
+	},
+    { "key": "defensive_stance", "filename": "defensive_stance.png", "xp": 1, "requiresAnyUnits": ["us_riflemen"] , "tier":1},
+    { "key": "combined_arms", "filename": "combined_arms.png", "xp": 2 , "tier":1},
+    { "key": "armor_tactician", "filename": "armor_tactician.png", "xp": 1 , "tier":1},
+    { "key": "recon_sweep", "filename": "recon_sweep.png", "xp": 1 , "tier":1,
+		"preferences": {
+			"fromUpgrades":{
+				"recon_overflight":0.1,
+				"recon_plane":0.1
+			}
+		}
+	},
+    { "key": "81mm_mortars", "filename": "81mm_mortars.png", "xp": 3 , "tier":1, "call-in":"us_mortar_team",
 		"preferences": {
 			"fromUnits":{
-				"us_mortar_team":3.0
+				"us_mortar_team":3.0,
+				"su_mortar_team":3.0
 			}
 		}
 	},
-    { "key": "Engineer_Assault_Company_Support_Jeeps_3xp", "filename": "Engineer_Assault_Company_Support_Jeeps_3xp.png", "xp": 3 , "tier":1, "call-in":"willys_jeep",
+    { "key": "support_jeeps_free", "filename": "support_jeeps_free.png", "xp": 3 , "tier":1, "call-in":"willys_jeep",
 		"preferences": {
 			"fromUnits":{
 				"willys_jeep":3.0
 			}
 		}
 	},
-    { "key": "Light_Cavalry_Company_Stuart_Call-In_1xp", "filename": "Light_Cavalry_Company_Stuart_Call-In_1xp.png", "xp": 1 , "tier":2,
+    { "key": "stuart_call_in", "filename": "stuart_call_in.png", "xp": 1 , "tier":2,
 		"preferences": {
 			"fromUpgrades":{
 				"Tactical_Support_Stuart_Call-In_4xp":0.1
 			}
 		}
 	},
-    { "key": "Jaeger_Infantry_Doctrine_Panzerwerfer_Light_Barrage", "filename": "Jaeger_Infantry_Doctrine_Panzerwerfer_Light_Barrage.png", "xp": 1 , "tier":1,
+    { "key": "panzerwerfer_light_barrage", "filename": "panzerwerfer_light_barrage.png", "xp": 1 , "tier":1,
 		"preferences": {
 			"fromUpgrades":{
-				"Urban_Assault_Company_Howitzer_Barrage_1xp":0.1,
-				"concentration_barrage":0.1
+				"howitzer_barrage":0.1,
+				"concentration_barrage":0.1,
+				"ml_20_152mm_light_barrage":0.1
 			}
 		}
 	},
-    { "key": "Elite_Troops_Doctrine_Veteran_Panzer_Grenadiers", "filename": "Elite_Troops_Doctrine_Veteran_Panzer_Grenadiers.png", "xp": 4 , "tier":2, "call-in":"wm_panzer_grenadiers",
+    { "key": "veteran_panzer_grenadiers_free", "filename": "veteran_panzer_grenadiers_free.png", "xp": 4 , "tier":2, "call-in":"wm_panzer_grenadiers",
 		"preferences": {
 			"fromUnits":{
-				"wm_panzer_grenadiers":3.0
+				"wm_panzer_grenadiers":5.0
 			}
 		}
 	},
-    { "key": "Elite_Troops_Doctrine_G43_Rifles", "filename": "Elite_Troops_Doctrine_G43_Rifles.png", "xp": 3 , "tier":2, "call-in":"grenadiers",
+    { "key": "g43_rifles_free", "filename": "g43_rifles_free.png", "xp": 3 , "tier":2, "call-in":"grenadiers",
 		"preferences": {
 			"fromUnits":{
 				"wm_panzer_grenadiers":5.0,
-				"grenadiers":3.0
+				"grenadiers":5.0
 			},
 			"fromUpgrades":{
-				"Elite_Troops_Doctrine_Stormtroopers":5.0
+				"stormtroopers_call_in":5.0
 			}
 		}
 	},
-    { "key": "StuG_Tactics_Fragmentation_Bomb", "filename": "StuG_Tactics_Fragmentation_Bomb.png", "xp": 1 , "tier":1,
+    { "key": "fragmentation_bomb", "filename": "fragmentation_bomb.png", "xp": 1 , "tier":1,
 		"preferences": {
 			"fromUpgrades":{
-				"Perimeter_Overwatch":0.1,
-				"Tactical_Support_P-47_Strafing_Support_1xp":0.1
+				"perimeter_overwatch":0.1,
+				"p_47_strafing_support":0.1,
+				"katyusha_rocket_strike":0.1
 			}
 		}
 	},
-	{ "key": "Tactical_Support_P-47_Strafing_Support_1xp", "filename": "Tactical_Support_P-47_Strafing_Support_1xp.png", "xp": 1 , "tier":1,
+	{ "key": "p_47_strafing_support", "filename": "p_47_strafing_support.png", "xp": 1 , "tier":1,
 		"preferences": {
 			"fromUpgrades":{
-				"Perimeter_Overwatch":0.1,
-				"StuG_Tactics_Fragmentation_Bomb":0.1
+				"perimeter_overwatch":0.1,
+				"fragmentation_bomb":0.1,
+				"katyusha_rocket_strike":0.1
 			}
 		}
 	},
-    { "key": "Festung_Support_Doctrine_Sdkfz_251_Half-Track", "filename": "Festung_Support_Doctrine_SdKfz_251_Half-Track.png", "xp": 1 , "tier":2,
+    { "key": "sdkfz_251_half_track_call_in", "filename": "sdkfz_251_half_track_call_in.png", "xp": 1 , "tier":2,
 		"preferences": {
 			"fromUpgrades":{
-				"Lightning_War_SdKfz_251_Half_Track":0.1
+				"sdkfz_251_half_track_call_in_free":0.1
 			}
 		}
 	},
-    { "key": "Lightning_War_Doctrine_Tactical_Movement", "filename": "Lightning_War_Doctrine_Tactical_Movement.png", "xp": 1 , "tier":1},
-    { "key": "Festung_Armor_Doctrine_Osttruppen", "filename": "Festung_Armor_Doctrine_Osttruppen.png", "xp": 3 , "tier":1},
-    { "key": "Elite_Troops_Doctrine_Stormtroopers", "filename": "Elite_Troops_Doctrine_Stormtroopers.png", "xp": 2, "tier":1 },
+    { "key": "tactical_movement", "filename": "tactical_movement.png", "xp": 1 , "tier":1,
+		"preferences": {
+			"fromUpgrades":{
+				"for_mother_russia":0.1,
+				"heroic_charge_free":0.1
+			}
+		}
+	},
+    { "key": "osttruppen_call_in_free", "filename": "osttruppen_call_in_free.png", "xp": 3 , "tier":1},
+    { "key": "stormtroopers_call_in", "filename": "stormtroopers_call_in.png", "xp": 2, "tier":1 },
     { "key": "concentration_barrage", "filename": "concentration_barrage.png", "xp": 1, "tier":1,
 		"preferences": {
 			"fromUpgrades":{
-				"Urban_Assault_Company_Howitzer_Barrage_1xp":0.1,
-				"Jaeger_Infantry_Doctrine_Panzerwerfer_Light_Barrage":0.1
+				"howitzer_barrage":0.1,
+				"panzerwerfer_light_barrage":0.1,
+				"ml_20_152mm_light_barrage":0.1
 			}
 		}
 	},
-    { "key": "vehicle_crew_repairs", "filename": "vehicle_crew_repairs.png", "xp": 2, "tier":1 },
-    { "key": "Perimeter_Overwatch", "filename": "Perimeter_Overwatch.png", "xp": 1, "tier":1 ,
+    { "key": "perimeter_overwatch", "filename": "perimeter_overwatch.png", "xp": 1, "tier":1 ,
 		"preferences": {
 			"fromUpgrades":{
-				"StuG_Tactics_Fragmentation_Bomb":0.1,
-				"Tactical_Support_P-47_Strafing_Support_1xp":0.1
+				"fragmentation_bomb":0.1,
+				"p_47_strafing_support":0.1,
+				"katyusha_rocket_strike":0.1
 			}
 		}
 	},
-    { "key": "Staghound_Call-In", "filename": "Staghound_Call-In.png", "xp": 1, "tier":2 ,
+    { "key": "staghound_call_in", "filename": "staghound_call_in.png", "xp": 1, "tier":2 ,
 		"preferences": {
 			"fromUnits":{
 				"uk_staghound":0.1
 			},
 			"fromUpgrades":{
-				"Staghound_Call-In_Free":0.1
+				"staghound_call_in_free":0.1
 			}
 		}
 	},
-    { "key": "Sexton_Gun_Carriage_Call-In", "filename": "Sexton_Gun_Carriage_Call-In.png", "xp": 1, "tier":2 ,
+    { "key": "sexton_gun_carriage_call_in", "filename": "sexton_gun_carriage_call_in.png", "xp": 1, "tier":2 ,
 		"preferences": {
 			"fromUpgrades":{
-				"sexton_gun_carriage_call-in_free":0.1
+				"sexton_gun_carriage_call_in_free":0.1
 			}
 		}
 	},
-    { "key": "Forward_Emplacement", "filename": "Forward_Emplacement.png", "xp": 2, "tier":1 },
-    { "key": "puma_call-in", "filename": "puma_call-in.png", "xp": 4, "tier": 2 ,
-		"preferences":{
-			"fromUpgrades":{
-				"puma_call-in_free":0.1
-			}
-		}
-	},
-    { "key": "kettenrad_call-in", "filename": "kettenrad_call-in.png", "xp": 1, "tier":1 },
+    { "key": "forward_emplacement", "filename": "forward_emplacement.png", "xp": 2, "tier":1 },
+    { "key": "kettenrad_call_in", "filename": "kettenrad_call_in.png", "xp": 1, "tier":1 },
     { "key": "lefh_18_artillery", "filename": "lefh_18_artillery.png", "xp": 1,  "requiresAnyUnits": ["ok_sturmpioneers"] ,"tier":1 },
     { "key": "panther_reinforcements", "filename": "panther_reinforcements.png", "xp": 1, "tier":3 ,
 		"preferences": {
 			"fromUnits":{
-				"panther":3.0
+				"panther":5.0
 			}
 		}
 	},
     { "key": "panzerfusilier", "filename": "panzerfusilier.png", "xp": 1, "tier":1 },
-    { "key": "recon_plane", "filename": "recon_plane.png", "xp": 1, "tier":1 },
-    { "key": "breakthrough_tactics", "filename": "breakthrough_tactics.png", "xp": 1, "tier":1 }
+    { "key": "recon_plane", "filename": "recon_plane.png", "xp": 1, "tier":1 ,
+		"preferences": {
+			"fromUpgrades":{
+				"recon_overflight":0.1,
+				"recon_sweep":0.1				
+			}
+		}
+	},
+    { "key": "breakthrough_tactics", "filename": "breakthrough_tactics.png", "xp": 1, "tier":1  ,
+		"preferences": {
+			"fromUpgrades":{
+				"breakthrough_tactics_free":0.1,
+				"breakthrough_tactics_hetzer_free":0.1
+			}
+		}
+	},
+    { "key": "forward_hq", "filename": "forward_hq.png", "xp": 2, "tier":1 , "requiresAnyUnits":["su_conscripts"]},
+    { "key": "anti_tank_partisans_free", "filename": "anti_tank_partisans.png", "xp": 3, "tier":1 },
+    { "key": "anti_infantry_partisans", "filename": "anti_infantry_partisans.png", "xp": 2, "tier":1 },
+    { "key": "decoy", "filename": "decoy.png", "xp": 1, "tier":1,
+		"preferences": {
+			"fromUnits":{
+				"su_sniper_squad":5.0,
+				"su_guards_rifle_infantry":5.0
+			},
+			"fromUpgrades":{
+				"guards_rifle_infantry_call_in_free":5.0
+			}
+		}
+	},
+    { "key": "katyusha_rocket_strike", "filename": "katyusha_rocket_strike.png", "xp": 1, "tier":1 ,
+		"preferences": {
+			"fromUpgrades":{
+				"fragmentation_bomb":0.1,
+				"p_47_strafing_support":0.1,
+				"perimeter_overwatch":0.1
+			}
+		}
+	},
+    { "key": "t_34_wave", "filename": "t_34_wave.png", "xp": 2, "tier":3, "requiresAnyUnits":["su_t_34_tank"] ,
+		"preferences": {
+			"fromUnits":{
+				"su_t_34_tank":3.0
+			},
+			"fromUpgrades":{
+				"t_34_wave_free":0.1
+			}
+		}
+	},
+	{ "key": "smoke_ambush", "filename": "smoke_ambush.png", "xp": 2 , "tier":1,
+		"preferences": {
+			"fromUpgrades":{
+				"defensive_smoke":0.1,
+				"Mechanized_Doctrine_Smoke_Canisters":0.1,
+				"smoke_canisters_stuka_free":0.1
+			}
+		}
+	},
+    { "key": "ml_20_152mm_light_barrage", "filename": "ml_20_152mm_light_barrage.png", "xp": 1, "tier":1 ,
+		"preferences": {
+			"fromUpgrades":{
+				"panzerwerfer_light_barrage":0.1,
+				"concentration_barrage":0.1,
+				"howitzer_barrage":0.1
+			}
+		}
+	},
+    { "key": "recon_overflight", "filename": "recon_overflight.png", "xp": 1, "tier":1 ,
+		"preferences": {
+			"fromUpgrades":{
+				"recon_plane":0.1,
+				"recon_sweep":0.1
+			}
+		}
+	},
+	{ "key": "for_mother_russia", "filename": "for_mother_russia.png", "xp": 1 , "tier":1,
+		"preferences": {
+			"fromUpgrades":{
+				"tactical_movement":0.1,
+				"heroic_charge_free":0.1
+			}
+		}
+	}
   ]
 }

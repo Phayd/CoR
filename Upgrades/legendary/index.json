@@ -1,24 +1,23 @@
 {
   "items": [
-    { "key": "Tactical_Support_Calliope_Call-In_4xp", "filename": "Tactical_Support_Calliope_Call-In_4xp.png", "xp": 4 , "tier":3},
-    { "key": "Devil's_Brigade_Sherman_76s_4xp", "filename": "Devil's_Brigade_Sherman_76s_4xp.png", "xp": 4 , "tier":3, "call-in":"m4a3_sherman",
+    { "key": "sherman_76s_free", "filename": "sherman_76s_free.png", "xp": 4 , "tier":3, "call-in":"m4a3_sherman",
 		"preferences":{
 			"fromUnits":{
 				"m4a3_sherman":5.0
 			}
 		}
 	},
-    { "key": "Engineer_Assault_Company_M36_Jackson_5xp", "filename": "Engineer_Assault_Company_M36_Jackson_5xp.png", "xp": 5 , "tier":3},
-    { "key": "Urban_Assault_Company_Sherman_105mm_Dozer_5xp", "filename": "Urban_Assault_Company_Sherman_105mm_Dozer_5xp.png", "xp": 5 , "tier":3},
-    { "key": "Ranger_Company_West_Point_Reserves_4xp", "filename": "Ranger_Company_West_Point_Reserves_4xp.png", "xp": 4 , "tier":3, "call-in":"major",
+    { "key": "m36_jackson_call_in_free", "filename": "m36_jackson_call_in_free.png", "xp": 5 , "tier":3},
+    { "key": "sherman_105mm_dozer_call_in_free", "filename": "sherman_105mm_dozer_call_in_free.png", "xp": 5 , "tier":3},
+    { "key": "west_point_reserves", "filename": "west_point_reserves.png", "xp": 4 , "tier":3, "call-in":"major",
 		"preferences":{
 			"fromUnits":{
-				"major":3.0
+				"major":5.0
 			}
 		}
 	},
-    { "key": "Heavy_Cavalry_Company_Pershing_Call-In_5xp", "filename": "Heavy_Cavalry_Company_Pershing_Call-In_5xp.png", "xp": 5 , "tier":3},
-    { "key": "Recon_Support_Company_Airdropped_Group_5xp", "filename": "Recon_Support_Company_Airdropped_Group_5xp.png", "xp": 5 , "tier":2,
+    { "key": "pershing_call_in_free", "filename": "pershing_call_in_free.png", "xp": 5 , "tier":3},
+    { "key": "airdropped_group", "filename": "airdropped_group.png", "xp": 5 , "tier":2,
 		"preferences":{
 			"fromUnits":{
 				"m2_50cal_mg_team":3.0,
@@ -32,11 +31,11 @@
 			}
 		}
 	},
-    { "key": "Festung_Armor_Doctrine_Tiger_Call-In", "filename": "Festung_Armor_Doctrine_Tiger_Call-In.png", "xp": 5, "tier":3 },
+    { "key": "tiger_call_in_free", "filename": "tiger_call_in_free.png", "xp": 5, "tier":3 },
     { "key": "churchill_avre_call-in_free", "filename": "churchill_avre_call-in_free.png", "xp": 5, "tier":3 },
-    { "key": "Motor_Pool_Outmaneuver_5xp", "filename": "Motor_Pool_Outmaneuver_5xp.png", "xp": 5 , "tier":3},
-	{ "key": "emergency_war_speed", "filename": "emergency_war_speed.png", "xp": 5, "tier":3, "requiresAnyUpgrades":["churchill_avre_call-in_free"]},
-    { "key": "operation_crocodile", "filename": "operation_crocodile.png", "xp": 5, "tier":3, "call-in":"uk_churchill" },
+    { "key": "outmaneuver", "filename": "outmaneuver.png", "xp": 5 , "tier":3, "call-in":"us_pershing"},
+	{ "key": "emergency_war_speed", "filename": "emergency_war_speed.png", "xp": 5, "tier":3, "call-in":"uk_veteran_churchill_avre"},
+    { "key": "operation_crocodile_free", "filename": "operation_crocodile_free.png", "xp": 5, "tier":3, "call-in":"uk_churchill" },
     { "key": "king_tiger_call-in_free", "filename": "king_tiger_call-in_free.png", "xp": 5, "tier":3},
     { "key": "heat_shells_panther_free", "filename": "heat_shells_panther_free.png", "xp": 5, "tier":3, "call-in":"ok_panther" ,
 		"preferences":{
@@ -46,13 +45,24 @@
 			},
 			"fromUpgrades":{
 				"puma_call-in":3.0,
-				"puma_call-in_free":3.0
+				"puma_call_in_free":3.0
 			}
 		}
 	},
-    { "key": "jagdpanter_call-in_free", "filename": "jagdpanter_call-in_free.png", "xp": 4, "tier":3},
-    { "key": "breakthrough_tactics", "filename": "breakthrough_tactics.png", "xp": 5, "tier":3, "call-in":"ok_volksgrenadiers" },
+    { "key": "jagdpanther_call_in_free", "filename": "jagdpanther_call_in_free.png", "xp": 4, "tier":3},
+    { "key": "breakthrough_tactics_hetzer_free", "filename": "breakthrough_tactics_hetzer_free.png", "xp": 5, "tier":3, "call-in":"ok_volksgrenadiers" },
     { "key": "elefant_call-in_free", "filename": "elefant_call-in_free.png", "xp": 5, "tier":3},
-    { "key": "elite_sturmpanzer", "filename": "elite_sturmpanzer.png", "xp": 5, "tier":3, "call-in":"wm_brummbar" }
+    { "key": "elite_sturmpanzer", "filename": "elite_sturmpanzer.png", "xp": 5, "tier":3, "call-in":"wm_brummbar" },
+    { "key": "isu_152_factory_modifications", "filename": "isu_152_factory_modifications.png", "xp": 5, "tier":3, "call-in":"su_isu_152_heavy_assault_gun"  ,
+		"preferences":{
+			"fromUnits":{
+				"su_isu_152_heavy_assault_gun":3.0
+			},
+			"fromUpgrades":{
+				"isu-152_call-in_free":3.0
+			}
+		}
+	},
+    { "key": "isu_152_call_in_free", "filename": "isu_152_call_in_free.png", "xp": 5, "tier":3}
   ]
 }

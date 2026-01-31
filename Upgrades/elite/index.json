@@ -1,39 +1,52 @@
 {
   "items": [
-    { "key": "Engineer_Assault_Company_Sherman_105mm_Dozer_2xp", "filename": "Engineer_Assault_Company_Sherman_105mm_Dozer_2xp.png", "xp": 2 , "tier":3,
+    { "key": "calliope_call_in_free", "filename": "calliope_call_in_free.png", "xp": 4 , "tier":3},
+    { "key": "sherman_105mm_dozer_call_in", "filename": "sherman_105mm_dozer_call_in.png", "xp": 2 , "tier":3,
 		"preferences":{
 			"fromUpgrades":{
-				"Urban_Assault_Company_Sherman_105mm_Dozer_5xp":0.1
+				"sherman_105mm_dozer_call_in_free":0.1
+			},
+			"fromUnits":{
+				"us_sherman_105mm_bulldozer":0.1
 			}
 		}
 	},
-    { "key": "Urban_Assault_Company_M36_Jackson_2xp", "filename": "Urban_Assault_Company_M36_Jackson_2xp.png", "xp": 2 , "tier":3,
+    { "key": "m36_jackson_call_in", "filename": "m36_jackson_call_in.png", "xp": 2 , "tier":3,
 		"preferences":{
 			"fromUpgrades":{
-				"Engineer_Assault_Company_M36_Jackson_5xp":0.1
+				"m36_jackson_call_in_free":0.1
+			},
+			"fromUnits":{
+				"us_m36_jackson":0.1
 			}
 		}
 	},
-    { "key": "Motor_Pool_Pershing_Call-In_1xp", "filename": "Motor_Pool_Pershing_Call-In_1xp.png", "xp": 1 , "tier":3},
-    { "key": "Airborne_Company_p-47_anti-tank_rocket_strike_3xp", "filename": "Airborne_Company_p-47_anti-tank_rocket_strike_3xp.png", "xp": 3, "requiresAnyCommanders": ["Pathfinder_Company"] , "tier":1},
-    { "key": "Mechanized_Company_Veteran_Wolverines_4xp", "filename": "Mechanized_Company_Veteran_Wolverines_4xp.png", "xp": 4 , "tier":3, "call-in":"m10_wolverine",
+    { "key": "pershing_call_in", "filename": "pershing_call_in.png", "xp": 1 , "tier":3,
+		"preferences":{
+			"fromUpgrades":{
+				"pershing_call_in_free":0.1
+			}
+		}
+	},
+    { "key": "p_47_anti_tank_rocket_strike", "filename": "p_47_anti_tank_rocket_strike.png", "xp": 3, "requiresAnyCommanders": ["Pathfinder_Company"] , "tier":1},
+    { "key": "veteran_wolverines_free", "filename": "veteran_wolverines_free.png", "xp": 4 , "tier":3, "call-in":"m10_wolverine",
 		"preferences":{
 			"fromUnits":{
-				"m10_wolverine":3.0
+				"m10_wolverine":5.0
 			}
 		}
 	},
     { "key": "17_pdr_emplacement", "filename": "17_pdr_emplacement.png", "xp": 3 , "tier":2},
-    { "key": "comet_call-in_free", "filename": "comet_call-in_free.png", "xp": 5 , "tier":3},
-    { "key": "firefly_call-in_free", "filename": "firefly_call-in_free.png", "xp": 4 , "tier":3},
-    { "key": "valentine_mk_xi_call-in_free", "filename": "valentine_mk_xi_call-in_free.png", "xp": 4 , "tier":3,
+    { "key": "comet_call_in_free", "filename": "comet_call_in_free.png", "xp": 5 , "tier":3},
+    { "key": "firefly_call_in_free", "filename": "firefly_call_in_free.png", "xp": 4 , "tier":3},
+    { "key": "valentine_mk_xi_call_in_free", "filename": "valentine_mk_xi_call_in_free.png", "xp": 4 , "tier":3,
 		"preferences":{
 			"fromUnits":{
 				"uk_valentine_mk_xi":0.1
 			}
 		}
 	},
-    { "key": "Veteran_Centaurs", "filename": "Veteran_Centaurs.png", "xp": 4 , "tier":3, "call-in":"uk_centaur_aa",
+    { "key": "veteran_centaurs", "filename": "veteran_centaurs.png", "xp": 4 , "tier":3, "call-in":"uk_centaur_aa",
 		"preferences":{
 			"fromUnits":{
 				"uk_centaur_aa":5.0
@@ -47,26 +60,88 @@
 			}
 		}
 	},
-    { "key": "Armor_Company_Sherman_Easy_Eight_4xp", "filename": "Armor_Company_Sherman_Easy_Eight_4xp.png", "xp": 4 , "tier":3},
-    { "key": "Pathfinder_Company_Airdropped_Combat_Group_3xp", "filename": "Pathfinder_Company_Airdropped_Combat_Group_3xp.png", "xp": 3 , "tier":3},
-    { "key": "Jaeger_Infantry_Doctrine_Veteran_Ostwinds", "filename": "Jaeger_Infantry_Doctrine_Veteran_Ostwinds.png", "xp": 4, "tier":3, "call-in":"wm_ostwind" },
+    { "key": "sherman_easy_eight_call_in_free", "filename": "sherman_easy_eight_call_in_free.png", "xp": 4 , "tier":3},
+    { "key": "airdropped_combat_group", "filename": "airdropped_combat_group.png", "xp": 3 , "tier":3},
+    { "key": "veteran_ostwinds_free", "filename": "veteran_ostwinds_free.png", "xp": 4, "tier":3, "call-in":"wm_ostwind" ,
+		"preferences":{
+			"fromUnits":{
+				"wm_ostwind":5.0
+			}
+		}
+	},
     { "key": "hold_the_line", "filename": "hold_the_line.png", "xp": 1, "tier":1 },
-    { "key": "veteran_pak_43_free", "filename": "veteran_pak_43_free.png", "xp": 4, "tier":1, "requiresAnyUnits":["ok_sturmpioneers"]	},
-    { "key": "flammpanzer_38_hetzer_free", "filename": "flammpanzer_38_hetzer_free.png", "xp": 4, "tier":3 },
+    { "key": "veteran_pak_43_free", "filename": "veteran_pak_43_free.png", "xp": 4, "tier":1, "requiresAnyUnits":["ok_sturmpioneers"]},
+    { "key": "flammpanzer_38_hetzer_call_in_free", "filename": "flammpanzer_38_hetzer_call_in_free.png", "xp": 4, "tier":3 },
     { "key": "target_weak_point", "filename": "target_weak_point.png", "xp": 4, "tier":2, "call-in":"ok_stug_iii_g_assault_gun",
 		"preferences":{
 			"fromUnits":{
-				"ok_stug_iii_g_assault_gun":3.0,
-				"stug_iii_g":3.0
+				"ok_stug_iii_g_assault_gun":5.0,
+				"stug_iii_g":5.0
+			},
+			"fromUpgrades":{
+				"stug_iii_g_call_in_free":5.0
 			}
 		}
 	},
     { "key": "flame_projectors_free_sdkfz_251", "filename": "flame_projectors_free_sdkfz_251.png", "xp": 4, "tier":2, "call-in":"wm_sdkfz_251",
 		"preferences":{
 			"fromUnits":{
-				"wm_sdkfz_251":3.0
+				"wm_sdkfz_251":5.0
+			},
+			"fromUpgrades":{
+				"sdkfz_251_half_track_call_in_free":5.0,
+				"sdkfz_251_half_track_call_in":5.0
 			}
 		}
-	}
+	},
+    { "key": "battlefield_promotions", "filename": "battlefield_promotions.png", "xp": 2, "tier":1, "call-in":"su_shock_troops",
+		"preferences":{
+			"fromUnits":{
+				"su_conscripts":3.0
+			}
+		}
+	},
+    { "key": "rapid_conscription_free", "filename": "rapid_conscription_free.png", "xp": 4, "tier":1, "call-in":"su_penal_battalion"},
+    { "key": "isu-152_call-in", "filename": "isu-152_call-in.png", "xp": 1, "tier":3,
+		"preferences":{
+			"fromUpgrades":{
+				"isu_152_call_in_free":0.1
+			}
+		}
+	},
+    { "key": "t_34_wave_free", "filename": "t_34_wave_free.png", "xp": 4, "tier":3, "call-in":"su_t_34_tank",
+		"preferences":{
+			"fromUnits":{
+				"su_t_34_tank":3.0
+			}
+		}
+	},
+    { "key": "wave_and_shell", "filename": "wave_and_shell.png", "xp": 5, "tier":3, "call-in":"su_t_34_tank"},
+    { "key": "veteran_su_85s_call_in_free", "filename": "veteran_su_85s_call_in_free.png", "xp": 4, "tier":3, "call-in":"su_su-85_tank_destroyer",
+		"preferences":{
+			"fromUnits":{
+				"su_su-85_tank_destroyer":3.0
+			}
+		}
+	},
+    { "key": "kv_8_flame_tank_free", "filename": "kv_8_flame_tank_free.png", "xp": 4, "tier":3,
+		"preferences":{
+			"fromUnits":{
+				"su_kv_8_flamethrower_tank":3.0
+			}
+		}
+	},
+    { "key": "t_34_85_medium_tank_call_in_free", "filename": "t_34_85_medium_tank_call_in_free.png", "xp": 4, "tier":3},
+    { "key": "is_2_122mm_shells", "filename": "is_2_122mm_shells.png", "xp": 5, "tier":3, "call-in":"su_is_2_heavy_tank",
+		"preferences":{
+			"fromUnits":{
+				"su_is_2_heavy_tank":5.0
+			},
+			"fromUpgrades":{
+				"is_2_heavy_tank_call_in":5.0
+			}
+		}
+	},
+    { "key": "kv_2_assault_gun_call_in_free", "filename": "kv_2_assault_gun_call_in_free.png", "xp": 4, "tier":3}
   ]
 }
