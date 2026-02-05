@@ -18,7 +18,7 @@
 			}
 		}
 	},
-	{ "key": "Mechanized_Doctrine_Smoke_Canisters", "filename": "Mechanized_Doctrine_Smoke_Canisters.png", "xp": 2 , "tier":1,
+	{ "key": "smoke_canisters", "filename": "smoke_canisters.png", "xp": 2 , "tier":1,
 		"preferences": {
 			"fromUpgrades":{
 				"defensive_smoke":0.1,
@@ -196,7 +196,7 @@
     { "key": "forward_hq", "filename": "forward_hq.png", "xp": 2, "tier":1 , "requiresAnyUnits":["su_conscripts"]},
     { "key": "anti_tank_partisans_free", "filename": "anti_tank_partisans.png", "xp": 3, "tier":1 },
     { "key": "anti_infantry_partisans", "filename": "anti_infantry_partisans.png", "xp": 2, "tier":1 },
-    { "key": "decoy", "filename": "decoy.png", "xp": 1, "tier":1,
+    { "key": "decoy", "filename": "decoy.png", "xp": 1, "tier":1, "requiresAnyUnits":["su_sniper_squad","su_guards_rifle_infantry"],
 		"preferences": {
 			"fromUnits":{
 				"su_sniper_squad":5.0,
