@@ -4,7 +4,7 @@
 
   App.clamp = (n, min, max) => Math.max(min, Math.min(max, n));
 
-  App.applyAspectClass = function(imgEl){
+   App.applyAspectClass = function(imgEl){
     if(!imgEl) return;
     imgEl.classList.add('aspect-aware');
 
@@ -15,7 +15,7 @@
       const portrait = nh > nw;
       imgEl.classList.toggle('portrait', portrait);
       imgEl.classList.toggle('landscape', !portrait);
-    };
+    }; 
 
     if(imgEl.complete) set();
     else imgEl.addEventListener('load', set, { once:true });
@@ -35,9 +35,9 @@
     cards.forEach((c, i) => c.classList.toggle('is-active', i === activeIndex));
   };
 
-App.bindSwipeTrackOnce = function(trackEl, getCount, getStep, onSetIndex){
-  // Always update the live callbacks (important!)
-  trackEl._swipeCfg = { getCount, getStep, onSetIndex };
+App.bindSwipeTrackOnce = function(trackEl, getCount, getStep, onSetIndex, extraCfg){
+  // Always update the live callbacks + optional config (important!)
+  trackEl._swipeCfg = Object.assign({}, extraCfg || {}, { getCount, getStep, onSetIndex });
 
   // If already bound, we're done. The listeners will use _swipeCfg.
   if(trackEl.dataset.swipeBound === '1') return;
@@ -55,6 +55,25 @@ App.bindSwipeTrackOnce = function(trackEl, getCount, getStep, onSetIndex){
     return 0;
   }
 
+ function resolveCenterOffset(cfg, stepFallback){
+  const viewportEl =
+    (typeof cfg.getViewportEl === 'function'
+      ? cfg.getViewportEl()
+      : trackEl.parentElement);
+
+  const slideSelector = cfg.slideSelector || '.picker-slide';
+
+  if (typeof App.getCenterOffset === 'function' && viewportEl){
+    return App.getCenterOffset(trackEl, viewportEl, slideSelector);
+  }
+
+  // hard fallback (should rarely hit)
+  const viewportW = viewportEl?.getBoundingClientRect().width || 0;
+  const slideEl = trackEl.querySelector(slideSelector);
+  const slideW = slideEl?.getBoundingClientRect().width || stepFallback || viewportW;
+  return (viewportW - slideW) / 2;
+}
+
   trackEl.addEventListener('pointerdown', (e) => {
     const cfg = trackEl._swipeCfg;
 
@@ -66,12 +85,14 @@ App.bindSwipeTrackOnce = function(trackEl, getCount, getStep, onSetIndex){
     drag.baseX = readCurrentX();
 
     const count = cfg.getCount();
+    const centerOffset = resolveCenterOffset(cfg, drag.step);
+
     drag.idx = drag.step
-      ? App.clamp(Math.round(-drag.baseX / drag.step), 0, Math.max(0, count - 1))
+      ? App.clamp(Math.round((centerOffset - drag.baseX) / drag.step), 0, Math.max(0, count - 1))
       : 0;
 
     trackEl.classList.remove('is-animating');
-    trackEl.setPointerCapture(e.pointerId);
+    trackEl.setPointerCapture?.(e.pointerId);
   });
 
   trackEl.addEventListener('pointermove', (e) => {
@@ -85,8 +106,13 @@ App.bindSwipeTrackOnce = function(trackEl, getCount, getStep, onSetIndex){
 
     const count = cfg.getCount();
     const step = drag.step || cfg.getStep();
-    const minX = -(count - 1) * step;
-    const maxX = 0;
+    if(!step) return;
+
+    const centerOffset = resolveCenterOffset(cfg, step);
+
+	const minX = -(count - 1) * step;
+	const maxX = 0;
+
 
     if(x > maxX) x = maxX + (x - maxX) * 0.25;
     if(x < minX) x = minX + (x - minX) * 0.25;
@@ -104,10 +130,22 @@ App.bindSwipeTrackOnce = function(trackEl, getCount, getStep, onSetIndex){
     if(!step) return;
 
     const dx = drag.lastX - drag.startX;
-    const x  = drag.baseX + dx;
+    let x  = drag.baseX + dx;
 
     const count = cfg.getCount();
-    const next = App.clamp(Math.round(-x / step), 0, Math.max(0, count - 1));
+    const centerOffset = resolveCenterOffset(cfg, step);
+
+    const minX = centerOffset - (count - 1) * step;
+    const maxX = centerOffset;
+
+    if(x > maxX) x = maxX + (x - maxX) * 0.25;
+    if(x < minX) x = minX + (x - minX) * 0.25;
+
+    const next = App.clamp(
+      Math.round(-x / step),
+      0,
+      Math.max(0, count - 1)
+    );
 
     drag.idx = next;
     cfg.onSetIndex(next);
@@ -125,6 +163,7 @@ App.bindSwipeTrackOnce = function(trackEl, getCount, getStep, onSetIndex){
   
   App.weightedPickOne = function(items, getWeight){
 	  let total = 0;
+	  items = App.shuffleArray(items);
 	  const weights = items.map(it => {
 		const w = Math.max(0, Number(getWeight(it)) || 0);
 		total += w;
@@ -168,38 +207,86 @@ App.bindSwipeTrackOnce = function(trackEl, getCount, getStep, onSetIndex){
 
 	  return mult;
 	};
-App.parseTranslateX = function parseTranslateX(t){
-  if(!t || t === 'none') return null;
+	
+	App.parseTranslateX = function parseTranslateX(t){
+	  if(!t || t === 'none') return null;
 
-  // translateX(-123px)
-  let m = t.match(/translateX\(\s*([-0-9.]+)px\s*\)/i);
-  if(m){
-    const x = Number(m[1]);
-    return Number.isFinite(x) ? x : null;
-  }
+	  // translateX(-123px)
+	  let m = t.match(/translateX\(\s*([-0-9.]+)px\s*\)/i);
+	  if(m){
+		const x = Number(m[1]);
+		return Number.isFinite(x) ? x : null;
+	  }
 
-  // translate3d(-123px, 0px, 0px)
-  m = t.match(/translate3d\(\s*([-0-9.]+)px\s*,/i);
-  if(m){
-    const x = Number(m[1]);
-    return Number.isFinite(x) ? x : null;
-  }
+	  // translate3d(-123px, 0px, 0px)
+	  m = t.match(/translate3d\(\s*([-0-9.]+)px\s*,/i);
+	  if(m){
+		const x = Number(m[1]);
+		return Number.isFinite(x) ? x : null;
+	  }
 
-  // matrix(a,b,c,d,tx,ty)
-  m = t.match(/matrix\(\s*[^,]+,\s*[^,]+,\s*[^,]+,\s*[^,]+,\s*([-0-9.]+),/i);
-  if(m){
-    const x = Number(m[1]);
-    return Number.isFinite(x) ? x : null;
-  }
+	  // matrix(a,b,c,d,tx,ty)
+	  m = t.match(/matrix\(\s*[^,]+,\s*[^,]+,\s*[^,]+,\s*[^,]+,\s*([-0-9.]+),/i);
+	  if(m){
+		const x = Number(m[1]);
+		return Number.isFinite(x) ? x : null;
+	  }
 
-  // matrix3d(..., tx, ty, tz)
-  m = t.match(/matrix3d\((.+)\)/i);
-  if(m){
-    const parts = m[1].split(',').map(s => Number(s.trim()));
-    if(parts.length === 16 && Number.isFinite(parts[12])) return parts[12]; // m41
-  }
+	  // matrix3d(..., tx, ty, tz)
+	  m = t.match(/matrix3d\((.+)\)/i);
+	  if(m){
+		const parts = m[1].split(',').map(s => Number(s.trim()));
+		if(parts.length === 16 && Number.isFinite(parts[12])) return parts[12]; // m41
+	  }
 
-  return null;
+	  return null;
+	};
+
+App.getCenterOffset = function(trackEl, viewportEl, slideSelector){
+  if(!trackEl || !viewportEl) return 0;
+
+  const slide = trackEl.querySelector(slideSelector);
+  if(!slide) return 0;
+
+  const vpRect = viewportEl.getBoundingClientRect();
+  const slRect = slide.getBoundingClientRect();
+
+  const cs = getComputedStyle(viewportEl);
+  const pl = parseFloat(cs.paddingLeft) || 0;
+  const pr = parseFloat(cs.paddingRight) || 0;
+
+  const viewportW = vpRect.width - pl - pr;
+  const slideW = slRect.width;
+
+  return pl + (viewportW - slideW) / 2;
 };
+
+App.spawnFloatingXP = function(anchorEl, text){
+  if(!anchorEl) return;
+
+  const r = anchorEl.getBoundingClientRect();
+
+  const el = document.createElement('div');
+  el.className = 'floating-xp';
+  
+  el.textContent = text;
+
+  el.style.left = `${r.left + r.width / 2}px`;
+  el.style.top  = `${r.top - 4}px`;
+
+  document.body.appendChild(el);
+
+  el.addEventListener('animationend', () => {
+    el.remove();
+  });
+};
+
+App.shuffleArray = function (arr){
+  for(let i = arr.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
 
 })();

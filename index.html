@@ -55,18 +55,18 @@
 		  
 		  </div>
 		</div>
-		<div id="aiLaunchers" class="ai-launchers is-hidden">
+		<div id="aiLaunchers" class="ai-launchers">
 		  <img
 			id="aiCardBtn"
-			class="ai-card-thumb"
+			class="ai-card-thumb is-hidden"
 			src="AICards/ai_action_phase_1.jpg"
 			alt="AI Card Phase 1"
 			title="View Phase 1 AI Card"
 		  />
 
 		  <img
-			id="aiCardBtnP2"
-			class="ai-card-thumb"
+			id="aiCardBtn2"
+			class="ai-card-thumb is-hidden"
 			src="AICards/ai_action_phase_2.jpg"
 			alt="AI Card Phase 2"
 			title="View Phase 2 AI Card"
@@ -119,12 +119,24 @@
 <!-- PICKER MODAL (reusable for Commanders / Upgrades / UnitSwap) -->
 <div class="modal" id="pickerModal">
   <div class="modal-content" id="pickerModalContent">
-    <div class="modal-header">
-      <div style="display:flex; flex-direction:column; gap:4px;">
+    <div id="modal-header" class="modal-header">
+      <div id="modal-title-wrapper">
         <h3 id="pickerTitle" style="margin:0;">Pick</h3>
         <div id="pickerSubTitle" style="opacity:.85; font-size:14px;"></div>
       </div>
-      <span class="modal-close" id="pickerClose">×</span>
+	  <div id="modal-controls">
+		<div id="modal-controls-back">
+        <span id="pickerBackBtn">◄</span>
+		</div>
+		<div id="modal-controls-reroll">
+        <span id="pickerRerollBtn" class="icon-btn">
+		  ⟳
+		</span>
+		</div>
+		<div id="modal-controls-close">
+		<span class="modal-close" id="pickerClose">☒</span>
+		</div>
+	  </div>
     </div>
 
     <div class="modal-body">
@@ -144,11 +156,7 @@
 
      
 
-      <!-- Footer -->
-      <div id="pickerFooter" style="margin-top:12px; display:flex; gap:10px; justify-content:flex-end; align-items:center;">
-        <button id="pickerBackBtn" class="danger" style="display:none;">Back</button>
-        <button id="pickerRerollBtn" style="display:none;">Re-roll</button>
-      </div>
+
     </div>
   </div>
 </div>
@@ -158,7 +166,7 @@
   <div class="modal-content" id="imageViewerModalContent" style="width:900px; max-width:92vw;">
     <div class="modal-header">
       <h3 id="imageViewerTitle" style="margin:0;">Card</h3>
-      <span class="modal-close" id="closeImageViewerModal">×</span>
+      <span class="modal-close" id="closeImageViewerModal">☒</span>
     </div>
     <div class="modal-body" style="display:flex; justify-content:center; align-items:center;">
 		<div class="image-viewer-wrap">
@@ -174,7 +182,7 @@
   <div class="modal-content" id="aiCardModalContent">
     <div class="modal-header">
       <h3 style="margin:0;">AI Action Card</h3>
-      <span class="modal-close" id="closeAICardModal" aria-label="Close">×</span>
+      <span class="modal-close" id="closeAICardModal" aria-label="Close">☒</span>
     </div>
 
     <div class="modal-body" style="display:flex; gap:12px;">
@@ -194,7 +202,7 @@
 		  type="button"
 		  aria-label="Refresh AI Card"
 		  title="Refresh AI Card"
-		>↻</button>
+		>⟳</button>
 	  </div>
 
 	</div>
@@ -206,7 +214,16 @@
   <div class="modal-content" id="aiRefModalContent">
     <div class="modal-header">
       <h3 style="margin:0;">AI Rules Reference</h3>
-      <span class="modal-close" id="closeAIRefModal">×</span>
+		<div id="modal-controls-back">
+        <span id="pickerBackBtn">◄</span>
+		</div>
+		<div id="modal-controls-reroll">
+			<span id="pickerRerollBtn" class="icon-btn">⟳</span>
+		</div>
+
+		<div id="modal-controls-close">
+			<span class="modal-close" id="closeAIRefModal">☒</span>
+		</div>
     </div>
     <div class="modal-body" style="display:flex; justify-content:center;">
       <img id="aiRefImg" alt="AI Reference" style="max-width:100%; height:auto;" />

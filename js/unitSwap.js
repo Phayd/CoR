@@ -16,6 +16,8 @@
     App.pendingSwapTier = null;
     App.pendingNewUnit = null;
     App.pendingUnitChoices = [];
+	App.rerollCost = 1;
+
 
     d.unitSwapGrid.innerHTML = '';
     d.unitReplaceGrid.innerHTML = '';
@@ -174,24 +176,37 @@
 
     const getStep = () => App.getTrackStepPx(d.unitSwapTrack, '.us-slide');
 
-    function setIndex(next){
-      const max = App.pendingUnitChoices.length - 1;
-      activeIndex = Math.max(0, Math.min(max, next));
-      d.unitSwapTrack._setDragIndex?.(activeIndex);
+	function setIndex(next){
+	  const max = App.pendingUnitChoices.length - 1;
+	  activeIndex = Math.max(0, Math.min(max, next));
+	  d.unitSwapTrack._setDragIndex?.(activeIndex);
 
-      const step = getStep() || d.unitSwapCarousel.clientWidth;
-      d.unitSwapTrack.classList.add('is-animating');
-      d.unitSwapTrack.style.transform = `translateX(${-activeIndex * step}px)`;
-      App.setActiveCard(d.unitSwapTrack, '.us-card', activeIndex);
-      setTimeout(() => d.unitSwapTrack.classList.remove('is-animating'), 300);
-    }
+	  const viewportEl = d.unitSwapCarousel || d.unitSwapTrack.parentElement;
 
-    App.bindSwipeTrackOnce(
-      d.unitSwapTrack,
-      () => App.pendingUnitChoices.length,
-      getStep,
-      (i) => setIndex(i)
-    );
+	  const step =
+		getStep() ||
+		(viewportEl?.getBoundingClientRect().width || d.unitSwapCarousel.clientWidth);
+
+	  const centerOffset = App.getCenterOffset
+		? App.getCenterOffset(d.unitSwapTrack, viewportEl, '.us-slide')
+		: 0;
+
+	  d.unitSwapTrack.classList.add('is-animating');
+	  d.unitSwapTrack.style.transform = `translateX(${-activeIndex * step}px)`;
+	  App.setActiveCard(d.unitSwapTrack, '.us-card', activeIndex);
+	  setTimeout(() => d.unitSwapTrack.classList.remove('is-animating'), 300);
+	}
+
+	App.bindSwipeTrackOnce(
+	  d.unitSwapTrack,
+	  () => App.pendingUnitChoices.length,
+	  getStep,
+	  (i) => setIndex(i),
+	  {
+		slideSelector: '.us-slide',
+		getViewportEl: () => d.unitSwapCarousel || d.unitSwapTrack.parentElement
+	  }
+	);
 
     requestAnimationFrame(() => setIndex(0));
   };
@@ -304,23 +319,36 @@
 
     const getStep = () => App.getTrackStepPx(d.unitReplaceTrack, '.us-slide');
 
-    function setIndex(next){
-      activeIndex = Math.max(0, Math.min(1, next));
-      d.unitReplaceTrack._setDragIndex?.(activeIndex);
+	function setIndex(next){
+	  activeIndex = Math.max(0, Math.min(1, next));
+	  d.unitReplaceTrack._setDragIndex?.(activeIndex);
 
-      const step = getStep() || d.unitReplaceCarousel.clientWidth;
-      d.unitReplaceTrack.classList.add('is-animating');
-      d.unitReplaceTrack.style.transform = `translateX(${-activeIndex * step}px)`;
-      App.setActiveCard(d.unitReplaceTrack, '.us-card', activeIndex);
-      setTimeout(() => d.unitReplaceTrack.classList.remove('is-animating'), 300);
-    }
+	  const viewportEl = d.unitReplaceCarousel || d.unitReplaceTrack.parentElement;
 
-    App.bindSwipeTrackOnce(
-      d.unitReplaceTrack,
-      () => 2,
-      getStep,
-      (i) => setIndex(i)
-    );
+	  const step =
+		getStep() ||
+		(viewportEl?.getBoundingClientRect().width || d.unitReplaceCarousel.clientWidth);
+
+	  const centerOffset = App.getCenterOffset
+		? App.getCenterOffset(d.unitReplaceTrack, viewportEl, '.us-slide')
+		: 0;
+
+	  d.unitReplaceTrack.classList.add('is-animating');
+	  d.unitReplaceTrack.style.transform = `translateX(-activeIndex * step}px)`;
+	  App.setActiveCard(d.unitReplaceTrack, '.us-card', activeIndex);
+	  setTimeout(() => d.unitReplaceTrack.classList.remove('is-animating'), 300);
+	}
+
+	App.bindSwipeTrackOnce(
+	  d.unitReplaceTrack,
+	  () => 2,
+	  getStep,
+	  (i) => setIndex(i),
+	  {
+		slideSelector: '.us-slide',
+		getViewportEl: () => d.unitReplaceCarousel || d.unitReplaceTrack.parentElement
+	  }
+	);
 
     requestAnimationFrame(() => setIndex(0));
   };
@@ -333,15 +361,69 @@
   await App.openUnitSwapFlow();
 };
 
-  
-  App.openUnitSwapFlow = async function openUnitSwapFlow(){
+App.openUnitSwapFlow = async function(){
   await App.loadUnitCatalogOnce();
+  if(App.pendingUnitChoices?.length){
+    console.warn('openUnitSwapFlow called with active swap state');
+  }
 
-  // determine tier/choices (your existing logic)
   App.unitSwapTriggerCount += 1;
   App.pendingSwapTier = (App.unitSwapTriggerCount === 1) ? 2 : 3;
 
-  const choices = App.pickTwoUnitsForTier(App.pendingSwapTier);
+  App.rerollCost = 1;
+  App.openUnitSwapChoicePicker();
+};
+
+App.openUnitSwapChoiceFromState = function(){
+  if(!App.pendingUnitChoices || App.pendingUnitChoices.length < 2) return;
+
+  const tier = App.pendingSwapTier;
+  const choices = App.pendingUnitChoices;
+
+  const items = choices.map(id => {
+    const u = App.unitCatalog.units[id];
+    return {
+      id,
+      imgSrc: `Units/${u.card}`,
+      label: u.name || id,
+      meta: { unitId: id }
+    };
+  });
+
+  App.picker.open({
+    title: `TIER ${tier} REINFORCEMENTS UNLOCKED`,
+    subTitle: 'CHOOSE NEW CORE UNIT',
+    items,
+    gridCols: 2,
+
+    showReroll: true,
+    rerollText: `Re-roll (-${App.rerollCost} XP)`,
+
+    onReroll: () => {
+      if(App.xp < App.rerollCost){
+        App.picker.flashDenied?.();
+        return;
+      }
+
+      App.updateXP(-App.rerollCost);
+      App.rerollCost++;
+
+      // 🔁 explicit reroll only happens here
+      App.openUnitSwapChoicePicker();
+    },
+
+    onPick: (it) => {
+      App.pendingNewUnit = it.id;
+      App.openUnitSwapReplaceStep();
+    }
+  });
+};
+
+
+App.openUnitSwapChoicePicker = function(){
+  const tier = App.pendingSwapTier;
+
+  const choices = App.pickTwoUnitsForTier(tier);
   if(choices.length < 2) return;
 
   App.pendingUnitChoices = choices;
@@ -358,16 +440,35 @@
   });
 
   App.picker.open({
-    title: `TIER ${App.pendingSwapTier} REINFORCEMENTS UNLOCKED`,
+    title: `TIER ${tier} REINFORCEMENTS UNLOCKED`,
     subTitle: 'CHOOSE NEW CORE UNIT',
     items,
-	gridCols: 2,
+    gridCols: 2,
+
+    showReroll: true,
+    rerollText: `Re-roll (-${App.rerollCost} XP)`,
+
+    onReroll: () => {
+      if(App.xp < App.rerollCost){
+        App.picker.flashDenied?.(); // see UI section
+        return;
+      }
+
+      App.updateXP(-App.rerollCost);
+      App.rerollCost++;
+
+      App.openUnitSwapChoicePicker();
+    },
+
     onPick: (it) => {
       App.pendingNewUnit = it.id;
-      App.openUnitSwapReplaceStep(); // go step2
+      App.openUnitSwapReplaceStep();
     }
   });
 };
+
+
+
 App.openUnitSwapReplaceStep = function openUnitSwapReplaceStep(){
   const newId = App.pendingNewUnit;
   const newU = App.unitCatalog.units[newId];
@@ -389,7 +490,7 @@ App.openUnitSwapReplaceStep = function openUnitSwapReplaceStep(){
     items,
 	gridCols: 2,
     showBack: true,
-    onBack: () => App.openUnitSwapFlow(), // go back to step1
+    onBack: () => App.openUnitSwapChoiceFromState(), // go back to step1
     onPick: async (it) => {
       const idx = it.meta.idx;
       const prev = App.activeBuildSlots[idx];

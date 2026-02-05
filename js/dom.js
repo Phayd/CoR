@@ -13,7 +13,7 @@
 	 
 	aiLaunchers: $('aiLaunchers'),
 	aiCardBtn: $('aiCardBtn'),
-	aiCardBtnP2: $('aiCardBtnP2'),
+	aiCardBtn2: $('aiCardBtn2'),
 	aiCardStage: $('aiCardStage'),
 	aiCardModal: $('aiCardModal'),
 	aiCardModalImg: $('aiCardModalImg'),
@@ -56,11 +56,14 @@
 	pickerGrid: $('pickerGrid'),
 	pickerCarousel: $('pickerCarousel'),
 	pickerTrack: $('pickerTrack'),
-	pickerFooter: $('pickerFooter'),
 	pickerBackBtn: $('pickerBackBtn'),
 	pickerRerollBtn: $('pickerRerollBtn'),
 	pickerArrowLeft: $('pickerArrowLeft'),
 	pickerArrowRight: $('pickerArrowRight'),
+	pickerControls: $('modal-controls'),
+	pickerControlsBackBtn: $('modal-controls-back'),
+	pickerControlsRerollBtn: $('modal-controls-reroll'),
+	pickerControlsCloseBtn: $('modal-controls-close'),
 
 	
 	// image viewer modal

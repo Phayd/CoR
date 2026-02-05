@@ -4,9 +4,9 @@
 
   App.xp = 3;
   App.rerollCost = 1;
+  App.unitSwapTriggerCount = 0;
 
   App.activeBuildSlots = [null, null];
-  App.unitSwapTriggerCount = 0;
 
   App.pendingSwapTier = null;
   App.pendingNewUnit = null;
@@ -25,6 +25,8 @@
 
   App.TIER_2_UNLOCK_COUNT = 3;
   App.TIER_3_UNLOCK_COUNT = 6;
+  
+
   
   App._xpBeforeIgnore = null;
   App._xpIgnoreEnabled = false;

@@ -24,14 +24,7 @@
     slotEl.innerHTML = '';
 
     const wrap = document.createElement('div');
-    wrap.style.display = 'flex';
-    wrap.style.flexDirection = 'column';
-    wrap.style.alignItems = 'center';
-    wrap.style.justifyContent = 'center';
-    wrap.style.width = '100%';
-    wrap.style.height = '100%';
-    wrap.style.boxSizing = 'border-box';
-    wrap.style.padding = '2px';
+	wrap.classList.add('build-slot-inner');
 
     const name = document.createElement('div');
     name.textContent = (unitDef && unitDef.name) ? unitDef.name : 'Unknown Unit';
@@ -48,12 +41,17 @@
     name.style.textAlign = 'center';
     wrap.appendChild(name);
 
+	const imgHolder = document.createElement('div');
+	imgHolder.classList.add('build-slot-img');
+	wrap.appendChild(imgHolder);
+	
     if(unitDef && unitDef.card){
       const img = document.createElement('img');
-      img.src = `Units/${unitDef.card}`;
+	  img.src= (unitDef.name=="None") ? 'Units/None.png' : `Units/${unitDef.card}`;
+
       img.classList.add('aspect-aware');
       App.applyAspectClass(img);
-      wrap.appendChild(img);
+      imgHolder.appendChild(img);
     }
 
     slotEl.appendChild(wrap);

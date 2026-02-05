@@ -33,7 +33,9 @@
     // gating state
     App.activeCommanderKey = cmd.key;
 
-	if(App.dom.aiLaunchers) App.dom.aiLaunchers.classList.remove('is-hidden');
+	// if(App.dom.aiLaunchers) App.dom.aiLaunchers.classList.remove('is-hidden');
+	if(App.dom.aiCardBtn) App.dom.aiCardBtn.classList.remove('is-hidden');
+	if(App.dom.aiCardBtn2) App.dom.aiCardBtn2.classList.remove('is-hidden');
 
     const su = Array.isArray(cmd.startingUnits) ? cmd.startingUnits : [];
     App.activeBuildSlots = [su[0] || null, su[1] || null];

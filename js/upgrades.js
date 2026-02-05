@@ -16,7 +16,7 @@
   App.closeUpgradeModal = function(){
     d.upgradeModal.style.display = 'none';
     App.rerollCost = 1;
-    d.rerollBtn.textContent = 'Re-roll (-1 XP)';
+    d.rerollBtn.textContent = `Re-roll (-${App.rerollCost} XP)`;
     d.rerollBtn.classList.remove('reroll-danger');
     if(App.hideHoverPopup) App.hideHoverPopup();
   };
@@ -381,25 +381,38 @@
 
   const getStep = () => App.getTrackStepPx(d.upgradeTrack, '.upg-slide');
 
-  function setIndex(next){
-    const max = picked.length - 1;
-    activeIndex = Math.max(0, Math.min(max, next));
-    d.upgradeTrack._setDragIndex?.(activeIndex);
+	function setIndex(next){
+	  const max = picked.length - 1;
+	  activeIndex = Math.max(0, Math.min(max, next));
+	  d.upgradeTrack._setDragIndex?.(activeIndex);
 
-    const step = getStep() || d.upgradeCarousel.clientWidth;
-    d.upgradeTrack.classList.add('is-animating');
-    d.upgradeTrack.style.transform = `translateX(${-activeIndex * step}px)`;
-    App.setActiveCard(d.upgradeTrack, '.upg-card', activeIndex);
-    setTimeout(() => d.upgradeTrack.classList.remove('is-animating'), 300);
-  }
+	  const viewportEl = d.upgradeCarousel || d.upgradeTrack.parentElement;
 
-  // Bind swipe (once)
-  App.bindSwipeTrackOnce(
-    d.upgradeTrack,
-    () => picked.length,
-    getStep,
-    (i) => setIndex(i)
-  );
+	  const step =
+		getStep() ||
+		(viewportEl?.getBoundingClientRect().width || d.upgradeCarousel.clientWidth);
+
+	  const centerOffset = App.getCenterOffset
+		? App.getCenterOffset(d.upgradeTrack, viewportEl, '.upg-slide')
+		: 0;
+
+	  d.upgradeTrack.classList.add('is-animating');
+	  d.upgradeTrack.style.transform = `translateX(${-activeIndex * step}px)`;
+	  App.setActiveCard(d.upgradeTrack, '.upg-card', activeIndex);
+	  setTimeout(() => d.upgradeTrack.classList.remove('is-animating'), 300);
+	}
+
+	App.bindSwipeTrackOnce(
+	  d.upgradeTrack,
+	  () => picked.length,
+	  getStep,
+	  (i) => setIndex(i),
+	  {
+		slideSelector: '.upg-slide',
+		getViewportEl: () => d.upgradeCarousel || d.upgradeTrack.parentElement
+	  }
+	);
+
 
   requestAnimationFrame(() => setIndex(0));
 };
@@ -479,7 +492,7 @@ App.getUpgradePickMultiplier = function getUpgradePickMultiplier(upgrade){
 		  items,
 		  gridCols: 3,
 		  showReroll: true,
-		  rerollText: `Re-roll (-${App.rerollCost} XP)`,
+		  // rerollText: `Re-roll (-${App.rerollCost} XP)`,
 		  onReroll: () => {
 			if(App.xp < App.rerollCost){
 			  d.pickerRerollBtn.classList.add('xp-denied');
@@ -532,7 +545,7 @@ App.getUpgradePickMultiplier = function getUpgradePickMultiplier(upgrade){
       App.updateXP(-cost);
       App.rerollCost = cost + 1;
 
-      d.rerollBtn.textContent = `Re-roll (-${App.rerollCost} XP)`;
+      // d.rerollBtn.textContent = `Re-roll (-${App.rerollCost} XP)`;
       d.rerollBtn.classList.toggle('reroll-danger', App.rerollCost >= 3);
 
       App.renderUpgradeChoices();

@@ -37,8 +37,8 @@
     d.pickerSubTitle.textContent = '';
     d.pickerGrid.innerHTML = '';
     d.pickerTrack.innerHTML = '';
-    d.pickerBackBtn.style.display = 'none';
-    d.pickerRerollBtn.style.display = 'none';
+    d.pickerControlsBackBtn.style.display = 'none';
+    d.pickerControlsRerollBtn.style.display = 'none';
 
     hide();
   };
@@ -81,14 +81,6 @@
     if(App.applyAspectClass) App.applyAspectClass(img);
     card.appendChild(img);
 
-    // label (optional)
-   /*  if(item.label){
-      const label = document.createElement('div');
-      label.className = 'rarity-label';
-      label.textContent = item.label;
-      card.appendChild(label);
-    } */
-
     // locked (optional)
     if(item.locked) card.classList.add('locked');
 
@@ -116,83 +108,91 @@
   }
 
   // --- Carousel render (mobile) ---
-let animTimer = null;
+  let animTimer = null;
 
-function setIndex(next){
-  const max = st.items.length - 1;
-  st.activeIndex = App.clamp(next, 0, Math.max(0, max));
+  // IMPORTANT: Use the real viewport element (.carousel-viewport), not #pickerCarousel
+  function getViewportEl(){
+    const shell = d.pickerCarousel ? d.pickerCarousel.closest('.carousel-shell') : null;
+    const vp = shell ? shell.querySelector('.carousel-viewport') : null;
+    return vp || d.pickerCarousel || d.pickerCarousel?.parentElement || null;
+  }
 
-  if(d.pickerTrack._setDragIndex) d.pickerTrack._setDragIndex(st.activeIndex);
+  function setIndex(next){
+    const max = st.items.length - 1;
+    st.activeIndex = App.clamp(next, 0, Math.max(0, max));
 
-  const step = App.getTrackStepPx(d.pickerTrack, '.picker-slide') || d.pickerCarousel.clientWidth;
-  const x = -st.activeIndex * step;
+    if(d.pickerTrack._setDragIndex) d.pickerTrack._setDragIndex(st.activeIndex);
 
-  // Cancel any pending "remove animating" from earlier swipes
-  if(animTimer) clearTimeout(animTimer);
+    const step =
+      App.getTrackStepPx(d.pickerTrack, '.picker-slide') ||
+      (getViewportEl()?.getBoundingClientRect().width || d.pickerCarousel.clientWidth);
 
-  // Reset transition state cleanly
-  d.pickerTrack.classList.remove('is-animating');
-  // force reflow so the next class-add definitely re-enables transition
-  void d.pickerTrack.offsetWidth;
+    // ✅ use shared helper (you’ll add App.getCenterOffset in utils.js)
+    const centerOffset = App.getCenterOffset
+      ? App.getCenterOffset(d.pickerTrack, getViewportEl(), '.picker-slide')
+      : 0;
 
-  d.pickerTrack.classList.add('is-animating');
+    // Cancel any pending "remove animating"
+    if(animTimer) clearTimeout(animTimer);
 
-  // Use rAF to avoid batching issues (prevents skipped transitions)
-  requestAnimationFrame(() => {
-    d.pickerTrack.style.transform = `translateX(${x}px)`;
-  });
-
-  App.setActiveCard(d.pickerTrack, '.picker-card', st.activeIndex);
-
-  animTimer = setTimeout(() => {
+    // Reset transition state cleanly
     d.pickerTrack.classList.remove('is-animating');
-    animTimer = null;
-  }, 300);
+    void d.pickerTrack.offsetWidth; // force reflow
+    d.pickerTrack.classList.add('is-animating');
 
-  updateArrows();
-}
+    requestAnimationFrame(() => {
+      d.pickerTrack.style.transform = `translateX(${-st.activeIndex * step}px)`;
+    });
 
-  
+    App.setActiveCard(d.pickerTrack, '.picker-card', st.activeIndex);
+
+    animTimer = setTimeout(() => {
+      d.pickerTrack.classList.remove('is-animating');
+      animTimer = null;
+    }, 300);
+
+    updateArrows();
+  }
+
   function updateArrows(){
-	  const left = d.pickerArrowLeft;
-	  const right = d.pickerArrowRight;
-	  if(!left || !right) return;
+    const left = d.pickerArrowLeft;
+    const right = d.pickerArrowRight;
+    if(!left || !right) return;
 
-	  const max = st.items.length - 1;
-	  const i = st.activeIndex;
+    const max = st.items.length - 1;
+    const i = st.activeIndex;
 
-	  // hide arrows entirely if 0-1 items
-	  const show = max >= 1;
-	  left.style.display = show ? 'block' : 'none';
-	  right.style.display = show ? 'block' : 'none';
+    // hide arrows entirely if 0-1 items
+    const show = max >= 1;
+    left.style.display = show ? 'block' : 'none';
+    right.style.display = show ? 'block' : 'none';
 
-	  left.classList.toggle('disabled', i <= 0);
-	  right.classList.toggle('disabled', i >= max);
-	}
+    left.classList.toggle('disabled', i <= 0);
+    right.classList.toggle('disabled', i >= max);
+  }
 
-	function bindArrowClicksOnce(){
-	  const left = d.pickerArrowLeft;
-	  const right = d.pickerArrowRight;
-	  if(!left || !right) return;
-	  if(left.dataset.bound === '1') return;
-	  left.dataset.bound = '1';
-	  right.dataset.bound = '1';
+  function bindArrowClicksOnce(){
+    const left = d.pickerArrowLeft;
+    const right = d.pickerArrowRight;
+    if(!left || !right) return;
+    if(left.dataset.bound === '1') return;
+    left.dataset.bound = '1';
+    right.dataset.bound = '1';
 
-	  left.addEventListener('click', (e) => {
-		e.preventDefault();
-		e.stopPropagation();
-		if(left.classList.contains('disabled')) return;
-		setIndex(st.activeIndex - 1);
-	  });
+    left.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      if(left.classList.contains('disabled')) return;
+      setIndex(st.activeIndex - 1);
+    });
 
-	  right.addEventListener('click', (e) => {
-		e.preventDefault();
-		e.stopPropagation();
-		if(right.classList.contains('disabled')) return;
-		setIndex(st.activeIndex + 1);
-	  });
-	}
-
+    right.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      if(right.classList.contains('disabled')) return;
+      setIndex(st.activeIndex + 1);
+    });
+  }
 
   function renderCarousel(items){
     d.pickerTrack.innerHTML = '';
@@ -223,15 +223,20 @@ function setIndex(next){
       d.pickerTrack.appendChild(slide);
     });
 
-    App.bindSwipeTrackOnce(
-      d.pickerTrack,
-      () => items.length,
-      () => App.getTrackStepPx(d.pickerTrack, '.picker-slide'),
-      (i) => setIndex(i)
-    );
+    // Bind swipe (your utils bindSwipeTrackOnce should read currentX and call onSetIndex)
+	 App.bindSwipeTrackOnce(
+	  d.pickerTrack,
+	  () => st.items.length,
+	  () => App.getTrackStepPx(d.pickerTrack, '.picker-slide'),
+	  (i) => setIndex(i),
+	  {
+		slideSelector: '.picker-slide',
+		getViewportEl: () => getViewportEl()
+	  }
+	);
 
     requestAnimationFrame(() => setIndex(0));
-	updateArrows();
+    updateArrows();
   }
 
   /**
@@ -240,19 +245,20 @@ function setIndex(next){
    *   subTitle?: string,
    *   items: [{ id, imgSrc, label?, rarity?, locked?, callIn?, meta? }],
    *   onPick: (item) => void,
-   *   onFocusPick?: (item) => void,  // optional override for mobile focused tap
+   *   onFocusPick?: (item) => void,
    *   back?: { show: true, text?: string, onClick: fn },
-   *   reroll?: { show: true, text: string, onClick: fn }
+   *   reroll?: { show: true, text: string, onClick: fn },
+   *   gridCols?: 2|3|4|5
    * })
    */
   App.picker.open = function openPicker(cfg){
     const items = Array.isArray(cfg.items) ? cfg.items : [];
-	
-	// grid column control (desktop only)
-	d.pickerGrid.classList.remove('grid-2','grid-3','grid-4','grid-5');
-	if(cfg.gridCols){
-	  d.pickerGrid.classList.add(`grid-${cfg.gridCols}`);
-	}
+
+    // grid column control (desktop only)
+    d.pickerGrid.classList.remove('grid-2','grid-3','grid-4','grid-5');
+    if(cfg.gridCols){
+      d.pickerGrid.classList.add(`grid-${cfg.gridCols}`);
+    }
 
     st.items = items;
     st.onPick = typeof cfg.onPick === 'function' ? cfg.onPick : null;
@@ -260,27 +266,8 @@ function setIndex(next){
 
     d.pickerTitle.textContent = cfg.title || 'Pick';
     d.pickerSubTitle.textContent = cfg.subTitle || '';
-	
-	bindArrowClicksOnce();
-	
-    // footer buttons
-    if(cfg.back && cfg.back.show){
-      d.pickerBackBtn.style.display = 'inline-block';
-      d.pickerBackBtn.textContent = cfg.back.text || 'Back';
-      d.pickerBackBtn.onclick = cfg.back.onClick || null;
-    } else {
-      d.pickerBackBtn.style.display = 'none';
-      d.pickerBackBtn.onclick = null;
-    }
 
-    if(cfg.reroll && cfg.reroll.show){
-      d.pickerRerollBtn.style.display = 'inline-block';
-      d.pickerRerollBtn.textContent = cfg.reroll.text || 'Re-roll';
-      d.pickerRerollBtn.onclick = cfg.reroll.onClick || null;
-    } else {
-      d.pickerRerollBtn.style.display = 'none';
-      d.pickerRerollBtn.onclick = null;
-    }
+    bindArrowClicksOnce();
 
     // choose render mode
     if(App.isCoarsePointer){
@@ -292,7 +279,76 @@ function setIndex(next){
       d.pickerGrid.style.display = 'grid';
       renderGrid(items);
     }
+	
+		// ----- UI buttons -----
+	const headerControls = d.pickerControls;
+	const rerollBtn = d.pickerControlsRerollBtn;
+	const backBtn = d.pickerControlsBackBtn;
+
+	// Back
+	if(cfg.showBack){
+	  backBtn.style.display = 'flex';
+	  // backBtn.textContent = '<';
+	  backBtn.onclick = cfg.onBack || null;
+	} else {
+	  backBtn.style.display = 'none';
+	  backBtn.onclick = null;
+	}
+
+	// Reroll
+	if(cfg.showReroll){
+	  rerollBtn.style.display = 'flex';
+	  // rerollBtn.textContent = '⟳';
+	  st.onReroll = typeof cfg.onReroll === 'function' ? cfg.onReroll : null;
+	} else {
+	  rerollBtn.style.display = 'none';
+	  rerollBtn.onclick = null;
+	  st.onReroll = null;
+	}
+
+	// Header visibility
+	headerControls.style.display = (cfg.showBack || cfg.showReroll) ? 'flex' : 'none';
+
 
     show();
   };
+  
+  if(d.pickerRerollBtn && !d.pickerRerollBtn.dataset.bound){
+  d.pickerRerollBtn.dataset.bound = '1';
+
+  d.pickerRerollBtn.addEventListener('click', () => {
+    const btn = d.pickerRerollBtn;
+
+    btn.classList.remove('is-spinning');
+    void btn.offsetWidth; // force reflow
+    btn.classList.add('is-spinning');
+
+    if(typeof st.onReroll === 'function'){
+		
+		if(App.xp < App.rerollCost){
+			App.spawnFloatingXP(d.pickerRerollBtn, 'INSUFFICIENT XP');
+			d.rerollBtn.classList.add('xp-denied');
+			setTimeout(() => d.rerollBtn.classList.remove('xp-denied'), 350);
+			return;
+		}
+		App.spawnFloatingXP(d.pickerRerollBtn,  `-${App.rerollCost} XP`);
+      st.onReroll();
+    }
+  });
+
+  d.pickerRerollBtn.addEventListener('animationend', () => {
+    d.pickerRerollBtn.classList.remove('is-spinning');
+  });
+}
+
+
+
+App.picker.flashDenied = function(){
+  const btn = d.pickerRerollBtn;
+  if(!btn) return;
+  btn.classList.add('xp-denied');
+  setTimeout(() => btn.classList.remove('xp-denied'), 350);
+};
+
+
 })();
