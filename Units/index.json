@@ -279,77 +279,77 @@
     },"elefant": {
       "name": "Elefant Tank Destroyer",
       "card": "Elefant.png",
-      "tier": 3
+      "tier": 4
     },
     "elite_grenadier_squad_leaders": {
       "name": "Elite Grenadier Squad Leaders",
       "card": "Elite_Grenadier_Squad_Leaders.png",
-      "tier": 2
+      "tier": 4
     },
     "jaeger_sniper": {
       "name": "Jäger Sniper",
       "card": "Jaeger_Sniper.png",
-      "tier": 2
+      "tier": 4
     },
     "jagdpanther": {
       "name": "Jagdpanther Tank Destroyer",
       "card": "Jagdpanther.png",
-      "tier": 3
+      "tier": 4
     },
     "king_tiger": {
       "name": "King Tiger",
       "card": "King_Tiger.png",
-      "tier": 3
+      "tier": 4
     },
     "pak_43_emplacement": {
       "name": "PaK 43 Emplacement",
       "card": "Pak_43_Emplacement.png",
-      "tier": 2
+      "tier": 4
     },
     "wm_sdkfz_251": {
       "name": "SdKfz 251 Half-track",
       "card": "SdKfz_251_Half-track.png",
-      "tier": 2
+      "tier": 4
     },
     "veteran_g43_stormtroopers_call_in": {
       "name": "Veteran G43 stormtroopers_call_in",
       "card": "Veteran_G43_stormtroopers_call_in.png",
-      "tier": 3
+      "tier": 4
     },
     "mg42_heavy_machine_gun_bunker": {
       "name": "MG42 Heavy Machine Gun Bunker",
       "card": "MG42_Heavy_Machine_Gun_Bunker.png",
-      "tier": 2
+      "tier": 4
     },
     "osttruppen": {
       "name": "Osttruppen",
       "card": "Osttruppen.png",
-      "tier": 2
+      "tier": 4
     },
     "stug_iii_g": {
       "name": "StuG III Ausf. G Assault Gun",
       "card": "StuG_III_Ausf_G_Assault_Gun.png",
-      "tier": 2
+      "tier": 4
     },
     "tiger": {
       "name": "Tiger",
       "card": "Tiger.png",
-      "tier": 3
+      "tier": 4
     },
     "us_sherman_easy_eight": {
       "name": "Sherman Easy Eight",
       "card": "US_Sherman_Easy_Eight.png",
-      "tier": 3
+      "tier": 4
     },
     "us_cavalry_riflemen": {
       "name": "Cavalry Riflemen",
       "card": "US_Cavalry_Riflemen.png",
-      "tier": 2
+      "tier": 4
     },
     "us_m5a1_stuart": {
       "name": "M5A1 Stuart",
       "card": "US_M5A1_Stuart.png",
-      "tier": 2,
+      "tier": 4,
 	  "preferences": {
 		  "fromUpgrades": {
 			"Light_Cavalry_Company_Browning_M2_50cal_4xp":10.0
@@ -359,224 +359,224 @@
     "us_sherman_105mm_bulldozer": {
       "name": "Sherman 105mm Bulldozer",
       "card": "US_Sherman_105mm_Bulldozer.png",
-      "tier": 3
+      "tier": 4
     },
     "us_m36_jackson": {
       "name": "M36 Jackson",
       "card": "US_M36_Jackson.png",
-      "tier": 3
+      "tier": 4
     },
     "us_m2hb_50cal_heavy_machine_gun_bunker": {
       "name": "M2HB .50cal Heavy Machine Gun Bunker",
       "card": "US_M2HB_50cal_Heavy_Machine_Gun_Bunker.png",
-      "tier": 2
+      "tier": 4
     },
     "us_m7b1_priest_howitzer_motor_carriage": {
       "name": "M7B1 Priest Howitzer Motor Carriage",
       "card": "US_M7B1_Priest_Howitzer_Motor_Carriage.png",
-      "tier": 2
+      "tier": 4
     },
     "us_calliope": {
       "name": "Calliope",
       "card": "US_Calliope.png",
-      "tier": 3
+      "tier": 4
     },
     "us_pershing": {
       "name": "Pershing",
       "card": "US_Pershing.png",
-      "tier": 3
+      "tier": 4
     },
     "us_paradrop_equipment": {
       "name": "Paradrop Equipment",
       "card": "US_Paradrop_Equipment.png",
-      "tier": 2
+      "tier": 4
     },
     "us_veteran_devils_brigade": {
       "name": "Veteran Devil's Brigade",
       "card": "US_Veteran_Devil's_Brigade.png",
-      "tier": 3
+      "tier": 4
     },
     "us_assault_engineers": {
       "name": "Assault Engineers",
       "card": "US_Assault_Engineers.png",
-      "tier": 2
+      "tier": 4
     },
 
     "ok_flammpanzer_38_hetzer": {
       "name": "Flammpanzer 38 Hetzer",
       "card": "ok_flammpanzer_38_hetzer.png",
-      "tier": 2
+      "tier": 4
     },
     "ok_jaegar_recon_unit": {
       "name": "Jaeger Recon Unit",
       "card": "ok_jaegar_recon_unit.png",
-      "tier": 2
+      "tier": 4
     },
     "ok_jagdpanther": {
       "name": "Jagdpanther",
       "card": "ok_jagdpanther.png",
-      "tier": 3
+      "tier": 4
     },
     "ok_kettenkrad": {
       "name": "Kettenkrad",
       "card": "ok_kettenkrad.png",
-      "tier": 2
+      "tier": 4
     },
     "ok_lefh_18_artillery": {
       "name": "LeFH 18 Artillery",
       "card": "ok_lefh_18_artillery.png",
-      "tier": 2
+      "tier": 4
     },
     "ok_pak_43_emplacement": {
       "name": "Pak 43 Emplacement",
       "card": "ok_pak_43_emplacement.png",
-      "tier": 2
+      "tier": 4
     },
     "ok_panzerfusilier": {
       "name": "Panzerfusilier",
       "card": "ok_panzerfusilier.png",
-      "tier": 2
+      "tier": 4
     },
     "ok_puma": {
       "name": "Puma",
       "card": "ok_puma.png",
-      "tier": 2
+      "tier": 4
     },
     "ok_stg44_rifle_volksgrenadiers": {
       "name": "StG44 Rifle Volksgrenadiers",
       "card": "ok_stg44_rifle_volksgrenadiers.png",
-      "tier": 3
+      "tier": 4
     },
     "ok_stug_iii_g_assault_gun": {
       "name": "StuG III G Assault Gun",
       "card": "ok_stug_iii_g_assault_gun.png",
-      "tier": 2
+      "tier": 4
     },
     "ok_veteran_g43_stormtroopers_call_in": {
       "name": "Veteran G43 stormtroopers_call_in",
       "card": "ok_veteran_g43_stormtroopers_call_in.png",
-      "tier": 3
+      "tier": 4
     },
 
     "su_anti_tank_anti_infantry_partisans": {
       "name": "Anti-Tank / Anti-Infantry Partisans",
       "card": "SU_Anti_Tank_Anti_Infantry_Partisans.png",
-      "tier": 2
+      "tier": 4
     },
     "su_dshk_38_heavy_machine_gun": {
       "name": "DShK 38 Heavy Machine Gun",
       "card": "SU_DShk_38_Heavy_Machine_Gun.png",
-      "tier": 2
+      "tier": 4
     },
     "su_forward_hq": {
       "name": "Forward HQ",
       "card": "SU_Forward_HQ.png",
-      "tier": 2
+      "tier": 4
     },
     "su_guards_rifle_infantry": {
       "name": "Guards Rifle Infantry",
       "card": "SU_Guards_Rifle_Infantry.png",
-      "tier": 2
+      "tier": 4
     },
     "su_is_2_heavy_tank": {
       "name": "IS-2 Heavy Tank",
       "card": "SU_IS-2_Heavy_Tank.png",
-      "tier": 3
+      "tier": 4
     },
     "su_isu_152_heavy_assault_gun": {
       "name": "ISU-152 Heavy Assault Gun",
       "card": "SU_ISU-152_Heavy_Assault_Gun.png",
-      "tier": 3
+      "tier": 4
     },
     "su_kv_2_assault_gun": {
       "name": "KV-2 Assault Gun",
       "card": "SU_KV-2_Assault_Gun.png",
-      "tier": 3
+      "tier": 4
     },
     "su_kv_8_flamethrower_tank": {
       "name": "KV-8 Flamethrower Tank",
       "card": "SU_KV-8_Flamethrower_Tank.png",
-      "tier": 3
+      "tier": 4
     },
     "su_penal_battalion": {
       "name": "Penal Battalion",
       "card": "SU_Penal_Battalion.png",
-      "tier": 2
+      "tier": 4
     },
     "su_repair_station": {
       "name": "Repair Station",
       "card": "SU_Repair_Station.png",
-      "tier": 2
+      "tier": 4
     },
     "su_shock_troops": {
       "name": "Shock Troops",
       "card": "SU_Shock_Troops.png",
-      "tier": 2
+      "tier": 4
     },
     "su_t_34_85_medium_tank": {
       "name": "T-34-85 Medium Tank",
       "card": "SU_T-34-85_Medium_Tank.png",
-      "tier": 3
+      "tier": 4
     },
 	"uk_17_pounder_emplacement": {
       "name": "17 Pounder Emplacement",
       "card": "uk_17_pounder_emplacement.png",
-      "tier": 2
+      "tier": 4
     },
     "uk_55cal_armor_piercing_sniper": {
       "name": ".55 cal Armor-Piercing Sniper",
       "card": "uk_55cal_armor-piercing_sniper.png",
-      "tier": 3
+      "tier": 4
     },
     "uk_churchill_crocodile": {
       "name": "Churchill Crocodile",
       "card": "uk_churchill_crocodile.png",
-      "tier": 3
+      "tier": 4
     },
     "uk_comet": {
       "name": "Comet",
       "card": "uk_comet.png",
-      "tier": 3
+      "tier": 4
     },
     "uk_forward_emplacement": {
       "name": "Forward Emplacement",
       "card": "uk_forward_emplacement.png",
-      "tier": 2
+      "tier": 4
     },
     "uk_royal_engineers": {
       "name": "Royal Engineers",
       "card": "uk_royal_engineers.png",
-      "tier": 2
+      "tier": 4
     },
     "uk_sexton_gun_carriage": {
       "name": "Sexton Gun Carriage",
       "card": "uk_sexton_gun_carriage.png",
-      "tier": 3
+      "tier": 4
     },
     "uk_sherman_firefly": {
       "name": "Sherman Firefly",
       "card": "uk_sherman_firefly.png",
-      "tier": 3
+      "tier": 4
     },
     "uk_staghound": {
       "name": "Staghound",
       "card": "uk_staghound.png",
-      "tier": 2
+      "tier": 4
     },
     "uk_valentine_mk_xi": {
       "name": "Valentine Mk. XI",
       "card": "uk_valentine_mk_xi.png",
-      "tier": 2
+      "tier": 4
     },
     "uk_veteran_churchill_avre": {
       "name": "Veteran Churchill AVRE",
       "card": "uk_veteran_churchill_avre.png",
-      "tier": 3
+      "tier": 4
     },
     "uk_veteran_commandos": {
       "name": "Veteran Commandos",
       "card": "uk_veteran_commandos.png",
-	  "tier": 2
+	  "tier": 4
     },
 	"None": {
 		"name": "None",
