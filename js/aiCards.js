@@ -5,17 +5,17 @@
   const d = App.dom;
 
   // ---- DOM (adjust IDs if yours differ) ----
-  const btnP1 = document.getElementById('aiCardBtn');
-  const btnP2 = document.getElementById('aiCardBtnP2');
+  const btnP1 = d.aiCardBtn;
+  const btnP2 = d.aiCardBtn2;
 
-  const modal = document.getElementById('aiCardModal');          // your AI modal container
-  const modalClose = document.getElementById('closeAICardModal'); // your close X
-  const refreshBtn = document.getElementById('aiCardRefreshBtn'); // refresh button in modal
+  const modal = d.aiCardModal;          // your AI modal container
+  const modalClose = d.closeAICardModal; // your close X
+  const refreshBtn = d.aiCardRefreshBtn; // refresh button in modal
   
   // ref modal close wiring
-  const refModal = document.getElementById('aiRefModal');
-  const refContent = document.getElementById('aiRefModalContent');
-  const refClose = document.getElementById('closeAIRefModal');
+  const refModal = d.aiRefModal;
+  const refContent = d.aiRefModalContent;
+  const refClose = d.closeAIRefModal;
 
   // ---- State ----
   App.ai = App.ai || {};
@@ -107,8 +107,8 @@
 	};
 
 App.closeAIRef= function(){
-  const modal = document.getElementById('aiRefModal');
-  const img = document.getElementById('aiRefImg');
+  const modal = d.aiRefModal;
+  const img = d.aiRefImg;
   modal.style.display = 'none';
   img.src = '';
 };
@@ -191,14 +191,14 @@ App.closeAIRef= function(){
 }
 
   // ---- Bindings ----
-  if(btnP1 && !btnP1.dataset.bound){
-    btnP1.dataset.bound = '1';
-    btnP1.addEventListener('click', () => launchPhase(1));
+  if(App.dom.aiCardBtn && !App.dom.aiCardBtn2.dataset.bound){
+    App.dom.aiCardBtn.dataset.bound = '1';
+    App.dom.aiCardBtn.addEventListener('click', () => launchPhase(1));
   }
 
-  if(btnP2 && !btnP2.dataset.bound){
-    btnP2.dataset.bound = '1';
-    btnP2.addEventListener('click', () => launchPhase(2));
+  if(App.dom.aiCardBtn2 && !App.dom.aiCardBtn2.dataset.bound){
+    App.dom.aiCardBtn2.dataset.bound = '1';
+    App.dom.aiCardBtn2.addEventListener('click', () => launchPhase(2));
   }
 
   if(refreshBtn && !refreshBtn.dataset.bound){

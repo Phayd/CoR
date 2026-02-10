@@ -25,7 +25,6 @@
 
   App.picker.close = function closePicker(){
     // reset state
-    st.items = [];
     st.activeIndex = 0;
     st.onPick = null;
     st.onFocusPick = null;
@@ -90,6 +89,17 @@
     return card;
   }
 
+	function handlePick(item){
+	  if(st.rollSticky){
+		st.rollSticky = false;
+		st.items = [];
+	  }
+
+	  if(st.onPick){
+		st.onPick(item);
+	  }
+	}
+
   // --- Grid render (desktop) ---
   function renderGrid(items){
     d.pickerGrid.innerHTML = '';
@@ -100,7 +110,7 @@
 
       card.onclick = () => {
         if(item.locked) return;
-        if(st.onPick) st.onPick(item);
+        handlePick(item);
       };
 
       d.pickerGrid.appendChild(card);
@@ -215,8 +225,12 @@
         // tap focused -> pick
         if(item.locked) return;
 
-        if(st.onFocusPick) st.onFocusPick(item);
-        else if(st.onPick) st.onPick(item);
+        if(st.onFocusPick){
+		  st.onFocusPick(item);
+		} else {
+		  handlePick(item);
+		}
+
       });
 
       slide.appendChild(card);
@@ -260,7 +274,20 @@
       d.pickerGrid.classList.add(`grid-${cfg.gridCols}`);
     }
 
-    st.items = items;
+    const useSticky =
+	  cfg.useSticky === true &&
+	  st.rollSticky === true &&
+	  Array.isArray(st.items) &&
+	  st.items.length > 0 &&
+	  !st.ignoreStickyOnce;
+
+	if(!useSticky){
+	  st.items = items || [];
+	  st.rollSticky = !!cfg.useSticky;
+	}
+	
+	st.ignoreStickyOnce = false;
+
     st.onPick = typeof cfg.onPick === 'function' ? cfg.onPick : null;
     st.onFocusPick = typeof cfg.onFocusPick === 'function' ? cfg.onFocusPick : null;
 
@@ -273,11 +300,11 @@
     if(App.isCoarsePointer){
       d.pickerCarousel.style.display = 'block';
       d.pickerGrid.style.display = 'none';
-      renderCarousel(items);
+      renderCarousel(st.items);
     } else {
       d.pickerCarousel.style.display = 'none';
       d.pickerGrid.style.display = 'grid';
-      renderGrid(items);
+      renderGrid(st.items);
     }
 	
 		// ----- UI buttons -----
@@ -309,7 +336,6 @@
 	// Header visibility
 	headerControls.style.display = (cfg.showBack || cfg.showReroll) ? 'flex' : 'none';
 
-
     show();
   };
   
@@ -322,13 +348,15 @@
     btn.classList.remove('is-spinning');
     void btn.offsetWidth; // force reflow
     btn.classList.add('is-spinning');
+	
+	st.ignoreStickyOnce = true;
 
     if(typeof st.onReroll === 'function'){
 		
 		if(App.xp < App.rerollCost){
 			App.spawnFloatingXP(d.pickerRerollBtn, 'INSUFFICIENT XP');
-			d.rerollBtn.classList.add('xp-denied');
-			setTimeout(() => d.rerollBtn.classList.remove('xp-denied'), 350);
+			d.pickerRerollBtn.classList.add('xp-denied');
+			setTimeout(() => d.pickerRerollBtn.classList.remove('xp-denied'), 350);
 			return;
 		}
 		App.spawnFloatingXP(d.pickerRerollBtn,  `-${App.rerollCost} XP`);

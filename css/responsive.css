@@ -254,7 +254,7 @@
 	grid-template-columns:repeat(2, 1fr);
 	gap:12px;
   }
-  
+  /* 
   .picker-slide{
 	  flex:0 0 100%;
   }
@@ -262,7 +262,7 @@
   #pickerTrack{
 	  padding-left:0%;
 	  padding-right:0%;
-  }
+  } */
 
   button{
 	padding:18px 24px; /* bigger touch target */

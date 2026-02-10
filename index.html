@@ -181,30 +181,33 @@
 <div class="modal" id="aiCardModal">
   <div class="modal-content" id="aiCardModalContent">
     <div class="modal-header">
-      <h3 style="margin:0;">AI Action Card</h3>
-      <span class="modal-close" id="closeAICardModal" aria-label="Close">☒</span>
+		<div id="modal-title-wrapper">
+			<h3 id="pickerTitle" style="margin:0;">AI Action Card</h3>
+        <div id="pickerSubTitle" style="opacity:.85; font-size:14px;"></div>
+		</div>
+		<div id="modal-controls">
+			<div id="modal-controls-back">
+				<span id="pickerBackBtn">◄</span>
+			</div>
+			<div id="modal-controls-reroll">
+				<span id="aiCardRefreshBtn" class="icon-btn">⟳</span>
+			</div>
+			<div id="modal-controls-close">
+				<span class="modal-close" id="closeAICardModal">☒</span>
+			</div>
+		</div>
     </div>
 
     <div class="modal-body" style="display:flex; gap:12px;">
-	<div id="aiCardStageCenterer" style="justify-content:center">
-		  <div id="aiCardStage" class="ai-card-stage">
-			<img id="aiCardModalImg" alt="AI Card">
-			<button class="ai-hotspot" data-ref="1" aria-label="AI Ref 1" type="button"></button>
-			<button class="ai-hotspot" data-ref="2" aria-label="AI Ref 2" type="button"></button>
-			<button class="ai-hotspot" data-ref="3" aria-label="AI Ref 3" type="button"></button>
-			<button class="ai-hotspot" data-ref="4" aria-label="AI Ref 4" type="button"></button>
-		  </div>
-	</div>
-	  <div style="display:flex; justify-content:center; gap:10px; align-items:center;">
-		<button
-		  id="aiCardRefreshBtn"
-		  class="icon-btn refresh-btn"
-		  type="button"
-		  aria-label="Refresh AI Card"
-		  title="Refresh AI Card"
-		>⟳</button>
-	  </div>
-
+		<div id="aiCardStageCenterer" style="justify-content:center">
+			  <div id="aiCardStage" class="ai-card-stage">
+				<img id="aiCardModalImg" alt="AI Card">
+				<button class="ai-hotspot" data-ref="1" aria-label="AI Ref 1" type="button"></button>
+				<button class="ai-hotspot" data-ref="2" aria-label="AI Ref 2" type="button"></button>
+				<button class="ai-hotspot" data-ref="3" aria-label="AI Ref 3" type="button"></button>
+				<button class="ai-hotspot" data-ref="4" aria-label="AI Ref 4" type="button"></button>
+			  </div>
+		</div>
 	</div>
 
   </div>

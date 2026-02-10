@@ -2,38 +2,35 @@
 (() => {
   const App = window.App;
   const d = App.dom;
+  const st = App.picker._state = App.picker._state || {
+	  items: [],
+	  activeIndex: 0,
+	  onPick: null,
+	  onFocusPick: null,
+	  onBack: null,
+	  onReroll: null,
+	  rollSticky: false,
+	  ignoreStickyOnce: false
+	};
+
   console.log('[boot] upgrades.js Loading...');
 
   // Slot reuse state (persistent)
   App.upgradeChoiceSlots = App.upgradeChoiceSlots || []; // { card, img, label }
   App.noUpgradesMsgEl = App.noUpgradesMsgEl || null;
+  App.pendingUpgradeChoices = App.pendingUpgradeChoices || null;
 
-  // ---------- Modal open/close ----------
-  App.openUpgradeModal = function(){
-    d.upgradeModal.style.display = 'flex';
-  };
-
-  App.closeUpgradeModal = function(){
-    d.upgradeModal.style.display = 'none';
-    App.rerollCost = 1;
-    d.rerollBtn.textContent = `Re-roll (-${App.rerollCost} XP)`;
-    d.rerollBtn.classList.remove('reroll-danger');
-    if(App.hideHoverPopup) App.hideHoverPopup();
-  };
-
-  // Modal close wiring (once)
-  if(d.closeUpgradeModal && !d.closeUpgradeModal.dataset.bound){
-    d.closeUpgradeModal.dataset.bound = '1';
-    d.closeUpgradeModal.onclick = App.closeUpgradeModal;
-  }
-  if(d.upgradeModal && !d.upgradeModal.dataset.bound){
-    d.upgradeModal.dataset.bound = '1';
-    d.upgradeModal.onclick = (e) => { if(e.target === d.upgradeModal) App.closeUpgradeModal(); };
-  }
-  if(d.upgradeModalContent && !d.upgradeModalContent.dataset.bound){
-    d.upgradeModalContent.dataset.bound = '1';
-    d.upgradeModalContent.onclick = (e) => e.stopPropagation();
-  }
+	function computePickedUpgrades(){
+	  const picked = [];
+	  const exclude = new Set();
+	  for(let i=0;i<3;i++){
+		const u = App.pickOneUpgrade(exclude);
+		if(!u) break;
+		picked.push(u);
+		exclude.add(u.key);
+	  }
+	  return picked;
+	}
 
   // ---------- Eligibility ----------
   App.meetsAnyOfRequirements = function(upgrade){
@@ -87,14 +84,14 @@
       .filter(App.meetsAnyOfRequirements);
   };
 
-	App.pickOneUpgrade = function pickOneUpgrade(exclude){
+  App.pickOneUpgrade = function pickOneUpgrade(exclude){
 	  for(let attempt=0; attempt<12; attempt++){
 		const rarity = App.rollRarity();
 		const elig = App.eligibleUpgradesForRarity(rarity, exclude);
 		if(elig.length){
 		  // weighted pick
 		  if(App.weightedPickOne){
-			const picked = App.weightedPickOne(elig, (u) => App.getUpgradePickMultiplier(u));
+			const picked = App.weightedPickOne(elig, (u) => getUpgradePickMultiplier(u));
 			if(picked) return picked;
 		  }
 		  // fallback
@@ -106,13 +103,12 @@
 	  if(!any.length) return null;
 
 	  if(App.weightedPickOne){
-		const picked = App.weightedPickOne(any, (u) => App.getUpgradePickMultiplier(u));
+		const picked = App.weightedPickOne(any, (u) => getUpgradePickMultiplier(u));
 		if(picked) return picked;
 	  }
 
 	  return any[Math.floor(Math.random() * any.length)];
 	};
-
 
   // ---------- Slot reuse init ----------
   App.initUpgradeChoiceSlotsOnce = function(){
@@ -276,18 +272,6 @@
     }
   };
 
-  function computePickedUpgrades()
-  {
-	  const picked = [];
-	  const exclude = new Set();
-	  for(let i=0;i<3;i++){
-		const u = App.pickOneUpgrade(exclude);
-		if(!u) break;
-		picked.push(u);
-		exclude.add(u.key);
-	  }
-	  return picked;
-  }
 	
   App.renderUpgradeCarouselChoices = function renderUpgradeCarouselChoices(picked){
   // show carousel / hide grid
@@ -419,38 +403,35 @@
 
 // Returns a multiplier (>= 0) for how likely an upgrade is to be offered.
 // 1.0 = baseline, 1.5 = +50%, 2.0 = +100%, etc.
-App.getUpgradePickMultiplier = function getUpgradePickMultiplier(upgrade){
-  if(!upgrade || !upgrade.preferences) return 1;
+  function getUpgradePickMultiplier(upgrade){
+	if(!upgrade || !upgrade.preferences) return 1;
 
-  const prefs = upgrade.preferences;
-  let mult = 1;
+	const prefs = upgrade.preferences;
+	let mult = 1;
 
-  // ---- Bias from current buildable units ----
-  if(prefs.fromUnits && App.activeBuildableUnits){
-    for(const unitId of App.activeBuildableUnits){
-      const m = Number(prefs.fromUnits[unitId]);
-      if(Number.isFinite(m) && m > 0){
-        // Use max instead of multiply to avoid runaway stacking
-        mult = mult * m;
-      }
-    }
-  }
+	// ---- Bias from current buildable units ----
+	if(prefs.fromUnits && App.activeBuildableUnits){
+	for(const unitId of App.activeBuildableUnits){
+	  const m = Number(prefs.fromUnits[unitId]);
+	  if(Number.isFinite(m) && m > 0){
+		// Use max instead of multiply to avoid runaway stacking
+		mult = mult * m;
+	  }
+	}
+	}
 
-  // ---- Bias from already selected upgrades ----
-  if(prefs.fromUpgrades && App.selectedUpgradeKeys){
-    for(const upgKey of App.selectedUpgradeKeys){
-      const m = Number(prefs.fromUpgrades[upgKey]);
-      if(Number.isFinite(m) && m > 0){
-        mult = mult * m;
-      }
-    }
-  }
-  console.log(upgrade.key, 'weight:', mult);
-  return mult;
+	// ---- Bias from already selected upgrades ----
+	if(prefs.fromUpgrades && App.selectedUpgradeKeys){
+	for(const upgKey of App.selectedUpgradeKeys){
+	  const m = Number(prefs.fromUpgrades[upgKey]);
+	  if(Number.isFinite(m) && m > 0){
+		mult = mult * m;
+	  }
+	}
+	}
+	console.log(upgrade.key, 'weight:', mult);
+	return mult;
 };
-
-
-
 
   // ---------- Button wiring ----------
   if(d.addUpgradeBtn && !d.addUpgradeBtn.dataset.bound){
@@ -474,8 +455,17 @@ App.getUpgradePickMultiplier = function getUpgradePickMultiplier(upgrade){
 	  }
 
 	  function openChoices(){
-		const picked = makePicked();
+		if(!Array.isArray(App.pendingUpgradeChoices) || !App.pendingUpgradeChoices.length){
+		  App.pendingUpgradeChoices = makePicked();
+		}
 
+		const picked = App.pendingUpgradeChoices;
+
+		if(!picked.length){
+		  console.warn('[upgrades] No upgrade choices available');
+			return;
+		}
+		
 		const items = picked.map(u => ({
 		  id: u.key,
 		  imgSrc: `Upgrades/${u.rarity}/${u.filename}`,
@@ -485,6 +475,7 @@ App.getUpgradePickMultiplier = function getUpgradePickMultiplier(upgrade){
 		  callIn: u.callIn || null,
 		  meta: u
 		}));
+		
 
 		App.picker.open({
 		  title: 'UPGRADE UNLOCKED',
@@ -492,21 +483,27 @@ App.getUpgradePickMultiplier = function getUpgradePickMultiplier(upgrade){
 		  items,
 		  gridCols: 3,
 		  showReroll: true,
-		  // rerollText: `Re-roll (-${App.rerollCost} XP)`,
+		  useSticky: true,
 		  onReroll: () => {
 			if(App.xp < App.rerollCost){
 			  d.pickerRerollBtn.classList.add('xp-denied');
 			  setTimeout(() => d.pickerRerollBtn.classList.remove('xp-denied'), 350);
 			  return;
 			}
+			
 			App.updateXP(-App.rerollCost);
 			App.rerollCost++;
+			App.pendingUpgradeChoices = makePicked();
+			
 			openChoices(); // reopen with new choices
 		  },
 		  onPick: (it) => {
 			const u = it.meta;
 			App.updateXP(-u.xp);
 			App.selectedUpgradeKeys.add(u.key);
+			
+			App.pendingUpgradeChoices = null;
+			App.rerollCost = 1;
 
 			const tile = document.createElement('div');
 			tile.className = `upgrade-tile ${u.rarity}`;
@@ -528,28 +525,7 @@ App.getUpgradePickMultiplier = function getUpgradePickMultiplier(upgrade){
 
 	  openChoices();
 	};
-
   }
-
-  if(d.rerollBtn && !d.rerollBtn.dataset.bound){
-    d.rerollBtn.dataset.bound = '1';
-    d.rerollBtn.onclick = () => {
-      const cost = Number(App.rerollCost) || 1;
-
-      if(App.xp < cost){
-        d.rerollBtn.classList.add('xp-denied');
-        setTimeout(() => d.rerollBtn.classList.remove('xp-denied'), 350);
-        return;
-      }
-
-      App.updateXP(-cost);
-      App.rerollCost = cost + 1;
-
-      // d.rerollBtn.textContent = `Re-roll (-${App.rerollCost} XP)`;
-      d.rerollBtn.classList.toggle('reroll-danger', App.rerollCost >= 3);
-
-      App.renderUpgradeChoices();
-    };
-  }
+  
   console.log('[boot] Upgrades.js Loaded.');
 })();

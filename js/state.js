@@ -10,7 +10,11 @@
 
   App.pendingSwapTier = null;
   App.pendingNewUnit = null;
+  App.pendingUpgradeChoices = [];
   App.pendingUnitChoices = [];
+
+  App.unitSwapRollActive = false;
+
 
   App.commanderPool = [];
   App.upgradePools = { common: [], veteran: [], elite: [], legendary: [] };

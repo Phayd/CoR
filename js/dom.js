@@ -16,8 +16,10 @@
 	aiCardBtn2: $('aiCardBtn2'),
 	aiCardStage: $('aiCardStage'),
 	aiCardModal: $('aiCardModal'),
+	aiRefModal: $('aiRefModal'),
 	aiCardModalImg: $('aiCardModalImg'),
 	closeAICardModal: $('closeAICardModal'),
+	closeAIRefModal: $('closeAIRefModal'),
 	aiCardRefreshBtn: $('aiCardRefreshBtn'),
 
     xpValueEl: must('xpValue'),

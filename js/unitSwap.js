@@ -5,60 +5,6 @@
   
   console.log('[boot] unitSwap.js');
 
-  // ---------- Modal open/close ----------
-  App.openUnitSwapModal = function openUnitSwapModal(){
-    d.unitSwapModal.style.display = 'flex';
-  };
-
-  App.closeUnitSwapModal = function closeUnitSwapModal(){
-    d.unitSwapModal.style.display = 'none';
-
-    App.pendingSwapTier = null;
-    App.pendingNewUnit = null;
-    App.pendingUnitChoices = [];
-	App.rerollCost = 1;
-
-
-    d.unitSwapGrid.innerHTML = '';
-    d.unitReplaceGrid.innerHTML = '';
-
-    d.unitReplaceGrid.style.display = 'none';
-    d.unitSwapGrid.style.display = 'grid';
-    d.unitSwapBackBtn.style.display = 'none';
-
-    if(d.unitSwapCarousel) d.unitSwapCarousel.style.display = 'none';
-    if(d.unitReplaceCarousel) d.unitReplaceCarousel.style.display = 'none';
-  };
-
-  // ---------- Modal close wiring (once) ----------
-  if(d.closeUnitSwapModal && !d.closeUnitSwapModal.dataset.bound){
-    d.closeUnitSwapModal.dataset.bound = '1';
-    d.closeUnitSwapModal.onclick = App.closeUnitSwapModal;
-  }
-  if(d.unitSwapModal && !d.unitSwapModal.dataset.bound){
-    d.unitSwapModal.dataset.bound = '1';
-    d.unitSwapModal.onclick = (e) => { if(e.target === d.unitSwapModal) App.closeUnitSwapModal(); };
-  }
-  if(d.unitSwapModalContent && !d.unitSwapModalContent.dataset.bound){
-    d.unitSwapModalContent.dataset.bound = '1';
-    d.unitSwapModalContent.onclick = (e) => e.stopPropagation();
-  }
-  if(d.unitSwapCancelBtn && !d.unitSwapCancelBtn.dataset.bound){
-    d.unitSwapCancelBtn.dataset.bound = '1';
-    d.unitSwapCancelBtn.onclick = App.closeUnitSwapModal;
-  }
-  if(d.unitSwapBackBtn && !d.unitSwapBackBtn.dataset.bound){
-    d.unitSwapBackBtn.dataset.bound = '1';
-    d.unitSwapBackBtn.onclick = () => {
-      // Back to choose-new-unit step
-      App.pendingNewUnit = null;
-      d.unitReplaceGrid.style.display = 'none';
-      d.unitSwapGrid.style.display = 'grid';
-      d.unitSwapBackBtn.style.display = 'none';
-      App.renderUnitSwapChoicesStep();
-    };
-  }
-
   // ---------- Helpers ----------
   App.getUnitTier = function getUnitTier(unitId){
     const u = App.unitCatalog && App.unitCatalog.units ? App.unitCatalog.units[unitId] : null;
@@ -367,10 +313,15 @@ App.openUnitSwapFlow = async function(){
     console.warn('openUnitSwapFlow called with active swap state');
   }
 
-  App.unitSwapTriggerCount += 1;
-  App.pendingSwapTier = (App.unitSwapTriggerCount === 1) ? 2 : 3;
+  if(!App.unitSwapRollActive){
+    App.unitSwapTriggerCount += 1;
+    App.pendingSwapTier = (App.unitSwapTriggerCount === 1) ? 2 : 3;
 
-  App.rerollCost = 1;
+    App.pendingUnitChoices = App.pickTwoUnitsForTier(App.pendingSwapTier);
+    App.rerollCost = 1;
+    App.unitSwapRollActive = true;
+  }
+  
   App.openUnitSwapChoicePicker();
 };
 
@@ -407,13 +358,14 @@ App.openUnitSwapChoiceFromState = function(){
 
       App.updateXP(-App.rerollCost);
       App.rerollCost++;
+	  App.pendingUnitChoices = App.pickTwoUnitsForTier(App.pendingSwapTier);
 
-      // 🔁 explicit reroll only happens here
       App.openUnitSwapChoicePicker();
     },
 
     onPick: (it) => {
       App.pendingNewUnit = it.id;
+	  App.unitSwapRollActive = false;
       App.openUnitSwapReplaceStep();
     }
   });
@@ -456,12 +408,14 @@ App.openUnitSwapChoicePicker = function(){
 
       App.updateXP(-App.rerollCost);
       App.rerollCost++;
+	  App.pendingUnitChoices = App.pickTwoUnitsForTier(App.pendingSwapTier);
 
       App.openUnitSwapChoicePicker();
     },
 
     onPick: (it) => {
       App.pendingNewUnit = it.id;
+	  App.unitSwapRollActive = false;
       App.openUnitSwapReplaceStep();
     }
   });
