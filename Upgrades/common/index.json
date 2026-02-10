@@ -168,12 +168,20 @@
 	},
     { "key": "forward_emplacement", "filename": "forward_emplacement.png", "xp": 2, "tier":1 },
     { "key": "kettenrad_call_in", "filename": "kettenrad_call_in.png", "xp": 1, "tier":1 },
-    { "key": "lefh_18_artillery", "filename": "lefh_18_artillery.png", "xp": 1,  "requiresAnyUnits": ["ok_sturmpioneers"] ,"tier":1 },
+    { "key": "lefh_18_artillery", "filename": "lefh_18_artillery.png", "xp": 1,  "requiresAnyUnits": ["ok_sturmpioneers"] ,"tier":1 ,
+		"preferences": {
+			"fromUpgrades":{
+				"veteran_lefh_18_artillery":0.1
+			}
+			
+		}
+	},
     { "key": "panther_reinforcements", "filename": "panther_reinforcements.png", "xp": 1, "tier":3 ,
 		"preferences": {
 			"fromUnits":{
 				"panther":5.0
 			}
+			
 		}
 	},
     { "key": "panzerfusilier", "filename": "panzerfusilier.png", "xp": 1, "tier":1 },
