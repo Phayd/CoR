@@ -580,7 +580,7 @@
     },
 	"None": {
 		"name": "None",
-		"card": "None.png",
+		"card": "none.png",
 		"tier":1000
 	}
   }
