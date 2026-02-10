@@ -8,14 +8,20 @@
   const btnP1 = d.aiCardBtn;
   const btnP2 = d.aiCardBtn2;
 
-  const modal = d.aiCardModal;          // your AI modal container
-  const modalClose = d.closeAICardModal; // your close X
-  const refreshBtn = d.aiCardRefreshBtn; // refresh button in modal
+  const img = d.aiCardModalImg;
+  const modal = d.aiCardModal;          
+  const modalClose = d.closeAICardModal;
+  const refreshBtn = d.aiCardRefreshBtn;
+  const stage = d.aiCardStage;
   
   // ref modal close wiring
   const refModal = d.aiRefModal;
   const refContent = d.aiRefModalContent;
+  const refBack = d.aiRefModalBack;
   const refClose = d.closeAIRefModal;
+  const refImg = document.getElementById('aiRefImg');
+  
+  
 
   // ---- State ----
   App.ai = App.ai || {};
@@ -74,9 +80,9 @@
   };
 
 	App.renderCard = function(card){
-	  if(!card || !d.aiCardModalImg) return;
-	  d.aiCardModalImg.src = `AICards/${card.filename}`;
-	  App.applyAspectClass?.(d.aiCardModalImg);
+	  if(!card || !img) return;
+	  img.src = `AICards/${card.filename}`;
+	  App.applyAspectClass?.(img);
 	};
 	
 	App.renderAICard = function(card){
@@ -84,11 +90,10 @@
 	  
 	  App.ai.activeCard = card;
 
-	  const img = document.getElementById('aiCardModalImg');
 	  img.src = `AICards/${card.filename}`;
 	  App.applyAspectClass?.(img);
 	  
-	  if(d.aiCardStage) d.aiCardStage.dataset.cardKey = card.key;
+	  if(stage) stage.dataset.cardKey = card.key;
 
 	  // Optionally: hide hotspots that have no ref
 	  document.querySelectorAll('.ai-hotspot').forEach(btn => {
@@ -99,22 +104,19 @@
 	};
 	
 	App.openAIRef = function(path){
-	  const modal = document.getElementById('aiRefModal');
-	  const img = document.getElementById('aiRefImg');
-	  img.src = path;
+	  refImg.src = path;
 	  App.applyAspectClass?.(img);
-	  modal.style.display = 'flex';
+	  refModal.style.display = 'flex';
 	};
 
 App.closeAIRef= function(){
-  const modal = d.aiRefModal;
-  const img = d.aiRefImg;
-  modal.style.display = 'none';
-  img.src = '';
+
+  refModal.style.display = 'none';
+  refImg.src = '';
 };
 
  App.bindAIHotspotsOnce = function bindAIHotspotsOnce(){
-    const stage = d.aiCardStage;
+    
     if(!stage || stage.dataset.hotspotsBound === '1') return;
     stage.dataset.hotspotsBound = '1';
 
@@ -135,14 +137,20 @@ App.closeAIRef= function(){
 	  e.preventDefault();
 	  e.stopPropagation();
 
-	  // Use your AI ref modal (you already wrote it)
 	  App.openAIRef(refPath);
 	});
 
 
+  if(refBack && !refBack.dataset.bound){
+    refBack.dataset.bound = '1';
+    refBack.onclick = () => App.closeAIRef();
+  }
   if(refClose && !refClose.dataset.bound){
     refClose.dataset.bound = '1';
-    refClose.onclick = App.closeAIRef;
+    refClose.onclick = () => {
+		App.closeAIRef();
+		App.closeModal();
+	};
   }
   if(refModal && !refModal.dataset.bound){
     refModal.dataset.bound = '1';
@@ -163,9 +171,9 @@ App.closeAIRef= function(){
   const card = App.getActiveCardForPhase(phase);
   if(card) App.renderAICard(card);
 
-  App.openModal();             // or openModal()
+  App.openModal();
 
-  App.bindAIHotspotsOnce();          // bind after modal content is in DOM
+  App.bindAIHotspotsOnce();
 }
 
 

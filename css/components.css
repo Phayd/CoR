@@ -1,5 +1,33 @@
 /* merged components.css */
 
+
+#aiCardRefreshBtn{
+	display:flex;
+}
+
+.ai-modal-body{
+  flex: 1 1 auto;
+  min-height: 0;         
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;      
+}
+
+
+#aiRefModalContent{
+  max-height: 80vh;
+  height:80vh;
+  display: flex;
+  flex-direction: column;
+}
+
+#aiRefModalContent .modal-header{
+  flex: 0 0 auto;
+}
+
+
+
 /* Buildable Units */
 .buildable{
   flex:2;
@@ -494,7 +522,12 @@
 .ai-hotspot[data-ref="4"]{ left:  64%; top:  74%; width: 21%; height: 15%; }
 
 #aiRefImg{
-	max-height:70vh;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
 }
 
 /* Commander tile */
@@ -648,7 +681,7 @@
 	gap:4px;
 }
 
-#modal-controls{
+#modal-controls,#ai-modal-controls,#ref-modal-controls{
 	flex:0 0 auto;
 	display:flex;
 	gap:6px;
@@ -657,7 +690,9 @@
 	align-items:center;
 }
 
-#modal-controls-back,#modal-controls-reroll,#modal-controls-close{
+#modal-controls-back,#modal-controls-reroll,#modal-controls-close,
+#ai-modal-controls-back,#ai-modal-controls-reroll,#ai-modal-controls-close,
+#ref-modal-controls-back,#ref-modal-controls-close{
 	width:60px;
 	height:60px;
 	/* display:flex; */
@@ -667,7 +702,7 @@
 	flex:0 0 60px;
 }
 
-#modal-controls-close{
+#modal-controls-close,#ai-modal-controls-close,#ai-modal-controls-reroll,#ref-modal-controls-back,#ref-modal-controls-close{
 	
 	display:flex;
 }
@@ -683,7 +718,7 @@
 }
 
 
-#pickerBackBtn{
+.pickerBackBtn{
 	font-size:40px;
 	color: var(--khaki);
 	font-weight:900;
@@ -706,7 +741,7 @@
 }
 
 
-#pickerRerollBtn{
+#pickerRerollBtn,#aiCardRefreshBtn{
 	font-size:40px;
 	transform: translateY(-4px);
 }

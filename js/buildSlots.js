@@ -47,7 +47,7 @@
 	
     if(unitDef && unitDef.card){
       const img = document.createElement('img');
-	  img.src= (unitDef.name=="None") ? 'Units/None.png' : `Units/${unitDef.card}`;
+	  img.src= (unitDef.name=="None") ? 'Units/none.png' : `Units/${unitDef.card}`;
 
       img.classList.add('aspect-aware');
       App.applyAspectClass(img);

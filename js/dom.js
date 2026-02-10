@@ -20,6 +20,7 @@
 	aiCardModalImg: $('aiCardModalImg'),
 	closeAICardModal: $('closeAICardModal'),
 	closeAIRefModal: $('closeAIRefModal'),
+	aiRefModalBack: $('ref-modal-controls-back'),
 	aiCardRefreshBtn: $('aiCardRefreshBtn'),
 
     xpValueEl: must('xpValue'),
