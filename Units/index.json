@@ -271,11 +271,6 @@
       "name": "Obersoldaten",
       "card": "obersoldaten.png",
 	  "tier": 3
-    },
-    "ok_obersoldaten_t2": {
-      "name": "Obersoldaten",
-      "card": "obersoldaten.png",
-	  "tier": 2
     },"elefant": {
       "name": "Elefant Tank Destroyer",
       "card": "Elefant.png",

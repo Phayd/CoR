@@ -166,7 +166,7 @@
 			}
 		}
 	},
-    { "key": "forward_emplacement", "filename": "forward_emplacement.png", "xp": 2, "tier":1 },
+    { "key": "forward_emplacement", "filename": "forward_emplacement.png", "xp": 2, "tier":1, "requiresAnyUnits": ["uk_infantry_section"] },
     { "key": "kettenrad_call_in", "filename": "kettenrad_call_in.png", "xp": 1, "tier":1 },
     { "key": "lefh_18_artillery", "filename": "lefh_18_artillery.png", "xp": 1,  "requiresAnyUnits": ["ok_sturmpioneers"] ,"tier":1 ,
 		"preferences": {
